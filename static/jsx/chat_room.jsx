@@ -1,12 +1,12 @@
 import React from 'react';
 
-const ChatRoom = ({username, submit, close, userValue}) => { //eslint-disable-line
-  const chatList = () => {  // eslint-disable-line
+const ChatRoom = ({username, submit, close, userValue, textValue}) => {
+  const chatList = () => {
     return (
       <div className= "chatText">
-    <form onSubmit = {submit}>
+    <form onSubmit= {submit}>
       <label>
-        <input type="text" placeholder= "Get Your Chat On Cuh!!"/>
+        <input type="text" placeholder= "Get Your Chat On Cuh!!" value={textValue} name= {userValue}/>
       </label>
     </form>
   </div>

@@ -24,5 +24,9 @@ def handleName(users):
     for name in users:
         emit('new_user', name, broadcast=True)
 
+@socketio.on('primary_user')
+def handlePrimaryUser(prime):
+    emit('primary_user', prime)
+
 if __name__ == '__main__':
     socketio.run(app)
