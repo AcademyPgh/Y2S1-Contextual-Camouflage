@@ -1,0 +1,60 @@
+body {
+  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  line-height: 1.4em;
+  max-width: 850px;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  font-weight: 300;
+  justify-content: center;
+  text-align: center;
+}
+
+h1{
+  color: blue;
+}
+
+.chatOptions{
+  color: gold;
+  width: auto;
+  border: 2px solid blue;
+  justify-content: space-between;
+  text-align: center;
+  padding: 50px 50px 15px 80px;
+  display: flex;
+}
+.chatBox{
+  position: relative;
+  border: 2px solid blue;
+  width: 250px;
+  margin: 10px;
+}
+.chatArea{
+  display: inline-flex;
+  width: 100%;
+
+}
+
+form{
+  font-size: 20px;
+}
+
+#chatRoom{
+  border-bottom: 2px solid blue;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px
+}
+
+.hidden {
+  display: none;
+}
+
+.chatText{
+  padding-top: 20px;
+  border-top: 2px solid blue;
+}
+.messages{
+  height: 200px;
+}
