@@ -3,7 +3,6 @@ import autobind from 'class-autobind';
 import NameForm from './name_form';
 import UserList from './user_list';
 import ChatRoom from './chat_room';
-import ChatBox from './chat_box';
 import io from 'socket.io-client';
 
 
@@ -21,16 +20,12 @@ export default class Main extends Component {
       userTextBox: '',
       openChats: [],
       whosChattering:[],
-      hide: false,
       socket: socket
     };
   }
   componentDidMount() {
-		// socket.on('init', this._initialize);
     this.state.socket.on('connect', this.alert)
 		this.state.socket.on('message', this._messageRecieve);
-		// socket.on('user:join', this._userJoined);
-		// socket.on('user:left', this._userLeft);
 		this.state.socket.on('new_user', this.userNameRecieved);
 	}
 
@@ -58,16 +53,21 @@ export default class Main extends Component {
   }
 
   handleChange(event){
-    alert(event.target.value);
     this.setState({selectValue: event.target.value});
 
   }
 
   handleClose(event){
     event.preventDefault;
-    alert(event.target.value);
-    let index = this.state.chatters.indexOf(event.target.value);
-    this.openChats.splice(index, 1);
+    let index = this.state.whosChattering.indexOf(event.target.value);
+    if (index > -1){
+      alert(index);
+      let tempChats = this.state.openChats;
+      let tempOpenChats = this.state.whosChattering;
+      tempChats.splice(index, 1);
+      tempOpenChats.splice(index,1);
+      this.setState({openChats: tempChats});
+  }
   }
 
   handleSubmit(event){
