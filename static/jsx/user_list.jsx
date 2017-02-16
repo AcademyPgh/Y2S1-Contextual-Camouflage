@@ -14,8 +14,6 @@ const UserList = ({handleSubmit, selectValue, handleChange, users}) =>{
 
          </label>
        </form>
-       <p>{users[0]} </p>
-
      </div>
      );
 };

@@ -14,7 +14,7 @@ const ChatRoom = ({username, submit, close, userValue}) => { //eslint-disable-li
 };
 
   return (
-    <div>
+    <div className="chatBox">
       <div id= "chatRoom">
       <h2>{username}</h2>
       <button value= {userValue} onClick= {close}>X</button>

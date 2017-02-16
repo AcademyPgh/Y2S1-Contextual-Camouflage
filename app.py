@@ -15,13 +15,14 @@ def handleConnetion(message):
     emit('my_response', message, broadcast=True)
 
 @socketio.on('message')
-def handleMessage(message):
-    print('MessageSent: ' + message)
-    emit('my_response', message, broadcast=True);
+def handleMessage(messages, room):
+    for chat in messages:
+        emit('my_response', chat, room=room)
 
-# @socketio.on('name')
-# def handleName(nme):
-#     send(nme);
+@socketio.on('login')
+def handleName(users):
+    for name in users:
+        emit('new_user', name, broadcast=True)
 
 if __name__ == '__main__':
     socketio.run(app)

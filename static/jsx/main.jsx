@@ -16,8 +16,8 @@ export default class Main extends Component {
     const socket = io.connect(host);
 
     this.state = {
-      users: ['User 1', 'User 2', 'User 3', "User 4"],
-      selectValue: 'User 1',
+      users: [],
+      selectValue: '',
       userTextBox: '',
       openChats: [],
       whosChattering:[],
@@ -31,17 +31,19 @@ export default class Main extends Component {
 		this.state.socket.on('message', this._messageRecieve);
 		// socket.on('user:join', this._userJoined);
 		// socket.on('user:left', this._userLeft);
-		socket.on('change:name', this.userNameRecieved);
+		this.state.socket.on('new_user', this.userNameRecieved);
 	}
 
   alert(){
-    alert("BOOM");
     this.state.socket.emit('my_event', 'CONNECTION');
   }
-  userNameRecieved(user) {
-      let userArr = this.state.users;
-      userArr.push(message);
-      this.setState({users: userArr});
+
+  userNameRecieved(users) {
+    if (!this.state.users.includes(users)){
+      let newUserArr = this.state.users;
+      newUserArr.push(users);
+      this.setState({users: newUserArr});
+    }
   }
 
   handleUserNameChange(event){
@@ -49,11 +51,14 @@ export default class Main extends Component {
   }
   handleUserNameSubmit(event){
     event.preventDefault();
-    alert('A name was submitted: ' + this.state.userTextBox);
+    let userArr = this.state.users;
+    userArr.push(this.state.userTextBox);
     this.setState({userTextBox: ''});
+    this.state.socket.emit('login', userArr);
   }
 
   handleChange(event){
+    alert(event.target.value);
     this.setState({selectValue: event.target.value});
 
   }
@@ -61,15 +66,13 @@ export default class Main extends Component {
   handleClose(event){
     event.preventDefault;
     alert(event.target.value);
-
-    this.setState({hide: true});
+    let index = this.state.chatters.indexOf(event.target.value);
+    this.openChats.splice(index, 1);
   }
 
   handleSubmit(event){
     if(event.charCode == 13){
     event.preventDefault();
-    // alert('A user has been selected: ' + event.target.value);
-
     let arrayvar = this.state.openChats.slice();
     let chatters = this.state.whosChattering.slice();
     if(!this.state.whosChattering.includes(event.target.value)){
