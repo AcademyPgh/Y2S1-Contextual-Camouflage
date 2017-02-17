@@ -19,6 +19,7 @@ export default class Main extends Component {
       selectValue: '',
       userTextBox: '',
       chatMessage: '',
+      currentChat: '',
       openChats: [],
       whosChattering:[],
       socket: socket,
@@ -37,7 +38,7 @@ export default class Main extends Component {
 		this.state.socket.on('message', this._messageRecieve);
 		this.state.socket.on('new_user', this.userNameRecieved);
     this.state.socket.on('primary_user', this.primaryUser);
-    // this.state.socket.on('lets_talk', this.letsTalk)
+    this.state.socket.on('lets_talk', this.letsTalk)
 	}
 
   alert(){
@@ -45,12 +46,11 @@ export default class Main extends Component {
   }
   primaryUser(user){
     let primaryUser = user;
-    alert(primaryUser);
     this.setState({primaryUser: primaryUser});
     this.state.socket.emit('welcome', this.state.primaryUser)
   }
-  letsTalk(){
-      alert();
+  letsTalk(message, from){
+      alert(message + " " + from);
   }
   userNameRecieved(users) {
       if (!this.state.users.includes(users)){
@@ -84,9 +84,10 @@ export default class Main extends Component {
 
   }
   handleChatSubmit(event){
+    // if(event.charCode == 13){alert('test');}
+    alert(this.state.currentChat);
     event.preventDefault();
-    alert(this.state.chatMessage + " " + event.target.name);
-    // this.state.socket.emit('chat', this.state.chatMessage);
+    this.state.socket.emit('chat', this.state.chatMessage, this.state.primaryUser, this.state.currentChat);
     this.setState({chatMessage: ''});
   }
 
@@ -97,6 +98,7 @@ export default class Main extends Component {
   }
   handleUserChatChange(event){
     this.setState({chatMessage: event.target.value});
+    this.setState({currentChat: event.target.name});
   }
   handleChatListChange(event){
     this.setState({selectValue: event.target.value});

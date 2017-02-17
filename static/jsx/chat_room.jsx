@@ -5,7 +5,7 @@ const ChatRoom = ({username, submit, close, userValue, chatText, handleUserChatC
   const chatList = () => {
     return (
       <div className= "chatText">
-    <form onSubmit= {submit}>
+    <form onSubmit= {submit} >
       <label>
         <input type= "text" placeholder= "Get Your Chat On Cuh!!" name={username} defaultValue= {chatText} onChange={handleUserChatChange}/>
         {/* <input type= "hidden" value={userValue}/> */}
