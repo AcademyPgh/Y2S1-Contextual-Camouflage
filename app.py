@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from flask_socketio import SocketIO, send, emit
+from flask_socketio import SocketIO, send, emit, join_room, leave_room
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
@@ -9,10 +9,25 @@ socketio = SocketIO(app)
 def index():
     return render_template('index.html')
 
+@socketio.on('welcome')
+def handleWelcome(room):
+    print('Room Name:' + room)
+    join_room(room)
+
+@socketio.on('goodbye')
+def handleGoodBye(room):
+    print ('Leaving Room' + room)
+    leave_room(room)
+
 @socketio.on('my_event')
 def handleConnetion(message):
     print('Statement: ' + message)
     emit('my_response', message, broadcast=True)
+
+@socketio.on('chat')
+def handlePrivateChat(message, primaryUser, room):
+    print('Room Name:' + room)
+    emit('lets_talk', message, primaryUser, room=room )
 
 @socketio.on('message')
 def handleMessage(messages, room):

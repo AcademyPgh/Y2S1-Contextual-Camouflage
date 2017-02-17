@@ -11,7 +11,6 @@ export default class Main extends Component {
     super(props);
     autobind(this);
     const host = location.origin.replace(/^http/, 'ws');
-    // const host = ('http://' + document.domain + ':' + location.port);
     const socket = io.connect(host);
 
     this.state = {
@@ -19,17 +18,29 @@ export default class Main extends Component {
       primaryUser: '',
       selectValue: '',
       userTextBox: '',
+      chat: {
+        chatMessage: '',
+        user: ''
+      },
       openChats: [],
       whosChattering:[],
       socket: socket,
       messages: []
     };
+  //   this.handleUserNameChange = this.handleUserNameChange.bind(this);
+  //  this.handleUserNameSubmit = this.handleUserNameSubmit.bind(this);
+  //  this.handleUserChatChange = this.handleUserChatChange.bind(this);
+  //  this.handleChatSubmit = this.handleChatSubmit.bind(this);
+  //  this.userNameRecieved = this.userNameRecieved.bind(this);
+  //  this.handleChatBoxOpen = this.handleChatBoxOpen.bind(this);
+  //  this.handleChatBoxClose = this.handleChatBoxClose.bind(this);
   }
   componentDidMount() {
     this.state.socket.on('connect', this.alert);
 		this.state.socket.on('message', this._messageRecieve);
 		this.state.socket.on('new_user', this.userNameRecieved);
     this.state.socket.on('primary_user', this.primaryUser);
+    this.state.socket.on('lets_talk', this.letsTalk)
 	}
 
   alert(){
@@ -39,8 +50,11 @@ export default class Main extends Component {
     let primaryUser = user;
     alert(primaryUser);
     this.setState({primaryUser: primaryUser});
+    this.state.socket.emit('welcome', this.state.primaryUser)
   }
-
+  letsTalk(){
+      alert();
+  }
   userNameRecieved(users) {
     if (!this.state.users.includes(users)){
       let newUserArr = this.state.users;
@@ -49,9 +63,6 @@ export default class Main extends Component {
     }
   }
 
-  handleUserNameChange(event){
-    this.setState({userTextBox: event.target.value});
-  }
   handleUserNameSubmit(event){
     event.preventDefault();
     let userArr = this.state.users;
@@ -65,7 +76,7 @@ export default class Main extends Component {
     event.preventDefault;
     let index = this.state.whosChattering.indexOf(event.target.value);
     if (index > -1){
-      alert(index);
+      this.state.socketio.emit('goodbye', event.target.value);
       let tempChats = this.state.openChats;
       let tempOpenChats = this.state.whosChattering;
       tempChats.splice(index, 1);
@@ -74,26 +85,45 @@ export default class Main extends Component {
   }
 
   }
-  chatSubmit(event){
+  handleChatSubmit(event){
     event.preventDefault();
-    alert('test');
-    // let messageArr = this.state.messages[0];
-    // userArr.push(this.state.userTextBox);
-    // this.setState({userTextBox: ''});
-    // this.state.socket.emit('message', messageArr, user);
+    alert(this.state.chat.chatMessage + " " + this.state.primaryUser);
+    this.state.socket.emit('chat', this.state.chat.chatMessage, this.state.primaryUser);
+    this.setState({chat: {chatMessage: ''}});
   }
 
-  handleChatListOpen(event){
+
+  /*-- Change Handle Section */
+  handleUserNameChange(event){
+    this.setState({userTextBox: event.target.value});
+  }
+  handleUserChatChange(event){
+    this.setState({chat: {chatMessage: event.target.value}});
+  }
+  handleChatListChange(event){
+    this.setState({selectValue: event.target.value});
+  }
+/* ------             ------ */
+
+  handleChatBoxOpen(event){
     if(event.charCode == 13){
     event.preventDefault();
+    //Cut up the arrays because there is a good chance they contain elements
     let arrayvar = this.state.openChats.slice();
     let chatters = this.state.whosChattering.slice();
+    //Set newMessages equal to state.messages in order to append a new array of chat messages
     let newMessages = this.state.messages;
-    if(!this.state.whosChattering.includes(event.target.value)){
+    //Dont try to talk to your self
+    if(!this.state.whosChattering.includes(event.target.value) && event.target.value != '' && event.target.value != this.state.primaryUser){
     chatters.push(event.target.value);
     newMessages.push([]);
-    arrayvar.push(<ChatRoom username= {event.target.value} close={this.handleChatBoxClose} userValue= {event.target.value} submit= {this.chatSubmit}/>);
-    this.setState({ openChats: arrayvar , whosChattering: chatters, messages: newMessages});
+    this.setState({ openChats: arrayvar, whosChattering: chatters, messages: newMessages, chat: {user: event.target.value}});
+    //Array of Open Chat Rooms
+    arrayvar.push(<ChatRoom username= {event.target.value} close={this.handleChatBoxClose}
+      userValue= {event.target.value} submit= {this.handleChatSubmit}
+      chatObj= {this.state.chat} handleUserChatChange= {this.handleUserChatChange}/>);
+      //Join Room of new Private Chat
+      this.state.socket.emit('welcome', event.target.value);
     }
   }
 
@@ -102,8 +132,10 @@ export default class Main extends Component {
     return (
       <div>
         <div className= "chatOptions">
-        <NameForm handleUserNameChange= {this.handleUserNameChange} textValue= {this.state.userTextBox} handleUserNameSubmit={this.handleUserNameSubmit}/>
-         <UserList handleChange={this.handleChatListChange} handleSubmit={this.handleChatListOpen} selectValue={this.state.selectValue} openChats={this.state.openChats} users={this.state.users}/>
+        <NameForm handleUserNameChange= {this.handleUserNameChange}
+          textValue= {this.state.userTextBox} handleUserNameSubmit={this.handleUserNameSubmit}/>
+         <UserList handleChange={this.handleChatListChange} handleSubmit={this.handleChatBoxOpen}
+           selectValue={this.state.selectValue} openChats={this.state.openChats} users={this.state.users}/>
           </div>
          <div className= "chatArea">
            {this.state.openChats.map((chats) => {
