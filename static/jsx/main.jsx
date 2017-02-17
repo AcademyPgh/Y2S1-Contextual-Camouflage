@@ -18,10 +18,7 @@ export default class Main extends Component {
       primaryUser: '',
       selectValue: '',
       userTextBox: '',
-      chat: {
-        chatMessage: '',
-        user: ''
-      },
+      chatMessage: '',
       openChats: [],
       whosChattering:[],
       socket: socket,
@@ -40,7 +37,7 @@ export default class Main extends Component {
 		this.state.socket.on('message', this._messageRecieve);
 		this.state.socket.on('new_user', this.userNameRecieved);
     this.state.socket.on('primary_user', this.primaryUser);
-    this.state.socket.on('lets_talk', this.letsTalk)
+    // this.state.socket.on('lets_talk', this.letsTalk)
 	}
 
   alert(){
@@ -56,11 +53,11 @@ export default class Main extends Component {
       alert();
   }
   userNameRecieved(users) {
-    if (!this.state.users.includes(users)){
-      let newUserArr = this.state.users;
-      newUserArr.push(users);
-      this.setState({users: newUserArr});
-    }
+      if (!this.state.users.includes(users)){
+        let newUserArr = this.state.users;
+        newUserArr.push(users);
+        this.setState({users: newUserArr});
+      }
   }
 
   handleUserNameSubmit(event){
@@ -75,8 +72,9 @@ export default class Main extends Component {
   handleChatBoxClose(event){
     event.preventDefault;
     let index = this.state.whosChattering.indexOf(event.target.value);
+    alert(index);
     if (index > -1){
-      this.state.socketio.emit('goodbye', event.target.value);
+      this.state.socket.emit('goodbye', event.target.value);
       let tempChats = this.state.openChats;
       let tempOpenChats = this.state.whosChattering;
       tempChats.splice(index, 1);
@@ -87,9 +85,9 @@ export default class Main extends Component {
   }
   handleChatSubmit(event){
     event.preventDefault();
-    alert(this.state.chat.chatMessage + " " + this.state.primaryUser);
-    this.state.socket.emit('chat', this.state.chat.chatMessage, this.state.primaryUser);
-    this.setState({chat: {chatMessage: ''}});
+    alert(this.state.chatMessage + " " + event.target.name);
+    // this.state.socket.emit('chat', this.state.chatMessage);
+    this.setState({chatMessage: ''});
   }
 
 
@@ -98,7 +96,7 @@ export default class Main extends Component {
     this.setState({userTextBox: event.target.value});
   }
   handleUserChatChange(event){
-    this.setState({chat: {chatMessage: event.target.value}});
+    this.setState({chatMessage: event.target.value});
   }
   handleChatListChange(event){
     this.setState({selectValue: event.target.value});
@@ -117,13 +115,13 @@ export default class Main extends Component {
     if(!this.state.whosChattering.includes(event.target.value) && event.target.value != '' && event.target.value != this.state.primaryUser){
     chatters.push(event.target.value);
     newMessages.push([]);
-    this.setState({ openChats: arrayvar, whosChattering: chatters, messages: newMessages, chat: {user: event.target.value}});
     //Array of Open Chat Rooms
     arrayvar.push(<ChatRoom username= {event.target.value} close={this.handleChatBoxClose}
       userValue= {event.target.value} submit= {this.handleChatSubmit}
-      chatObj= {this.state.chat} handleUserChatChange= {this.handleUserChatChange}/>);
+      chatText= {this.state.chatMessage} handleUserChatChange= {this.handleUserChatChange}/>);
       //Join Room of new Private Chat
       this.state.socket.emit('welcome', event.target.value);
+      this.setState({ openChats: arrayvar, whosChattering: chatters, messages: newMessages});
     }
   }
 

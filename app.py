@@ -25,7 +25,7 @@ def handleConnetion(message):
     emit('my_response', message, broadcast=True)
 
 @socketio.on('chat')
-def handlePrivateChat(message, primaryUser, room):
+def handlePrivateChat(message, ):
     print('Room Name:' + room)
     emit('lets_talk', message, primaryUser, room=room )
 
