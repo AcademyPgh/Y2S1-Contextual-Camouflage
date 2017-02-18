@@ -25,15 +25,9 @@ export default class Main extends Component {
       openChats: [],
       whosChattering:[],
       socket: socket,
-      messages: ['Hello', 'Man']
+      messages: ['Hello','World']
     };
-  //   this.handleUserNameChange = this.handleUserNameChange.bind(this);
-  //  this.handleUserNameSubmit = this.handleUserNameSubmit.bind(this);
-  //  this.handleUserChatChange = this.handleUserChatChange.bind(this);
-  //  this.handleChatSubmit = this.handleChatSubmit.bind(this);
-  //  this.userNameRecieved = this.userNameRecieved.bind(this);
-  //  this.handleChatBoxOpen = this.handleChatBoxOpen.bind(this);
-  //  this.handleChatBoxClose = this.handleChatBoxClose.bind(this);
+
   }
   componentDidMount() {
     this.state.socket.on('connect', this.alert);
@@ -52,11 +46,20 @@ export default class Main extends Component {
     this.setState({primaryUser: primaryUser});
     this.state.socket.emit('welcome', this.state.primaryUser)
   }
-  letsTalk(message){
-    let messageArr = this.state.messages.slice();
+  letsTalk(message, room){
+    // let messageArr = this.state.messages.slice();
+    let messageArr = this.state.messages;
     let messageIndex =  this.state.whosChattering.indexOf(this.state.currentChat);
-    messageArr[messageIndex] = (this.state.primaryUser + ": " + message);
-    alert(messageArr[messageIndex] + " " + room);
+
+  //   if(messageArr[messageIndex].length < 1){
+  //     messageArr[messageIndex] = (this.state.primaryUser + ": " + message);
+  //     alert(messageArr[messageIndex]);
+  // }
+  // else{
+  //   messageArr[messageIndex] = (this.state.primaryUser + ": " + message);
+  //   alert(messageArr[messageIndex]);
+  // }
+  messageArr.push(message);
     this.setState({messages: messageArr})
   }
   userNameRecieved(users) {
@@ -92,7 +95,7 @@ export default class Main extends Component {
   handleChatSubmit(event){
     event.preventDefault();
     alert(this.state.currentChat);
-    this.state.socket.emit('chat', this.state.chatMessage, this.state.currentChat);
+    this.state.socket.emit('chat', this.state.chatMessage, this.state.currentChat, this.state.primaryUser);
     this.setState({chatMessage: ''});
   }
 
@@ -126,17 +129,8 @@ export default class Main extends Component {
     let newMessages = this.state.messages;
     //Dont try to talk to your self
     if(!this.state.whosChattering.includes(event.target.value) && event.target.value != '' && event.target.value != this.state.primaryUser){
-    chatters.push(event.target.value);
-    newMessages.push([]);
-    //Array of Open Chat Rooms
-    // arrayvar.push(<ChatRoom username= {event.target.value} close={this.handleChatBoxClose}
-    //   userValue= {event.target.value} submit= {this.handleChatSubmit}
-    //   chatText= {this.state.chatMessage} handleUserChatChange= {this.handleUserChatChange}/>);
-      //Join Room of new Private Chat
-      // let newChatRoom = <ChatRoom username= {event.target.value} close={this.handleChatBoxClose}
-      //   userValue= {event.target.value} submit= {this.handleChatSubmit}
-      //   chatText= {this.state.chatMessage} handleUserChatChange= {this.handleUserChatChange}/>
-
+      chatters.push(event.target.value);
+      newMessages.push([]);
       this.state.socket.emit('show_room', event.target.value);
       this.setState({whosChattering: chatters, messages: newMessages});
     }

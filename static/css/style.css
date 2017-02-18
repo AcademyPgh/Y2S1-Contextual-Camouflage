@@ -14,7 +14,9 @@ body {
 h1{
   color: blue;
 }
-
+ul {
+  list-style: none;
+}
 .chatOptions{
   color: gold;
   width: auto;
@@ -57,4 +59,5 @@ form{
 }
 .messages{
   height: 200px;
+  overflow-y: auto;
 }

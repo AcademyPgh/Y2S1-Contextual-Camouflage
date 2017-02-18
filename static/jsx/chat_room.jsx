@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 // import autobind from 'class-autobind';
-// import Chat from './chat';
+import Chat from './chat';
 
 const ChatRoom = ({username, submit, close,chatText, handleUserChatChange, message , i}) => {
   const chatList = () => {
@@ -22,7 +22,9 @@ const ChatRoom = ({username, submit, close,chatText, handleUserChatChange, messa
       <button value= {username} onClick= {close}>X</button>
     </div>
     <div className= "messages">
-      {/* <Chat key= {i} message= {message[0]}/> */}
+      {message.map((chats, i) => {
+        return (<Chat key= {i} message= {chats}/>);
+      })}
     </div>
       {chatList()}
     </div>

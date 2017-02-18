@@ -31,9 +31,9 @@ def handleConnetion(message):
     emit('my_response', message, broadcast=True)
 
 @socketio.on('chat')
-def handlePrivateChat(message,room):
+def handlePrivateChat(message, room, user):
     print('Are we talking?:' + message + ' '+ room)
-    emit('lets_talk', message, room=room )
+    emit('lets_talk', user + ': ' + message ,room=room )
 
 @socketio.on('message')
 def handleMessage(messages, room):

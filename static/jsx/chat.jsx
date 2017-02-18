@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Chat = (message) => {
-  const chitChat = () =>{
+const Chat = ({message}) => {
+  const chitChat = () => {
       return (
           <li>{message}</li>
       );
@@ -9,7 +9,7 @@ const Chat = (message) => {
 
 return (
   <ul>
-  {chitChat()}}
+  {chitChat()}
   </ul>
   );
 };
