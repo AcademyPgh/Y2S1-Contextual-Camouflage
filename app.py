@@ -14,6 +14,12 @@ def handleWelcome(room):
     print('Room Name:' + room)
     join_room(room)
 
+@socketio.on('show_room')
+def handleWelcome(room):
+    print('Welcome to:' + room)
+    join_room(room)
+    emit('send_chat', room, room=room)
+
 @socketio.on('goodbye')
 def handleGoodBye(room):
     print ('Leaving Room' + room)
@@ -25,9 +31,9 @@ def handleConnetion(message):
     emit('my_response', message, broadcast=True)
 
 @socketio.on('chat')
-def handlePrivateChat(message, primaryUser, room):
-    print('Are we talking?:' + primaryUser + room)
-    emit('lets_talk', message, primaryUser, room=room )
+def handlePrivateChat(message,room):
+    print('Are we talking?:' + message + ' '+ room)
+    emit('lets_talk', message, room=room )
 
 @socketio.on('message')
 def handleMessage(messages, room):
