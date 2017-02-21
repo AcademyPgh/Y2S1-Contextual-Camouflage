@@ -16,6 +16,7 @@ h1{
 }
 ul {
   list-style: none;
+  text-align: left;
 }
 .chatOptions{
   color: gold;

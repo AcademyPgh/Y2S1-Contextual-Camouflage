@@ -3,6 +3,8 @@ import React, {Component} from 'react';
 import Chat from './chat';
 
 const ChatRoom = ({username, submit, close,chatText, handleUserChatChange, message , i}) => {
+   let msgArr = message[username] != null  ? message[username] : [];
+
   const chatList = () => {
     return (
       <div className= "chatText">
@@ -22,7 +24,7 @@ const ChatRoom = ({username, submit, close,chatText, handleUserChatChange, messa
       <button value= {username} onClick= {close}>X</button>
     </div>
     <div className= "messages">
-      {message.map((chats, i) => {
+      { msgArr.map((chats, i) => {
         return (<Chat key= {i} message= {chats}/>);
       })}
     </div>

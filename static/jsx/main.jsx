@@ -23,9 +23,12 @@ export default class Main extends Component {
       chatMessage: '',
       currentChat: '',
       openChats: [],
+      convos: {
+        useruno: []
+      },
       whosChattering:[],
       socket: socket,
-      messages: ['Hello','World']
+      messages: ['Hello','World'],
     };
 
   }
@@ -47,20 +50,20 @@ export default class Main extends Component {
     this.state.socket.emit('welcome', this.state.primaryUser)
   }
   letsTalk(message, room){
-    // let messageArr = this.state.messages.slice();
-    let messageArr = this.state.messages;
-    let messageIndex =  this.state.whosChattering.indexOf(this.state.currentChat);
-
-  //   if(messageArr[messageIndex].length < 1){
-  //     messageArr[messageIndex] = (this.state.primaryUser + ": " + message);
-  //     alert(messageArr[messageIndex]);
-  // }
-  // else{
-  //   messageArr[messageIndex] = (this.state.primaryUser + ": " + message);
-  //   alert(messageArr[messageIndex]);
-  // }
-  messageArr.push(message);
-    this.setState({messages: messageArr})
+    let conversation = this.state.convos;
+    let roam = this.state.currentChat.toString();
+    if (!conversation.hasOwnProperty(roam))
+    {
+      conversation[roam] = [message];
+      alert('`checking');
+    }
+    else {
+      conversation[roam].push(message);
+      alert('check check!!')
+    }
+    // let messageArr = this.state.messages;
+    // messageArr.push(message);
+    this.setState({convos: conversation});
   }
   userNameRecieved(users) {
       if (!this.state.users.includes(users)){
@@ -83,7 +86,7 @@ export default class Main extends Component {
     event.preventDefault;
     let index = this.state.whosChattering.indexOf(event.target.value);
     if (index > -1){
-      this.state.socket.emit('goodbye', event.target.value);
+      this.state.socket.emit('goodbye', event.target.value, this.state.primaryUser);
       let tempChats = this.state.openChats;
       let tempOpenChats = this.state.whosChattering;
       tempChats.splice(index, 1);
@@ -94,9 +97,10 @@ export default class Main extends Component {
   }
   handleChatSubmit(event){
     event.preventDefault();
-    alert(this.state.currentChat);
     this.state.socket.emit('chat', this.state.chatMessage, this.state.currentChat, this.state.primaryUser);
     this.setState({chatMessage: ''});
+    alert(this.state.chatMessage);
+
   }
 
   newChatReceived(chat){
@@ -126,13 +130,13 @@ export default class Main extends Component {
     // let arrayvar = this.state.openChats.slice();
     let chatters = this.state.whosChattering.slice();
     //Set newMessages equal to state.messages in order to append a new array of chat messages
-    let newMessages = this.state.messages;
+    // let newMessages = [];
     //Dont try to talk to your self
     if(!this.state.whosChattering.includes(event.target.value) && event.target.value != '' && event.target.value != this.state.primaryUser){
       chatters.push(event.target.value);
-      newMessages.push([]);
+      // newMessages.push([]);
       this.state.socket.emit('show_room', event.target.value);
-      this.setState({whosChattering: chatters, messages: newMessages});
+      this.setState({whosChattering: chatters});
     }
   }
 
@@ -150,7 +154,7 @@ export default class Main extends Component {
            {this.state.openChats.map((chats, i) => {
              return (<ChatRoom key= {i} username= {chats} close={this.handleChatBoxClose}
                userValue= {event.target.value} submit= {this.handleChatSubmit}
-               chatText= {this.state.chatMessage} handleUserChatChange= {this.handleUserChatChange} message={this.state.messages}/>);
+               chatText= {this.state.chatMessage} handleUserChatChange= {this.handleUserChatChange} message={this.state.convos}/>);
            })}
          </div>
 

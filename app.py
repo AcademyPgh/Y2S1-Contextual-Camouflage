@@ -20,9 +20,10 @@ def handleWelcome(room):
     join_room(room)
     emit('send_chat', room, room=room)
 
+
 @socketio.on('goodbye')
-def handleGoodBye(room):
-    print ('Leaving Room' + room)
+def handleGoodBye(room, user):
+    print (user + " is leaving " + room)
     leave_room(room)
 
 @socketio.on('my_event')
