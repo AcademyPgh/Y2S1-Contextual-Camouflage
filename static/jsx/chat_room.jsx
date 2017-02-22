@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import Chat from './chat';
 
-const ChatRoom = ({username, submit, close,chatText, handleUserChatChange, message , i}) => {
-   let msgArr = message[username] != null  ? message[username] : [];
+const ChatRoom = ({username, submit, close,chatText, handleUserChatChange, message , i, primaryUser}) => {
+  /* Let the user know who they are chatting with or if they are being chatted with */
+   let msgArr = message[username] != null  ? message[username] : ['(your first reponse is used to confirm connection)'];
+   let display = username != primaryUser ? username : 'Your the Chattee';
 
   const chatList = () => {
     return (
@@ -19,7 +21,7 @@ const ChatRoom = ({username, submit, close,chatText, handleUserChatChange, messa
   return (
     <div className="chatBox">
       <div id= "chatRoom">
-      <h2>{username}</h2>
+      <h2>{display}</h2>
       <button value= {username} onClick= {close}>X</button>
     </div>
     <div className= "messages">

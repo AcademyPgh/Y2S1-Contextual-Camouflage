@@ -4,8 +4,8 @@ const NameForm = ({handleUserNameSubmit, handleUserNameChange, textValue}) => {
   return (
         <form onSubmit= {handleUserNameSubmit}>
           <label>
-            Name: 
-            <input type="text" placeholder= "Enter User Namey" value={textValue} onChange={handleUserNameChange}/>
+            Name:
+            <input type="text" placeholder= "Sign In To Chat" value={textValue} onChange={handleUserNameChange}/>
           </label>
         </form>
       );

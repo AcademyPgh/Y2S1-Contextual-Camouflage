@@ -71,7 +71,7 @@ button{
   background-color: #4E13CD;
     border: none;
     color: white;
-    padding: 13px 22px;
+    padding: 10px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -96,6 +96,6 @@ button{
 .messages{
   height: 200px;
   overflow-y: auto;
-  font-size: 20px;
+  font-size: 14px;
   color: #1AA0F4;
 }

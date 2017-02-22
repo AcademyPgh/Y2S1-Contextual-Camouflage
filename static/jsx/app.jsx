@@ -6,16 +6,3 @@ ReactDOM.render(
     <Home/>,
       document.querySelector('.root')
 );
-// ReactDOM.render(
-//     <Home/>,
-//       document.getElementById('.root')
-// );
-// ReactDOMServer.renderToStaticMarkup(
-//     <Home/>,
-//       document.querySelector('.root')
-// );
-
-// ReactDOMServer.renderToStaticMarkup(
-//     <Home/>,
-//       document.getElementById('.root')
-// );

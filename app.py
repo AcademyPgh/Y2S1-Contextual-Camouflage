@@ -14,17 +14,23 @@ def handleWelcome(room):
     print('Room Name:' + room)
     join_room(room)
 
+@socketio.on('leaving')
+def handleDisconnect(user):
+    print('Buh Bye ' + user)
+    emit('goodbye', user, broadcast=True)
+
 @socketio.on('show_room')
 def handleWelcome(room, user):
     print('Welcome to:' + room)
     join_room(room)
     emit('send_chat', room, room=room)
+    emit('join', user + " "+ "has joined", room=room)
 
 @socketio.on('error')
 def handleError(room):
     emit('catch_user_error', 'Try Again', room=room)
 
-@socketio.on('goodbye')
+@socketio.on('logout')
 def handleGoodBye(room, user):
     print (user + " is leaving " + room)
     emit('left', user + " "+ "has left", room=room)
