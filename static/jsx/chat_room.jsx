@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-// import autobind from 'class-autobind';
 import Chat from './chat';
 
 const ChatRoom = ({username, submit, close,chatText, handleUserChatChange, message , i}) => {
@@ -10,7 +9,7 @@ const ChatRoom = ({username, submit, close,chatText, handleUserChatChange, messa
       <div className= "chatText">
     <form onSubmit= {submit} >
       <label>
-        <input type= "text" placeholder= "Get Your Chat On Cuh!!" name={username} defaultValue= {chatText} onChange={handleUserChatChange}/>
+        <input id= "msg" type= "text" placeholder= "Get Your Chat On Cuh!!" name={username} value= {chatText} onChange={handleUserChatChange}/>
       </label>
     </form>
   </div>

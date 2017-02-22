@@ -5,8 +5,6 @@ import UserList from './user_list';
 import ChatRoom from './chat_room';
 import Chat from './chat'
 import io from 'socket.io-client';
-import createFragment from 'react-addons-create-fragment';
-
 
 export default class Main extends Component {
   constructor(props){
@@ -23,12 +21,9 @@ export default class Main extends Component {
       chatMessage: '',
       currentChat: '',
       openChats: [],
-      convos: {
-        useruno: []
-      },
+      convos: {},
       whosChattering:[],
       socket: socket,
-      messages: ['Hello','World'],
     };
 
   }
@@ -39,6 +34,8 @@ export default class Main extends Component {
     this.state.socket.on('primary_user', this.primaryUser);
     this.state.socket.on('lets_talk', this.letsTalk);
     this.state.socket.on('send_chat', this.newChatReceived);
+    this.state.socket.on('catch_user_error', this.showError);
+    this.state.socket.on('left', this.letsTalk);
 	}
 
   alert(){
@@ -46,65 +43,80 @@ export default class Main extends Component {
   }
   primaryUser(user){
     let primaryUser = user;
-    this.setState({primaryUser: primaryUser});
+    let conversation = this.state.convos;
+
+    if (!conversation.hasOwnProperty(primaryUser))
+      {
+        conversation[primaryUser.toString()] = ['hello'];
+      }
+
+    this.setState({primaryUser: primaryUser, convos: conversation});
     this.state.socket.emit('welcome', this.state.primaryUser)
   }
-  letsTalk(message, room){
-    let conversation = this.state.convos;
-    let roam = this.state.currentChat.toString();
-    if (!conversation.hasOwnProperty(roam))
+  showError(err){
+      alert(err);
+  }
+
+  letsTalk(message){
+    let newConversation = this.state.convos;
+    let room = this.state.currentChat.toString();
+    if (!newConversation.hasOwnProperty(room))
     {
-      conversation[roam] = [message];
-      alert('`checking');
+      newConversation[room] = [message];
     }
     else {
-      conversation[roam].push(message);
-      alert('check check!!')
-    }
-    // let messageArr = this.state.messages;
-    // messageArr.push(message);
-    this.setState({convos: conversation});
+      newConversation[room].push(message);
+
+      }
+
+    this.setState({convos: newConversation});
   }
+
   userNameRecieved(users) {
       if (!this.state.users.includes(users)){
         let newUserArr = this.state.users;
         newUserArr.push(users);
         this.setState({users: newUserArr});
       }
+      else {
+        this.state.socket.emit('error', this.state.primaryUser);
+        }
+
   }
 
   handleUserNameSubmit(event){
     event.preventDefault();
     let userArr = this.state.users;
+    if (this.state.userTextBox != ' '){
     userArr.push(this.state.userTextBox);
     this.state.socket.emit('primary_user', this.state.userTextBox);
     this.setState({userTextBox: ''});
     this.state.socket.emit('login', userArr);
   }
+  else {
+    this.setState({userTextBox: 'Sign in to chat'});
+    }
+  }
 
   handleChatBoxClose(event){
     event.preventDefault;
     let index = this.state.whosChattering.indexOf(event.target.value);
-    if (index > -1){
       this.state.socket.emit('goodbye', event.target.value, this.state.primaryUser);
       let tempChats = this.state.openChats;
       let tempOpenChats = this.state.whosChattering;
       tempChats.splice(index, 1);
       tempOpenChats.splice(index,1);
       this.setState({openChats: tempChats});
-  }
 
   }
   handleChatSubmit(event){
     event.preventDefault();
+    let room = this.state.currentChat.toString();
     this.state.socket.emit('chat', this.state.chatMessage, this.state.currentChat, this.state.primaryUser);
     this.setState({chatMessage: ''});
-    alert(this.state.chatMessage);
-
   }
 
   newChatReceived(chat){
-    alert('CHATTING WITH: '+ chat);
     let newChat = this.state.openChats.slice();
     newChat.push(chat);
     this.setState({openChats: newChat});
@@ -127,15 +139,11 @@ export default class Main extends Component {
     if(event.charCode == 13){
     event.preventDefault();
     //Cut up the arrays because there is a good chance they contain elements
-    // let arrayvar = this.state.openChats.slice();
     let chatters = this.state.whosChattering.slice();
-    //Set newMessages equal to state.messages in order to append a new array of chat messages
-    // let newMessages = [];
     //Dont try to talk to your self
     if(!this.state.whosChattering.includes(event.target.value) && event.target.value != '' && event.target.value != this.state.primaryUser){
       chatters.push(event.target.value);
-      // newMessages.push([]);
-      this.state.socket.emit('show_room', event.target.value);
+      this.state.socket.emit('show_room', event.target.value, this.state.primaryUser);
       this.setState({whosChattering: chatters});
     }
   }
