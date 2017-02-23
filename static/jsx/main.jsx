@@ -12,16 +12,17 @@ export default class Main extends Component {
     autobind(this);
     const host = location.origin.replace(/^http/, 'ws');
     const socket = io.connect(host);
-
+    const user = JSON.parse(localStorage.getItem("users") || "[]");
+    const convo = JSON.parse(localStorage.getItem("convos") || "{}");
     this.state = {
-      users: [],
+      users: user,
       primaryUser: '',
       selectValue: '',
       userTextBox: '',
       chatMessage: '',
       currentChat: '',
       openChats: [],
-      convos: {},
+      convos: convo,
       whosChattering:[],
       // displayName:'',
       socket: socket,
@@ -32,7 +33,7 @@ export default class Main extends Component {
     this.state.socket.on('connect', this.alert);
     this.state.socket.on('disconnect', this.wave);
     this.state.socket.on('goodbye', this.peaceOut);
-		this.state.socket.on('message', this._messageRecieve);
+		// this.state.socket.on('message', this._messageRecieve);
 		this.state.socket.on('new_user', this.userNameRecieved);
     this.state.socket.on('primary_user', this.primaryUser);
     this.state.socket.on('lets_talk', this.letsTalk);
@@ -53,9 +54,11 @@ export default class Main extends Component {
   }
 
   peaceOut(user){
+    alert(user + ' ' + 'has peaced out');
     let index = this.state.users.indexOf(user);
     let tempUsers = this.state.whosChattering;
     tempUsers.splice(index, 1);
+    localStorage.setItem("users", JSON.stringify(tempUsers));
     this.setState({users: tempUsers});
   }
     /* --------           --------- */
@@ -67,9 +70,10 @@ export default class Main extends Component {
 
     if (!conversation.hasOwnProperty(primaryUser.toString()))
       {
-        conversation[primaryUser.toString()] = ['Lets Chatter!! (respond to start chatting)'];
+        conversation[primaryUser.toString()] = ['Lets Chatter!! (press <enter> to confirm connection)'];
       }
 
+    localStorage.setItem("convos", JSON.stringify(conversation));
     this.setState({primaryUser: primaryUser, convos: conversation});
     this.state.socket.emit('welcome', this.state.primaryUser)
   }
@@ -93,15 +97,19 @@ export default class Main extends Component {
     if (!newConversation.hasOwnProperty(room))
       {
         newConversation[room] = [message];
-        this.setState({convos: newConversation});
+        // this.setState({convos: newConversation});
 
       }
 
     else
       {
         newConversation[room].push(message);
-        this.setState({convos: newConversation});
+        // this.setState({convos: newConversation});
       }
+      localStorage.setItem("convos", JSON.stringify(newConversation));
+      this.setState({convos: newConversation});
+
+
   }
 
   // getDisplayName(home, away){
@@ -114,6 +122,7 @@ export default class Main extends Component {
       if (!this.state.users.includes(users)){
         let newUserArr = this.state.users;
         newUserArr.push(users);
+        localStorage.setItem("users", JSON.stringify(newUserArr));
         this.setState({users: newUserArr});
       }
       else {
@@ -125,10 +134,17 @@ export default class Main extends Component {
     event.preventDefault();
     let userArr = this.state.users;
     if (this.state.userTextBox != ' '){
-    userArr.push(this.state.userTextBox);
-    this.state.socket.emit('primary_user', this.state.userTextBox);
-    this.setState({userTextBox: ''});
-    this.state.socket.emit('login', userArr);
+      if (!this.state.users.includes(this.state.userTextBox)){
+        userArr.push(this.state.userTextBox);
+        this.state.socket.emit('primary_user', this.state.userTextBox);
+        this.setState({userTextBox: ''});
+        this.state.socket.emit('login', userArr);
+    }
+    else {
+      this.state.socket.emit('primary_user', this.state.userTextBox);
+      this.state.socket.emit('login', userArr);
+      this.setState({userTextBox: ''});
+      }
   }
   else {
     this.setState({userTextBox: 'Sign in to chat'});
