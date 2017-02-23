@@ -5,6 +5,6 @@ Chat Web Application
 * Server-Side Python, Flask, Flask-SocketIO
 * Sign in to Chat
 * Select from list of users to chat with
-* To initialize conversation both users must press enter
+* To initialize a conversation one user must submit a response and then both users are free to type
 * All users and messages between users are saved in Local Storage
 * Updates coming soon!!

@@ -70,7 +70,7 @@ export default class Main extends Component {
 
     if (!conversation.hasOwnProperty(primaryUser.toString()))
       {
-        conversation[primaryUser.toString()] = ['Lets Chatter!! (press <enter> to confirm connection)'];
+        conversation[primaryUser.toString()] = ['Lets Chatter!! (submit a chat to confirm connection)'];
       }
 
     localStorage.setItem("convos", JSON.stringify(conversation));
@@ -88,11 +88,11 @@ export default class Main extends Component {
     let newConversation = this.state.convos;
     let room = this.state.currentChat.toString();
 
-    if(message == 'y' && newConversation[this.state.primaryUser].length <= 1)
-
-      {
-      newConversation[this.state.primaryUser] = [];
-      }
+    // if(message == 'y' && newConversation[this.state.primaryUser].length <= 1)
+    //
+    //   {
+    //   newConversation[this.state.primaryUser] = [];
+    //   }
 
     if (!newConversation.hasOwnProperty(room))
       {

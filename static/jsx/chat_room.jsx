@@ -3,7 +3,7 @@ import Chat from './chat';
 
 const ChatRoom = ({username, submit, close,chatText, handleUserChatChange, message , i, primaryUser}) => {
   /* Let the user know who they are chatting with or if they are being chatted with */
-   let msgArr = message[username] != null  ? message[username] : ['(press <enter> to confirm connection)'];
+   let msgArr = message[username] != null  ? message[username] : ['(submit a chat to confirm connection)'];
    let display = username != primaryUser ? username : 'Your the Chattee';
 
   const chatList = () => {
