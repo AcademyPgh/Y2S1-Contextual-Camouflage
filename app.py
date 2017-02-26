@@ -30,6 +30,10 @@ def handleWelcome(room, user):
 def handleError(room):
     emit('catch_user_error', 'Try Again', room=room)
 
+@socketio.on('alert_signed_in')
+def handleSignInError(room):
+    emit('catch_user_error', 'Already Signed In', room=room)
+
 @socketio.on('logout')
 def handleGoodBye(room, user):
     print (user + " is leaving " + room)

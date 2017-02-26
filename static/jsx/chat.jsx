@@ -1,5 +1,6 @@
 import React from 'react';
 
+/* List of messges between users */ 
 const Chat = ({message}) => {
   const chitChat = () => {
       return (

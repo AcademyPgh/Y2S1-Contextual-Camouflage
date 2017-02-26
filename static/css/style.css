@@ -1,5 +1,12 @@
+/*html{
+  background-size: cover;
+  background: url(https://assets.cerego.com/_assets/v2/learn-app/gumball-loader-ccf5b8c8a1e91cebb279c8787bd1e2b109a81c0aa00aeef3d83033e8b1e735d5.gif) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}*/
 body {
-  /*font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
   font-family: 'Lucida Sans Typewriter', 'Lucida Console', monaco, 'Bitstream Vera Sans Mono', monospace;
   line-height: 1.4em;
   max-width: 850px;
@@ -12,7 +19,21 @@ body {
   text-align: center;
 }
 
-#msg {
+/*Chatter Box */
+h1{
+  color: #1AA0F4;
+}
+
+/* Area where messages between users area held */
+.messages{
+  height: 200px;
+  overflow-y: auto;
+  font-size: 14px;
+  color: #1AA0F4;
+}
+
+/* User messaging area */
+#inputmsg {
 outline: none;
 height: 50px;
 width: 230px;
@@ -23,13 +44,22 @@ color: #1AA0F4;
 font-weight: bolder;
 }
 
-h1{
-  color: #1AA0F4;
-}
+/* List of messages between users */
 ul {
   list-style: none;
   text-align: left;
 }
+
+/*Div holding inputmsg */
+.chatText{
+  padding-top: 20px;
+  border-top: 2px solid #4E13CD;
+}
+
+/*------------                  -------------- */
+
+
+/* NameForm, UserList, ChatAre */
 .chatOptions{
   outline: none;
   color: #1AA0F4;
@@ -41,7 +71,15 @@ ul {
   text-align: center;
   padding: 20px 50px 15px 80px;
   display: flex;
+  background-color: white;
 }
+/* Area where chat boxes load */
+.chatArea{
+  display: inline-flex;
+  width: 100%;
+
+}
+/* Name of chatter, chatter and their messages */
 .chatBox{
   position: relative;
   border: 4px solid #4E13CD;
@@ -49,25 +87,39 @@ ul {
   width: 250px;
   margin: 10px;
 }
-.chatArea{
-  display: inline-flex;
-  width: 100%;
 
-}
 select {
   width: 160px;
   font-size: 30px;
 }
+
 form {
   font-size: 20px;
 }
+
 input{
   height: 20px;
   width: 150px;
   font-size: 15px;
+  border: none;
+  border-color: transparent;
 }
 
-button{
+input:focus{
+   outline: none;
+}
+
+/* Display Name and Close Out Button */
+#chatRoom{
+  border-bottom: 2px solid #4E13CD;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  color: #1AA0F4;
+}
+
+/*Close out of chat box button */
+button {
   background-color: #4E13CD;
     border: none;
     color: white;
@@ -78,24 +130,4 @@ button{
     font-size: 15px;
     margin: 4px 2px;
     cursor: pointer;
-}
-
-#chatRoom{
-  border-bottom: 2px solid #4E13CD;
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  color: #1AA0F4;
-}
-
-
-.chatText{
-  padding-top: 20px;
-  border-top: 2px solid #4E13CD;
-}
-.messages{
-  height: 200px;
-  overflow-y: auto;
-  font-size: 14px;
-  color: #1AA0F4;
 }

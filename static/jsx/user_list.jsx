@@ -1,5 +1,5 @@
 import React from 'react';
-
+/*List of Active Users */
 const UserList = ({handleSubmit, selectValue, handleChange, users}) =>{
   return (
        <div>

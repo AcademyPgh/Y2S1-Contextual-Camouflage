@@ -1,17 +1,23 @@
 import React, {Component} from 'react';
 import Chat from './chat';
 
+/* ChatRoom holdes the conversations between users */
+
 const ChatRoom = ({username, submit, close,chatText, handleUserChatChange, message , i, primaryUser}) => {
-  /* Let the user know who they are chatting with or if they are being chatted with */
+
+  //If message object doesnt have a key of username then make msgArr equal to an array
    let msgArr = message[username] != null  ? message[username] : ['(submit a chat to confirm connection)'];
+
+   //If user didnt start the conversation then they are the Chattee
    let display = username != primaryUser ? username : 'Your the Chattee';
 
+//Chat input form
   const chatList = () => {
     return (
       <div className= "chatText">
     <form onSubmit= {submit} >
       <label>
-        <input id= "msg" type= "text" placeholder= "Get Your Chat On!!" name={username} value= {chatText} onChange={handleUserChatChange}/>
+        <input id= "inputmsg" type= "text" placeholder= "Get Your Chat On!!" name={username} value= {chatText} onChange={handleUserChatChange}/>
       </label>
     </form>
   </div>
@@ -24,6 +30,8 @@ const ChatRoom = ({username, submit, close,chatText, handleUserChatChange, messa
       <h2>{display}</h2>
       <button value= {username} onClick= {close}>X</button>
     </div>
+
+    {/* List of messages between users */}
     <div className= "messages">
       { msgArr.map((chats, i) => {
         return (<Chat key= {i} message= {chats}/>);
