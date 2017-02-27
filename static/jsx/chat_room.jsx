@@ -3,12 +3,13 @@ import Chat from './chat';
 
 /* ChatRoom holdes the conversations between users */
 
-const ChatRoom = ({username, submit, close,chatText, handleUserChatChange, message, primaryUser}) => {
+const ChatRoom = ({username, submit, close, chatText, handleUserChatChange, message, primaryUser}) => {
 
   //If message object doesnt have a key of username then make msgArr equal to an array
    let msgArr = message[username] != null  ? message[username] : ['(submit a chat)'];
 
-   //If user didnt start the conversation then they are the Chattee
+   //Just in case the user found a way to talk to them self then let them do so.
+   //They worked hard for this oppurtunity
    let display = username != primaryUser ? username : 'Are you talking to yourself??!!';
 
 //Chat input form
@@ -17,7 +18,7 @@ const ChatRoom = ({username, submit, close,chatText, handleUserChatChange, messa
       <div className= "chatText">
     <form onSubmit= {submit} >
       <label>
-        <input id= "inputmsg" type= "text" placeholder= "Get Your Chat On!!" name={username} value= {chatText} onChange={handleUserChatChange}/>
+        <input id= "inputmsg" type= "text" placeholder= "Get Your Chat On!!" name={username} value= {chatText[username]} onChange={handleUserChatChange}/>
       </label>
     </form>
   </div>

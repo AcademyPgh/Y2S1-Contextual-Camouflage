@@ -22,6 +22,7 @@ export default class Main extends Component {
       selectValue: '',
       userTextBox: '',
       chatMessage: '',
+      messageChat:{},
       currentChat: '',
       openChats: [],
       convos: convo,
@@ -42,6 +43,7 @@ export default class Main extends Component {
     this.state.socket.on('left', this.letsTalk);
     this.state.socket.on('handle_chatObj', this.handleChatObj);
 	}
+
   /* Siging on and signing off of users  */
 
   //Check Connection
@@ -66,7 +68,7 @@ export default class Main extends Component {
     //Update state of active users
     this.setState({users: tempUsers, primeUser: user});
   }
-    /* --------           --------- */
+    /* -------- ------   ------    ------ --------- */
 
 
     handleUserNameSubmit(event){
@@ -97,24 +99,26 @@ export default class Main extends Component {
             }
             // if our userArr does include the user name
             else {
-              alert('Someone has that name');
-              this.setState({userTextBox: ''});
+              this.setState({userTextBox: '', primaryUser: userName});
             }
           }
           //if userName = '' then do nothing
         else {
           this.setState({userTextBox: ''});
         }
+        // localStorage.setItem('prime', userName);
+
       }
     // }
+
     /*Find primaryUser and open an array property with their name */
     primaryUser(user){
-      let primaryUser = user;
+      // let primaryUser = user;
       let conversation = this.state.convos;
-      alert('Welcome '+ primaryUser);
+      alert('Welcome '+ user);
       localStorage.setItem("convos", JSON.stringify(conversation));
-      localStorage.setItem('prime', primaryUser);
-      this.setState({primaryUser: primaryUser, convos: conversation});
+      // localStorage.setItem('prime', primaryUser);
+      this.setState({primaryUser: user, convos: conversation});
       this.state.socket.emit('welcome', this.state.primaryUser)
     }
 
@@ -123,7 +127,9 @@ export default class Main extends Component {
       this.setState({userTextBox: event.target.value});
     }
     handleUserChatChange(event){
-      this.setState({chatMessage: event.target.value});
+      let msgObj = this.state.messageChat;
+      msgObj[this.state.currentChat] = event.target.value;
+      this.setState({messageChat: msgObj});
       this.setState({currentChat: event.target.name});
     }
     handleChatListChange(event){
@@ -131,15 +137,19 @@ export default class Main extends Component {
     }
   /* ------             ------ */
 
+
+//Handle the saving of conversations by creating chat obj
+//Our key being the users name who we are chatting with
 handleChatObj(chatName){
   let chatters = this.state.whosChattering.slice();
   let convoObj = this.state.convos;
   let newChat = this.state.openChats.slice();
+
   if(!chatters.includes(chatName)
     && chatName != this.state.primaryUser)
     {
       chatters.push(chatName);
-      convoObj[chatName] = ['Hi from '+ this.state.primaryUser];
+      convoObj[chatName] = [this.state.primaryUser + ' would like to Chatter'];
       newChat.push(chatName);
       localStorage.setItem("convos", JSON.stringify(convoObj));
       this.setState({whosChattering: chatters, convos: convoObj, openChats:newChat, currentChat: chatName});
@@ -150,17 +160,23 @@ handleChatObj(chatName){
   handleChatSubmit(event){
     event.preventDefault();
     let convoObj = this.state.convos;
+    let msgObj = this.state.messageChat;
+    let msg = msgObj[this.state.currentChat];
+
     //After we submit a message, push that message into our own convo object
     //who's key is the name of who we are chatting with
-    convoObj[this.state.currentChat].push(this.state.chatMessage);
+    convoObj[this.state.currentChat].push(msg);
+
     //Send our message, who we are chatting with and who we are to the socket
-    this.state.socket.emit('chat', this.state.chatMessage, this.state.currentChat, this.state.primaryUser);
-    this.setState({chatMessage: '', convos: convoObj});
+    this.state.socket.emit('chat', msg, this.state.currentChat, this.state.primaryUser);
+    localStorage.setItem("convos", JSON.stringify(convoObj));
+
+    msgObj[this.state.currentChat]= '';
+    this.setState({convos: convoObj, messageChat: msgObj});
   }
 
   //Function used for chatting between users
   letsTalk(userMsg){
-    alert(this.state.currentChat);
     let convoObj = this.state.convos;
     convoObj[this.state.currentChat].push(userMsg);
       this.setState({convos: convoObj});
@@ -168,6 +184,7 @@ handleChatObj(chatName){
 
 //Receive new name of active Chatter and add it to our array
   userNameRecieved(users) {
+
       //** Keeps from creating duplicate users in our user array **
       if (!this.state.users.includes(users)){
         let newUserArr = this.state.users;
@@ -177,6 +194,7 @@ handleChatObj(chatName){
       }
   }
 
+//Close Chat Box by finding the position of who you are talking to and splice for that index to 1
   handleChatBoxClose(event){
     event.preventDefault;
     let index = this.state.whosChattering.indexOf(event.target.value);
@@ -188,7 +206,7 @@ handleChatObj(chatName){
       this.setState({openChats: tempChats});
   }
 
-
+  //Receive chat from socket and push it into our chat array
   newChatReceived(chat){
     let newChat = this.state.openChats.slice();
     newChat.push(chat);
@@ -201,8 +219,10 @@ handleChatObj(chatName){
     else {
       if(event.charCode == 13){
         event.preventDefault();
+
         //Cut up the array because there is a good chance it contains elements
         let chatters = this.state.whosChattering.slice();
+        let msgObj = this.state.messageChat;
         let convoObj = this.state.convos;
 
         //Dont try to talk to your self
@@ -212,10 +232,13 @@ handleChatObj(chatName){
           {
             //Push who we want to chat with into our array
             chatters.push(event.target.value);
-            convoObj[event.target.value] = ['Hi from '+ this.state.primaryUser];
+            convoObj[event.target.value] = [this.state.primaryUser+ ' would like to Chatter'];
+            msgObj[event.target.value]= '';
             alert(convoObj[event.target.value])
+
                 //Send the socket who we want to talk to and who we are
             this.state.socket.emit('show_room', event.target.value, this.state.primaryUser);
+
             // this.state.socket.emit('save_chats', event.target.value, this.state.primaryUser);
             this.setState({whosChattering: chatters, convos: convoObj, currentChat: event.target.value});
           }
@@ -236,7 +259,7 @@ handleChatObj(chatName){
            {this.state.openChats.map((chats, i) => {
              return (<ChatRoom key= {i} username= {chats} close={this.handleChatBoxClose}
                primaryUser= {this.state.primaryUser} submit= {this.handleChatSubmit}
-               chatText= {this.state.chatMessage} handleUserChatChange= {this.handleUserChatChange} message={this.state.convos}/>);
+               chatText= {this.state.messageChat} handleUserChatChange= {this.handleUserChatChange} message={this.state.convos}/>);
            })}
          </div>
 
