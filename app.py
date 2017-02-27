@@ -14,25 +14,24 @@ def handleWelcome(room):
     print('Room Name:' + room)
     join_room(room)
 
+
 @socketio.on('leaving')
 def handleDisconnect(user):
     print('Buh Bye ' + user)
     emit('goodbye', user, broadcast=True)
 
 @socketio.on('show_room')
-def handleWelcome(room, user):
+def handleChatOpen(room, user):
     print('Welcome to:' + room)
-    join_room(room)
-    emit('send_chat', room, room=room)
-    emit('join', user + " "+ "has joined", room=room)
+    # join_room(room)
+    emit('send_chat', room)
+    emit('handle_chatObj',user, room=room)
+    # emit('join', user + " "+ "has joined", room=room)
 
-@socketio.on('error')
-def handleError(room):
-    emit('catch_user_error', 'Try Again', room=room)
-
-@socketio.on('alert_signed_in')
-def handleSignInError(room):
-    emit('catch_user_error', 'Already Signed In', room=room)
+# @socketio.on('save_chats')
+# def handleChatSave(user, chatName):
+#     print('Handling chat save '+ user)
+#     emit('handle_chatObj', chatName, room=user)
 
 @socketio.on('logout')
 def handleGoodBye(room, user):
@@ -47,8 +46,8 @@ def handleConnetion(message):
 
 @socketio.on('chat')
 def handlePrivateChat(message, room, user):
-    print('Are we talking?:' + message + ' '+ room)
-    emit('lets_talk', user + ': ' + message ,room=room )
+    print('Are we talking?: ' + message + ' '+ room)
+    emit('lets_talk', user + ': ' + message, room=room)
 
 @socketio.on('message')
 def handleMessage(messages, room):

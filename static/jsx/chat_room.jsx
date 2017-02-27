@@ -3,13 +3,13 @@ import Chat from './chat';
 
 /* ChatRoom holdes the conversations between users */
 
-const ChatRoom = ({username, submit, close,chatText, handleUserChatChange, message , i, primaryUser}) => {
+const ChatRoom = ({username, submit, close,chatText, handleUserChatChange, message, primaryUser}) => {
 
   //If message object doesnt have a key of username then make msgArr equal to an array
-   let msgArr = message[username] != null  ? message[username] : ['(submit a chat to confirm connection)'];
+   let msgArr = message[username] != null  ? message[username] : ['(submit a chat)'];
 
    //If user didnt start the conversation then they are the Chattee
-   let display = username != primaryUser ? username : 'Your the Chattee';
+   let display = username != primaryUser ? username : 'Are you talking to yourself??!!';
 
 //Chat input form
   const chatList = () => {
