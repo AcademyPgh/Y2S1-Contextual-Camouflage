@@ -148,8 +148,9 @@ handleChatObj(chatName){
     {
       chatters.push(chatName);
 
+      if(!(chatName in convoObj)){
         convoObj[chatName] = [''];
-
+      }
       newChat.push(chatName);
       this.setState({whosChattering: chatters, convos: convoObj, openChats: newChat, currentChat: chatName});
     }
@@ -237,9 +238,10 @@ handleChatObj(chatName){
           {
             //Push who we want to chat with into our array
             chatters.push(event.target.value);
-            if (!event.target.value in convoObj) {
+            if (!(event.target.value in convoObj)) {
               convoObj[event.target.value] = [''];
           }
+
             msgObj[event.target.value]= '';
 
                 //Send the socket who we want to talk to and who we are
