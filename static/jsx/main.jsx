@@ -82,9 +82,8 @@ export default class Main extends Component {
       }
 
       else {
-        if (userName != ''){
+        if (userName != '' && userName.length <= 10){
           //if there isn't a user with the same name then add the user to our userArr
-
             if (!userArr.includes(userName)){
               userArr.push(userName);
 
@@ -107,6 +106,7 @@ export default class Main extends Component {
           }
           //do nothing if userName = ''
         else {
+          alert('User name was too long or too short')
           this.setState({userTextBox: ''});
         }
       }
@@ -230,7 +230,7 @@ handleChatObj(chatName){
         let msgObj = this.state.messageChat;
         let convoObj = this.state.convos;
 
-        //Dont try to talk to your self
+        //Dont try to talk to yourself
         if(!chatters.includes(event.target.value)
           && event.target.value != ''
           && event.target.value != this.state.primaryUser)
@@ -246,6 +246,9 @@ handleChatObj(chatName){
                 //Send the socket who we want to talk to and who we are
             this.state.socket.emit('show_room', event.target.value, this.state.primaryUser);
             this.setState({whosChattering: chatters, convos: convoObj, currentChat: event.target.value});
+          }
+          else{
+            alert('Dont try to talk to yourself');
           }
   }
   }
