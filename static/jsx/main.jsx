@@ -14,11 +14,10 @@ export default class Main extends Component {
     const socket = io.connect(host); //connect socket
     const user = JSON.parse(localStorage.getItem("users") || "[]");  //if localStorage of users is empty then return an empty array
     const convo = JSON.parse(localStorage.getItem("convos") || "{}"); //if localStorage of user convos is empy then return empty object
-    const primeUser = localStorage.getItem("prime") ?  localStorage.getItem("prime") : ''; //if localStorage of primary Users is empy then return empty string
 
     this.state = {
       users: user,
-      primaryUser: primeUser,
+      primaryUser: '',
       selectValue: '',
       userTextBox: '',
       chatMessage: '',
@@ -64,7 +63,7 @@ export default class Main extends Component {
     user = '';
     //Update local storage of active users
     localStorage.setItem("users", JSON.stringify(tempUsers));
-    localStorage.setItem("prime", user);
+
     //Update state of active users
     this.setState({users: tempUsers, primeUser: user});
   }
@@ -77,11 +76,11 @@ export default class Main extends Component {
       let userName = this.state.userTextBox.trim();
       // If user is already signed in then notify them
 
-      // if(this.state.primaryUser != ''){
-      //   alert('Already signed in, your name is: '+ this.state.primaryUser);
-      // }
+      if(this.state.primaryUser != ''){
+        alert('Already signed in, your name is: '+ this.state.primaryUser);
+      }
 
-      // else {
+      else {
         if (userName != ''){
           //if there isn't a user with the same name then add the user to our userArr
 
@@ -99,26 +98,25 @@ export default class Main extends Component {
             }
             // if our userArr does include the user name
             else {
+
+              // alert('Looks like someone is chatting with that name 👀')
               this.setState({userTextBox: '', primaryUser: userName});
+              this.state.socket.emit('primary_user', userName);
             }
           }
-          //if userName = '' then do nothing
+          //do nothing if userName = ''
         else {
           this.setState({userTextBox: ''});
         }
-        // localStorage.setItem('prime', userName);
-
       }
-    // }
+    }
 
     /*Find primaryUser and open an array property with their name */
     primaryUser(user){
-      // let primaryUser = user;
-      let conversation = this.state.convos;
+      // let conversation = this.state.convos;
       alert('Welcome '+ user);
-      localStorage.setItem("convos", JSON.stringify(conversation));
-      // localStorage.setItem('prime', primaryUser);
-      this.setState({primaryUser: user, convos: conversation});
+      // localStorage.setItem("convos", JSON.stringify(conversation));
+      this.setState({primaryUser: user});
       this.state.socket.emit('welcome', this.state.primaryUser)
     }
 
@@ -149,10 +147,11 @@ handleChatObj(chatName){
     && chatName != this.state.primaryUser)
     {
       chatters.push(chatName);
-      convoObj[chatName] = [this.state.primaryUser + ' would like to Chatter'];
+
+        convoObj[chatName] = [''];
+
       newChat.push(chatName);
-      localStorage.setItem("convos", JSON.stringify(convoObj));
-      this.setState({whosChattering: chatters, convos: convoObj, openChats:newChat, currentChat: chatName});
+      this.setState({whosChattering: chatters, convos: convoObj, openChats: newChat, currentChat: chatName});
     }
 
 }
@@ -169,7 +168,7 @@ handleChatObj(chatName){
 
     //Send our message, who we are chatting with and who we are to the socket
     this.state.socket.emit('chat', msg, this.state.currentChat, this.state.primaryUser);
-    localStorage.setItem("convos", JSON.stringify(convoObj));
+    // localStorage.setItem("convos", JSON.stringify(convoObj));
 
     msgObj[this.state.currentChat]= '';
     this.setState({convos: convoObj, messageChat: msgObj});
@@ -177,9 +176,15 @@ handleChatObj(chatName){
 
   //Function used for chatting between users
   letsTalk(userMsg){
+
+    //Find are User to make sure we are pushing to the correct array
+    let index = userMsg.indexOf(':');
+    let user = userMsg.slice(0,index);
     let convoObj = this.state.convos;
-    convoObj[this.state.currentChat].push(userMsg);
+    convoObj[user].push(userMsg);
+    localStorage.setItem("convos", JSON.stringify(convoObj));
       this.setState({convos: convoObj});
+
   }
 
 //Receive new name of active Chatter and add it to our array
@@ -232,14 +237,13 @@ handleChatObj(chatName){
           {
             //Push who we want to chat with into our array
             chatters.push(event.target.value);
-            convoObj[event.target.value] = [this.state.primaryUser+ ' would like to Chatter'];
+            if (!event.target.value in convoObj) {
+              convoObj[event.target.value] = [''];
+          }
             msgObj[event.target.value]= '';
-            alert(convoObj[event.target.value])
 
                 //Send the socket who we want to talk to and who we are
             this.state.socket.emit('show_room', event.target.value, this.state.primaryUser);
-
-            // this.state.socket.emit('save_chats', event.target.value, this.state.primaryUser);
             this.setState({whosChattering: chatters, convos: convoObj, currentChat: event.target.value});
           }
   }

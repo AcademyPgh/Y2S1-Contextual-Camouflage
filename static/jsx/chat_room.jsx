@@ -6,7 +6,7 @@ import Chat from './chat';
 const ChatRoom = ({username, submit, close, chatText, handleUserChatChange, message, primaryUser}) => {
 
   //If message object doesnt have a key of username then make msgArr equal to an array
-   let msgArr = message[username] != null  ? message[username] : ['(submit a chat)'];
+   let msgArr = message[username] != null  ? message[username] : ['Error!'];
 
    //Just in case the user found a way to talk to them self then let them do so.
    //They worked hard for this oppurtunity
