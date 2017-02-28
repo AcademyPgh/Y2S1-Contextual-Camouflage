@@ -114,7 +114,7 @@ export default class Main extends Component {
 
     /*Find primaryUser and open an array property with their name */
     primaryUser(user){
-      alert('Welcome '+ user);
+      // alert('Welcome '+ user);
       this.setState({primaryUser: user});
       this.state.socket.emit('welcome', this.state.primaryUser)
     }
