@@ -40,17 +40,11 @@ def handleGoodBye(room, user):
 @socketio.on('my_event')
 def handleConnetion(message):
     print('Statement: ' + message)
-    # emit('my_response', message, broadcast=True)
 
 @socketio.on('chat')
 def handlePrivateChat(message, room, user):
     print('Are we talking?: ' + message + ' '+ room)
     emit('lets_talk', user + ': ' + message, room=room)
-
-# @socketio.on('message')
-# def handleMessage(messages, room):
-#     for chat in messages:
-#         emit('my_response', chat, room=room)
 
 #Used for when users sign in
 @socketio.on('login')

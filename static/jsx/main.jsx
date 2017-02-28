@@ -61,6 +61,7 @@ export default class Main extends Component {
     let tempUsers = this.state.whosChattering;
     tempUsers.splice(index, 1);
     user = '';
+
     //Update local storage of active users
     localStorage.setItem("users", JSON.stringify(tempUsers));
 
@@ -113,9 +114,7 @@ export default class Main extends Component {
 
     /*Find primaryUser and open an array property with their name */
     primaryUser(user){
-      // let conversation = this.state.convos;
       alert('Welcome '+ user);
-      // localStorage.setItem("convos", JSON.stringify(conversation));
       this.setState({primaryUser: user});
       this.state.socket.emit('welcome', this.state.primaryUser)
     }
