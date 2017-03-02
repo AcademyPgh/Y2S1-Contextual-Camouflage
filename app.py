@@ -19,7 +19,7 @@ def handleWelcome(room):
 #Once a user leaves emit function call to update active user list
 @socketio.on('leaving')
 def handleDisconnect(user):
-    print('Buh Bye ' + user)
+    # print('Buh Bye ' + user)
     emit('goodbye', user, broadcast=True)
 
 #Open up a new Chat Room for the Chatter and Chattee
