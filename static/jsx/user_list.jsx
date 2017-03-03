@@ -1,13 +1,14 @@
 import React from 'react';
+
 /*List of Active Users */
-const UserList = ({handleSubmit, selectValue, handleChange, users}) =>{
+const UserList = (props) =>{
   return (
        <div>
-       <form onKeyPress= {handleSubmit}>
+       <form onKeyPress= {props.handleSubmit}>
          <label>
            Choose a Chatter:
-           <select value={selectValue} onChange={handleChange}>
-             {users.map((user, i) =>
+           <select value={props.selectValue} onChange={props.handleChange}>
+             {props.users.map((user, i) =>
                { return (<option key= {i} value= {user}>{user}</option>);
              })}
            </select>

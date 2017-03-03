@@ -261,7 +261,7 @@ handleChatObj(chatName){
         <NameForm handleUserNameChange= {this.handleUserNameChange}
           textValue= {this.state.userTextBox} handleUserNameSubmit={this.handleUserNameSubmit}/>
          <UserList handleChange={this.handleChatListChange} handleSubmit={this.handleChatBoxOpen}
-           selectValue={this.state.selectValue} openChats={this.state.openChats} users={this.state.users}/>
+           selectValue={this.state.selectValue} users={this.state.users}/>
           </div>
          <div className= "chatArea">
            {this.state.openChats.map((chats, i) => {
