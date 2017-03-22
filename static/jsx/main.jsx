@@ -10,7 +10,7 @@ export default class Main extends Component {
   constructor(props){
     super(props);
     autobind(this);
-    const host = location.origin.replace(/^http/, 'ws'); //find origin of hosted connection
+    const host = location.origin.replace(/^https/, 'ws'); //find origin of hosted connection
     const socket = io.connect(host); //connect socket
     const user = JSON.parse(localStorage.getItem("users") || "[]");  //if localStorage of users is empty then return an empty array
     const convo = JSON.parse(localStorage.getItem("convos") || "{}"); //if localStorage of user convos is empy then return empty object
