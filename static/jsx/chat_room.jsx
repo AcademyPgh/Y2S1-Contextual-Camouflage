@@ -6,7 +6,7 @@ import Chat from './chat';
 const ChatRoom = (props) => {
 
   //If message object doesnt have a key of username then make msgArr equal to an array
-   let msgArr = props.message[props.username] != null  ? props.message[props.username] : ['Error!'];
+   let msgArr = props.messages[props.username] != null  ? props.messages[props.username] : ['Error!'];
 
    //Just in case the user found a way to talk to them self then let them do so.
    //They worked hard for this oppurtunity

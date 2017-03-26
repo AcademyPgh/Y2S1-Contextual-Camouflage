@@ -10,7 +10,7 @@ export default class Main extends Component {
   constructor(props){
     super(props);
     autobind(this);
-    const host = location.origin.replace(/^https/, 'ws'); //find origin of hosted connection
+    const host = location.origin.replace(/^http/, 'ws'); //find origin of hosted connection
     const socket = io.connect(host); //connect socket
     const user = JSON.parse(localStorage.getItem("users") || "[]");  //if localStorage of users is empty then return an empty array
     const convo = JSON.parse(localStorage.getItem("convos") || "{}"); //if localStorage of user convos is empy then return empty object
@@ -112,7 +112,7 @@ export default class Main extends Component {
       }
     }
 
-    /*Find primaryUser and open an array property with their name */
+    /*Find primaryUser and send socket their name */
     primaryUser(user){
       // alert('Welcome '+ user);
       this.setState({primaryUser: user});
@@ -267,7 +267,7 @@ handleChatObj(chatName){
            {this.state.openChats.map((chats, i) => {
              return (<ChatRoom key= {i} username= {chats} close={this.handleChatBoxClose}
                primaryUser= {this.state.primaryUser} submit= {this.handleChatSubmit}
-               chatText= {this.state.messageChat} handleUserChatChange= {this.handleUserChatChange} message={this.state.convos}/>);
+               chatText= {this.state.messageChat} handleUserChatChange= {this.handleUserChatChange} messages={this.state.convos}/>);
            })}
          </div>
 
