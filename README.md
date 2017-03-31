@@ -16,7 +16,7 @@ Chat Web Application
       . venv/bin/activate
       pip install -r requirements.txt. (may need sudo)
 
-    Run 'npm install' or 'yarn install' (may need sudo) from the root directory
-
     To run the web server you need to source your virtual environment (. venv/bin/activate)
-    and execute "sh run.sh"
+      and execute "sh run.sh"
+
+    Run 'npm install' or 'yarn install' (may need sudo) from the root directory if you would like to use gulp to edit any portion of the React code.
