@@ -12,8 +12,13 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE-URL'] =''
 
 #default route to test screen
-@app.route('/')
-def index():
+
+# @app.route('/')
+# def index():
+#     return render_template('index.html')
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def catch_all(path):
     return render_template('index.html')
 
 #this method gets the pin of the user

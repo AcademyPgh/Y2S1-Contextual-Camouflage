@@ -6,9 +6,6 @@ body {
   /*min-width: 230px;
   max-width: 550px;
   margin: 0 auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-font-smoothing: antialiased;
-  font-smoothing: antialiased;
   font-weight: 300;*/
   background-color: #1a1a1a;
   color: white;
@@ -47,7 +44,57 @@ margin-top: 30px;
     color: black;
     background-color: transparent;
 }
+.camomap {
+  background-image: url('../img/C_Camo_Map.png');
+  background-repeat: no-repeat;
+  background-size: 30%;
+  background-position: center;
+  background-position: top;
+  height: 800px;
+  }
 
+  .blur {
+    filter: blur(5px);
+    }
+
+.overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0,0,0,0.5); /*dim the background*/
+}
+.form-group textarea {
+  height: 200px;
+  width: 400px;
+}
+
+.form-group, .checkbox, #questionaire {
+  color: #f2f0ee;
+  font-size: 15px;
+  font-family: Futura PT;
+  font-weight: 200;
+}
+
+.formContent {
+  text-align: left;
+  display: inline-block;
+}
+
+#questionaire {
+  left: 500px;
+  margin: auto;
+  margin-top: -300px;
+  position: absolute;
+  top: 50%;
+  width: 80%;
+}
+#story {
+   /*max-width: 600px;*/
+   padding-top: 15px;
+}
 a {
   color: white;
   /*font-size: 15px;*/
