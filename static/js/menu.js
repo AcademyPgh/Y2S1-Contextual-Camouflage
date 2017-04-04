@@ -18,18 +18,18 @@ const Menu = () =>
   </Navbar.Header>
    <Navbar.Collapse>
     <Nav pullRight bsStyle="pills">
-      {/* <LinkContainer to="/Story"> */}
+      <LinkContainer to="/Story">
         <NavItem>Your Story</NavItem>
-      {/* </LinkContainer> */}
-      {/* <LinkContainer to="/Love"> */}
+      </LinkContainer>
+      <LinkContainer to="/Love">
         <NavItem>Send Love</NavItem>
-      {/* </LinkContainer> */}
-      {/* <LinkContainer to="/Learn"> */}
+      </LinkContainer>
+      <LinkContainer to="/Learn">
         <NavItem>Learn</NavItem>
-      {/* </LinkContainer> */}
-        {/* <LinkContainer to="/Contact"> */}
+      </LinkContainer>
+        <LinkContainer to="/Contact">
       <NavItem><Button bsStyle="danger"><FaIconPack size={20}/></Button></NavItem>
-      {/* </LinkContainer> */}
+      </LinkContainer>
     </Nav>
   </Navbar.Collapse>
 </Navbar>
