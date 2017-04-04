@@ -1,5 +1,6 @@
-#import flask and flask functions
+#import flask, flask extensions and flask functions
 from flask import Flask, request, redirect, jsonify, render_template, flash, url_for
+from flask_sqlalchemy import SQLAlchemy
 #import helpers
 import json
 #import local functions and variables
@@ -9,7 +10,17 @@ from config import *
 
 #create a flask app
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE-URL'] =''
+app.config['SQLALCHEMY_DATABASE_URI'] ='mysql://academypgh:breakfastatshellys@warringtons.crqrglgmlxa2.us-east-1.rds.amazonaws.com/warringtons'
+db=SQLAlchemy(app)
+
+class UserPin(db.Model):
+    __tablename__='example'
+    id = db.Column('id', db.INT, primary_key=True)
+    data = db.Column('data', db.VARCHAR(100))
+
+    def __init__(self, id, data):
+        self.id = id
+        self.data = data
 
 #default route to test screen
 @app.route('/')
