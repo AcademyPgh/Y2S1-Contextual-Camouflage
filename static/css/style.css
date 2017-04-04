@@ -1,129 +1,69 @@
+/* Styles */
+
 body {
-  font-family: 'Lucida Sans Typewriter', 'Lucida Console', monaco, 'Bitstream Vera Sans Mono', monospace;
+  font: 16px ,'Nunito', sans-serif;
   line-height: 1.4em;
-  max-width: 850px;
+  /*min-width: 230px;
+  max-width: 550px;
   margin: 0 auto;
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
   font-smoothing: antialiased;
-  font-weight: 300;
-  justify-content: center;
-  text-align: center;
-  background-color: #2a2a33;
+  font-weight: 300;*/
+  background-color: #1a1a1a;
+  color: white;
 }
 
-/*Chatter Box Logo */
-h1{
-  color: #1AA0F4;
-}
-
-/* Area where messages between users area held */
-.messages{
-  height: 200px;
-  overflow-y: auto;
-  font-size: 14px;
-  color: #1AA0F4;
-}
-
-/* User messaging area */
-#inputmsg {
-outline: none;
-height: 50px;
-width: 230px;
-margin-top: -15px;
-margin-bottom: 8px;
-font-size: 15px;
-color: #1AA0F4;
-font-weight: bolder;
-}
-
-/* List of messages between users */
-ul {
-  list-style: none;
-  text-align: left;
-}
-
-/*Div holding inputmsg */
-.chatText{
-  padding-top: 20px;
-  border-top: 2px solid #4E13CD;
-}
-
-/*------------                  -------------- */
-
-
-/* NameForm, UserList, ChatAre */
-.chatOptions{
-  outline: none;
-  color: #1AA0F4;
-  font-size: 20px;
-  width: auto;
-  border: 4px solid #4E13CD;
-  border-radius: 20px;
-  justify-content: space-between;
-  text-align: center;
-  padding: 20px 50px 15px 80px;
-  display: flex;
-  background-color: white;
-}
-/* Area where chat boxes load */
-.chatArea{
-  display: inline-flex;
-  width: 100%;
-
-}
-/* Name of chatter, chatter and their messages */
-.chatBox{
-  position: relative;
-  border: 4px solid #4E13CD;
-  border-radius: 20px;
-  width: 250px;
-  margin: 10px;
-  background-color: white;
-
-}
-
-select {
-  width: 160px;
+.navbar .navbar-nav {
   font-size: 18px;
+  font-family: "Avenir Next";
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+.navbar .navbar-collapse {
+  text-align: center;
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:focus {
+       color: black;
+       background-color: #fcd900;
+   }
+
+.nav-pills > li.active > a:hover {
+        background-color: #efcb00;
+         color: black;
+  }
+
+.nav-pills>li+li{
+}
+.btn {
+  padding: 3px 3px;
 }
 
-form {
-  font-size: 20px;
+ul{
+margin-top: 30px;
+}
+.nav > li > a:hover {
+    color: black;
+    background-color: transparent;
 }
 
-input{
-  height: 20px;
-  width: 150px;
-  font-size: 15px;
-  border: none;
-  border-color: transparent;
+a {
+  color: white;
+  /*font-size: 15px;*/
+  }
+
+h2,h4{
+
+  color: $fontColor;
+}
+#map{
+  clear: both;
+  margin: auto;
+  width: 450px;
+  height: 550px;
 }
 
-input:focus{
-   outline: none;
-}
-
-/* Display Name and Close Out Button */
-#chatRoom{
-  border-bottom: 2px solid #4E13CD;
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  color: #1AA0F4;
-}
-
-/*Close out of chat box button */
-button {
-  background-color: #4E13CD;
-    border: none;
-    color: white;
-    padding: 10px 14px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 10px;
+img{
+display: block;
 }
