@@ -1,6 +1,11 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import App from './app';
+import Home from './home';
+import Story from './story';
+import Love from './love';
+import Learn from './learn';
+import NotFoundPage from './not_found';
 
 
 export default (

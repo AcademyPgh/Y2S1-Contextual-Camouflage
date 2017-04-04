@@ -9,7 +9,7 @@ del = require('del'),
 clean = require('gulp-clean');
 
 gulp.task('build', function () {
-    return browserify({entries: './static/jsx/app.jsx', extensions: ['.jsx'], debug: true})
+    return browserify({entries: './index.js', extensions: ['.js'], debug: true})
         .transform('babelify', {presets: ['react', 'es2015']})
         .bundle()
         .on('error', function(err) { console.error(err); this.emit('end'); })
@@ -25,7 +25,7 @@ gulp.task('clean', function () {
 });
 
 gulp.task('watch', ['build'], function () {
-    gulp.watch('./static/jsx/*.jsx', ['build']);
+    gulp.watch('./static/js/*.js', ['build']);
 });
 
 gulp.task('default', ['clean'], function () {
