@@ -1,0 +1,11 @@
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $.get("http://127.0.0.1:5000/givejson", function(data){
+            console.log(data);
+        });
+    });
+});
+</script>
+
+<button>GetSomeJson</button>

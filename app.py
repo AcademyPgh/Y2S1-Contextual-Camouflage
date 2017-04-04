@@ -1,61 +1,62 @@
-from flask import Flask, render_template
-from flask_socketio import SocketIO, emit, join_room, leave_room
+#import flask and flask functions
+from flask import Flask, request, redirect, jsonify, render_template, flash, url_for
+#import helpers
+import json
+#import local functions and variables
+from userpins import addPin, approvePin, denyPin
+#import secret keys and such
+from config import *
 
+#create a flask app
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'secret!'
-socketio = SocketIO(app)
+app.config['SQLALCHEMY_DATABASE-URL'] =''
 
-#Create single page route
+#default route to test screen
 @app.route('/')
 def index():
     return render_template('index.html')
 
-#After a user signs in allow them to join their own room
-@socketio.on('welcome')
-def handleWelcome(room):
-    print('Room Name:' + room)
-    join_room(room)
+#this method gets the pin of the user
+#request.form.to.dict() consolidates all form inputs into a dict with the name of each input used as the key in the key input pair
+#the function addPin appends the dict to an array at index 0 of a dict called userPins
+@app.route('/getpin', methods=['POST'])
+def getpin():
+    if request.method == 'POST':
+        pin = request.form.to_dict()
+        addPin(pin)
+    return redirect(url_for('index'))
 
-#Once a user leaves emit function call to update active user list
-@socketio.on('leaving')
-def handleDisconnect(user):
-    # print('Buh Bye ' + user)
-    emit('goodbye', user, broadcast=True)
+#when the addPin function appends the new pin, it writes the whole object out to a text file.
+#the text file is read back here, prepared as a results, and jsonify-ed
+@app.route('/givejson')
+def givejson():
+    with open('data.txt', 'r') as f:
+        resp = json.load(f)
+        print(resp)
+    return jsonify(results=resp)
 
-#Open up a new Chat Room for the Chatter and Chattee
-@socketio.on('show_room')
-def handleChatOpen(room, user):
-    print('Welcome to:' + room)
-    emit('send_chat', room)
-    emit('handle_chatObj',user, room=room)
-    emit('join', user + ": "+ "has joined", room=room)
+@app.route('/giveapproved')
+def giveapproved():
+    with open('data-approved.txt', 'r') as f:
+        resp = json.load(f)
+        print(resp)
+    return jsonify(results=resp)
 
-#Notify other user that you are leaving
-@socketio.on('logout')
-def handleGoodBye(room, user):
-    print (user + " is leaving " + room)
-    emit('left', user + ": "+ "has left", room=room)
-    leave_room(room)
+#approve and deny pins
 
-@socketio.on('my_event')
-def handleConnetion(message):
-    print('Statement: ' + message)
+@app.route('/approvePin/<n>')
+def approve(n):
+    approvePin(n)
+    return redirect(url_for('index'))
 
-@socketio.on('chat')
-def handlePrivateChat(message, room, user):
-    print('Are we talking?: ' + message + ' '+ room)
-    emit('lets_talk', user + ': ' + message, room=room)
+@app.route('/denyPin/<n>')
+def deny(n):
+    x = int(n)
+    denyPin(x)
+    return redirect(url_for('index'))
 
-#Used for when users sign in
-@socketio.on('login')
-def handleName(users):
-    for name in users:
-        emit('new_user', name, broadcast=True)
-
-#used to determine the primary user of the local host
-@socketio.on('primary_user')
-def handlePrimaryUser(prime):
-    emit('primary_user', prime)
 
 if __name__ == '__main__':
-    socketio.run(app)
+    app.secret_key = SECRET_KEY
+    app.debug = True
+    app.run()
