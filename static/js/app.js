@@ -11,7 +11,10 @@ export default class App extends Component {
   render() {
     return (
       <div>
-      <Menu/>
+        <Menu/>
+      <div id="map">
+        <img src="static/img/C_Camo_Map.png"/>
+      </div>
         {this.props.children}
       </div>
     );
