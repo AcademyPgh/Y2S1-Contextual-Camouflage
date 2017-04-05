@@ -1,21 +1,40 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import Menu from './menu';
+import {Image} from 'react-bootstrap';
+import autobind from 'class-autobind';
 
-/*Render Home Component and apply it root id in index.html */
- // ReactDOM.render(
- //    <Home/>,
- //      document.querySelector('.root')
- // );
 export default class App extends Component {
+  constructor(props){
+    super(props);
+    autobind(this);
+    this.state = {
+      blur: '',
+    };
+
+  }
+  componentWillReceiveProps(nextProps){
+    
+    if(nextProps.location.pathname == '/Home'){
+      this.setState({blur: ''});
+    }
+    else {
+    this.setState({blur: 'blur'});
+    }
+  }
+  handleBlur(event){
+
+  }
   render() {
     return (
       <div>
-        <Menu/>
+        <Menu getBlurry={this.handleBlur}/>
       <div id="map">
-        <img src="static/img/C_Camo_Map.png"/>
+        <Image className= {this.state.blur} src="static/img/C_Camo_Map.png" responsive/>
       </div>
+
         {this.props.children}
+
       </div>
     );
   }

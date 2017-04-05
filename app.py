@@ -12,9 +12,35 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE-URL'] =''
 
 #default route to test screen
+
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/Home')
+def home():
+    return render_template('index.html')
+
+@app.route('/Love')
+def love():
+    return render_template('index.html')
+
+@app.route('/Story')
+def story():
+    return render_template('story.html')
+
+@app.route('/Help')
+def contact():
+    return render_template("index.html")
+
+@app.route('/Learn')
+def learn():
+    return render_template('pagetwo.html')
+
+# @app.route('/', defaults={'path': ''})
+# @app.route('/<path:path>')
+# def catch_all(path):
+#     return render_template('index.html')
 
 #this method gets the pin of the user
 #request.form.to.dict() consolidates all form inputs into a dict with the name of each input used as the key in the key input pair
@@ -41,6 +67,13 @@ def giveapproved():
         resp = json.load(f)
         print(resp)
     return jsonify(results=resp)
+
+@app.route('/Share', methods = ['POST', 'GET'])
+def result():
+    if request.method == 'POST':
+        result = request.form
+        print(result)
+        return render_template("pagetwo.html", result = result)
 
 #approve and deny pins
 
