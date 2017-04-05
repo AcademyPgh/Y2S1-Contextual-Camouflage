@@ -13,7 +13,7 @@ export default class Story extends Component {
     <div className="overlay">
       {/* <div className="container" id="questionaire"> */}
 
-           <form name= "Story Form" action= '#' method='post'>
+           <form name= "Story Form" action= 'http://localhost:5000/result' method='POST'>
              <div className="formContent">
                <div className= 'alignFormText'>
                <p>Do you or a loved one live with a diagnosed mental disorder?

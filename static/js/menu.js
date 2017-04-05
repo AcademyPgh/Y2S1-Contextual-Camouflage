@@ -28,7 +28,8 @@ const Menu = (props) =>
         <NavItem>Learn</NavItem>
       </LinkContainer>
         <LinkContainer to="/Contact" onClick={props.getBlurry}>
-      <NavItem><Button bsStyle="danger"><FaIconPack size={20}/></Button></NavItem>
+      <NavItem><Button bsStyle="danger">Help Resources</Button></NavItem>
+      {/* <FaIconPack size={20}/> */}
       </LinkContainer>
     </Nav>
   </Navbar.Collapse>

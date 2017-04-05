@@ -47,6 +47,13 @@ def giveapproved():
         print(resp)
     return jsonify(results=resp)
 
+@app.route('/result', methods = ['POST', 'GET'])
+def result():
+    if request.method == 'POST':
+        result = request.form
+        print(result)
+        return render_template("index.html", result = result)
+
 #approve and deny pins
 
 @app.route('/approvePin/<n>')

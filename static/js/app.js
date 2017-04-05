@@ -13,11 +13,16 @@ export default class App extends Component {
     };
 
   }
+  getDefaultProps(){
+    alert(this.props.location.pathname);
+    if(this.props.location.pathname == '/Home'){
+      this.setState({blur: ''});
+    }
+    else {
+    this.setState({blur: 'blur'});
+    }
+  }
   handleBlur(event){
-    // alert(event);
-    let blurry = this.state.blur;
-    blurry = 'blur';
-    this.setState({blur: blurry});
 
   }
   render() {
