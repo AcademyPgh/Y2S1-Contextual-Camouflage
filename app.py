@@ -76,7 +76,7 @@ def givejsondb():
 @app.route('/givepins')
 def givepins():
     pins = UserPin.query.all()
-    return render_template('pins.html', pins=pins)
+    return render_template('i.html', pins=pins)
 
 
 if __name__ == '__main__':
