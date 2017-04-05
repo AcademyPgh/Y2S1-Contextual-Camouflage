@@ -52,19 +52,29 @@ margin-top: 30px;
   background-position: top;
   height: 800px;
   }
-
+  .col-md-12, .col-xs-18{
+    position: inherit;
+  }
+  .checkbox+.checkbox, .radio+.radio{
+    margin-top: 15px;
+  }
+  /*.row:after, .container-fluid:after{
+    clear: inherit;
+  }*/
   .blur {
     filter: blur(5px);
     }
 
 .overlay{
   position: absolute;
-  top: 0;
+  top: 50px;
   left: 0;
   width: 100%;
-  height: 100%;
-  z-index: 10;
+  /*height: 100%;*/
   background-color: rgba(0,0,0,0.5); /*dim the background*/
+  padding-top: 30px;
+
+
 }
 .form-group textarea {
   height: 200px;
@@ -78,22 +88,23 @@ margin-top: 30px;
   font-weight: 200;
 }
 
-.formContent {
+/*.formContent {
   text-align: left;
   display: inline-block;
-}
+}*/
 
-#questionaire {
-  left: 500px;
+/*#questionaire {*/
+  /*left: 500px;
   margin: auto;
   margin-top: -300px;
   position: absolute;
   top: 50%;
-  width: 80%;
-}
+  width: 80%;*/
+/*}*/
 #story {
    /*max-width: 600px;*/
    padding-top: 15px;
+   margin-bottom:  80px;
 }
 a {
   color: white;
@@ -102,7 +113,7 @@ a {
 
 h2,h4{
 
-  color: $fontColor;
+  color: white;
 }
 #map{
   clear: both;

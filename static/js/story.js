@@ -1,13 +1,17 @@
 import React, {Component} from 'react';
-import {FormGroup, ControlLabel, Button, Checkbox, FormControl} from 'react-bootstrap';
+import {FormGroup, ControlLabel, Button, Checkbox, FormControl, Grid, Row, Col} from 'react-bootstrap';
 
 export default class Story extends Component {
   render() {
     return (
+      <Grid fluid>
+        <Row align-middle className="show-grid">
+          <Col xs={18} md={12}>
   <div>
-    <div className = "camomap blur"></div>
+    {/* <div className = "camomap blur"></div> */}
+
     <div className="overlay">
-      <div className="container" id="questionaire">
+      {/* <div className="container" id="questionaire"> */}
         <p>Do you or a loved one live with a diagnosed mental disorder?
            Please check all that apply</p>
            <form>
@@ -40,8 +44,8 @@ export default class Story extends Component {
                  Post Traumatic Stress Disorder
                </Checkbox>
             </div>
-            <div className="container" id="story">
-              <FormGroup controlId="formControlsTextarea">
+            <div id="story">
+              <FormGroup controlId="Story">
                 <ControlLabel>Share Your Story</ControlLabel>
                 <FormControl componentClass="textarea" placeholder="textarea" />
               </FormGroup>
@@ -49,8 +53,11 @@ export default class Story extends Component {
             </div>
       </form>
     </div>
-  </div>
+  {/* </div> */}
  </div>
+ </Col>
+ </Row>
+ </Grid>
     );
   }
 }

@@ -5,7 +5,7 @@ const Home = () =>
 (
   <div>
     <div id= "map">
-
+      
     <Image src= "img/C_Camo_Map.png" alt="map" responsive/>
 
     </div>

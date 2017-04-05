@@ -11,7 +11,7 @@ export default class App extends Component {
       <div id="map">
         <Image src="static/img/C_Camo_Map.png" responsive/>
       </div>
-      
+
         {this.props.children}
 
       </div>
