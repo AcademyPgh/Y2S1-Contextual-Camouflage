@@ -6,7 +6,6 @@ import Menu from './menu';
 const Home = () =>
 (
   <div>
-    {/* <div className = "camomap"></div> */}
       <h1>HELLO WORLD!!!!</h1>
 
 </div>
