@@ -12,7 +12,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = DB_URI
 db=SQLAlchemy()
 
-#define UserPin Model
+#define UserPin Model for SQLAlchemy
 class UserPin(db.Model):
     __tablename__='contycamo2'
     id = db.Column('id', db.INT, primary_key=True)
@@ -68,7 +68,7 @@ def givejsondb():
         gdpn = j.__dict__
         gdpn2 = dict([(str(k), str(v)) for k, v in gdpn.items()])
         currentPins['pinobj'].append(gdpn2)
-    jpd=currentPins['pinobj']
+    jpd=currentPins
     return Response(json.dumps(jpd), mimetype='application/json')
 
 #to have the pins available as a local flask variables
@@ -76,9 +76,7 @@ def givejsondb():
 @app.route('/givepins')
 def givepins():
     pins = UserPin.query.all()
-    return render_template('index.html', pins=pins)
-
-
+    return render_template('pins.html', pins=pins)
 
 
 if __name__ == '__main__':

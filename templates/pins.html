@@ -1,4 +1,4 @@
-{{pins}}
-
-{{ pins[0]['lat']}}
-{{ pins[0]['lng']}}
+{% for pin in pins %}
+  <h1>lat: {{pin['lat']}}</h1>
+  <h1>lng: {{pin['lng']}}</h1>
+{% endfor %}
