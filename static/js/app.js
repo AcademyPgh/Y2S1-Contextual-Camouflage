@@ -14,7 +14,7 @@ export default class App extends Component {
 
   }
   componentWillReceiveProps(nextProps){
-    alert(nextProps.location.pathname);
+    
     if(nextProps.location.pathname == '/Home'){
       this.setState({blur: ''});
     }
