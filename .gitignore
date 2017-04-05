@@ -1,6 +1,6 @@
 #Created by https://www.gitignore.io/api/python
 
-### Python ###
+### Python ###venv.
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -11,6 +11,8 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+node_modules/
+scratch
 env/
 build/
 develop-eggs/
