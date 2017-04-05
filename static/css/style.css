@@ -13,7 +13,7 @@ body {
 
 .navbar .navbar-nav {
   font-size: 18px;
-  font-family: "Avenir Next";
+  font-family: 'Nunito';
   display: inline-block;
   float: none;
   vertical-align: top;
@@ -31,8 +31,6 @@ body {
          color: black;
   }
 
-.nav-pills>li+li{
-}
 .btn {
   padding: 3px 3px;
 }
@@ -66,6 +64,9 @@ margin-top: 30px;
     }
 
 .overlay{
+  text-align: center;
+  align-content: center;
+  align-items: center;
   position: absolute;
   top: 50px;
   left: 0;
@@ -73,9 +74,8 @@ margin-top: 30px;
   /*height: 100%;*/
   background-color: rgba(0,0,0,0.5); /*dim the background*/
   padding-top: 30px;
-
-
 }
+
 .form-group textarea {
   height: 200px;
   width: 400px;
@@ -88,23 +88,25 @@ margin-top: 30px;
   font-weight: 200;
 }
 
-/*.formContent {
+.formContent {
   text-align: left;
   display: inline-block;
-}*/
+  /*width: auto;*/
+  margin: 10px;
+}
+.navbar .container-fluid{
+  margin-bottom: -10px
+}
 
-/*#questionaire {*/
-  /*left: 500px;
-  margin: auto;
-  margin-top: -300px;
-  position: absolute;
-  top: 50%;
-  width: 80%;*/
-/*}*/
+.alignFormText{
+  margin-left: 60px;
+}
+
 #story {
    /*max-width: 600px;*/
    padding-top: 15px;
    margin-bottom:  80px;
+   text-align: center;
 }
 a {
   color: white;
@@ -120,6 +122,11 @@ h2,h4{
   margin: auto;
   width: 450px;
   height: 550px;
+}
+textarea {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 img{

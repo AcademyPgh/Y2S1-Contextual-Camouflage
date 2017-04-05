@@ -5,51 +5,56 @@ export default class Story extends Component {
   render() {
     return (
       <Grid fluid>
-        <Row align-middle className="show-grid">
+        <Row className="show-grid" >
           <Col xs={18} md={12}>
   <div>
     {/* <div className = "camomap blur"></div> */}
 
     <div className="overlay">
       {/* <div className="container" id="questionaire"> */}
-        <p>Do you or a loved one live with a diagnosed mental disorder?
-           Please check all that apply</p>
-           <form>
+
+           <form name= "Story Form" action= '#' method='post'>
              <div className="formContent">
-               <Checkbox>
+               <div className= 'alignFormText'>
+               <p>Do you or a loved one live with a diagnosed mental disorder?
+                  Please check all that apply</p>
+               <Checkbox name= 'Depression'>
                  Depression
                </Checkbox>
-               <Checkbox>
+               <Checkbox name= 'Anxiety'>
                  Anxiety
                </Checkbox>
-               <Checkbox>
+               <Checkbox name= 'Bipolar Disorder'>
                  Bipolar Disorder
                </Checkbox>
-               <Checkbox>
+               <Checkbox name= 'Dementia'>
                  Dementia
                </Checkbox>
-               <Checkbox>
+               <Checkbox name= 'Attention Deficit/Hyperactive Disorder'>
                  Attention Deficit/Hyperactive Disorder
                </Checkbox>
-               <Checkbox>
+               <Checkbox name= "Schizophrenia">
                  Schizophrenia
                </Checkbox>
-               <Checkbox>
+               <Checkbox name= 'Obsessive Compulsive Disorder'>
                  Obsessive Compulsive Disorder
                </Checkbox>
-               <Checkbox>
+               <Checkbox name= 'Autism'>
                  Autism
                </Checkbox>
-               <Checkbox>
+               <Checkbox name= 'Post Traumatic Stress Disorder'>
                  Post Traumatic Stress Disorder
                </Checkbox>
-            </div>
+             </div>
             <div id="story">
               <FormGroup controlId="Story">
                 <ControlLabel>Share Your Story</ControlLabel>
-                <FormControl componentClass="textarea" placeholder="textarea" />
+                <FormControl componentClass="textarea" placeholder="Share" />
               </FormGroup>
-              <Button type="Submit" bsSize="large" bsStyle="danger">Submit</Button>
+              {/* <div className= "alignFormButton"> */}
+                <Button type="submit" bsSize="large" bsStyle="danger">Submit</Button>
+            {/* </div> */}
+            </div>
             </div>
       </form>
     </div>
