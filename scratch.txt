@@ -10,15 +10,86 @@ $(document).ready(function(){
 
 <button>GetSomeJson</button>
 
+@app.route('/giveapproved')
+def giveapproved():
+    with open('data-approved.txt', 'r') as f:
+        resp = json.load(f)
+        print(resp)
+    return jsonify(results=resp)
+
+#approve and deny pins
+
+@app.route('/approvePin/<n>')
+def approve(n):
+    approvePin(int(n))
+    return redirect(url_for('index'))
+
+@app.route('/denyPin/<n>')
+def deny(n):
+    denyPin(int(n))
+    return redirect(url_for('index'))
+
 to do
 -make sure HTTPS:// at all times so posts don't reroute to a screen
 that can't do GET calls, look into flask-ssl and other things that might help
--db stores pins
--db queries to return json objects
--determine final Model
 -get Heroku upgraded, maybe AWS too
 -maybe login for moderator screen
 -figure out what we can do on backend to ease D3 workload
 
 for x in jl:
   pin = {}
+
+  import json
+
+  userPins = {}
+  userPins['pinobj'] = []
+  pinApproved = []
+
+  userPins2 = {}
+  userPins2['pinobj'] = []
+
+  #writes the pins to a txt file that can be returned on a route as a json object
+  def pinsToJson(n):
+      with open('data.txt', 'w') as outfile:
+          json.dump(n, outfile)
+
+  def pinsToJsonDb(n):
+      with open('data-db.txt', 'w') as outfile:
+          json.dump(n, outfile)
+
+  def addPin(n):
+      userPins['pinobj'].append(n)
+      print(userPins)
+      pinsToJson(userPins)
+
+  def giveApprovedPins(pinApproved):
+      approvedToJson(pinApproved)
+
+  #will clear out the story part of a pin before moving it on the approved object
+  #i think this works now
+  def denyPin(n):
+      userPins['pinobj'][int(n)]['story'] = ''
+      f = userPins['pinobj'][int(n)]
+      pinApproved.append(f)
+
+  #approves pins with no edits
+  def approvePin(n):
+      f = userPins['pinobj'][int(n)]
+      pinApproved.append(f)
+
+  def object_as_dict(obj):
+      return {c.key: getattr(obj, c.key)
+          for c in inspect(obj).mapper.column_attrs}
+
+          #when the addPin function appends the new pin, it writes the whole object out to a text file.
+          #the text file is read back here, prepared as a results, and jsonify-ed
+          #will replace with more DB ways of doing it
+
+          @app.route('/givejson')
+          def givejson():
+              with open('data.txt', 'r') as f:
+                  resp = json.load(f)
+                  print(resp)
+              return jsonify(results=resp)
+
+        

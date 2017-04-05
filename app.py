@@ -4,17 +4,15 @@ from flask_sqlalchemy import SQLAlchemy
 #import helpers
 import json
 import datetime
-#import local functions and variables
-from userpins import addPin, approvePin, denyPin, pinsToJsonDb, object_as_dict
 #import secret keys and such
 from config import *
 
 #create a flask app
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] ='mysql://academypgh:breakfastatshellys@warringtons.crqrglgmlxa2.us-east-1.rds.amazonaws.com/warringtons'
-db=SQLAlchemy(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = DB_URI
+db=SQLAlchemy()
 
-
+#define UserPin Model
 class UserPin(db.Model):
     __tablename__='contycamo2'
     id = db.Column('id', db.INT, primary_key=True)
@@ -44,7 +42,7 @@ def index():
 
 #this method gets the pin of the user
 #request.form.to.dict() consolidates all form inputs into a dict with the name of each input used as the key in the key input pair
-#the function addPin appends the dict to an array at index 0 of a dict called userPins
+#adds and commits new object to db
 @app.route('/getpin', methods=['POST'])
 def getpin():
     if request.method == 'POST':
@@ -55,19 +53,12 @@ def getpin():
         addPin(pin)
     return redirect(url_for('index'))
 
-#when the addPin function appends the new pin, it writes the whole object out to a text file.
-#the text file is read back here, prepared as a results, and jsonify-ed
-#will replace with more DB ways of doing it
 
-@app.route('/givejson')
-def givejson():
-    with open('data.txt', 'r') as f:
-        resp = json.load(f)
-        print(resp)
-    return jsonify(results=resp)
-
-
-#OH FUCK YES THIS WORKS
+#query.all creates a SQL alchemy object
+#each row in the object has an interal __dict__ type
+#the dict's keys and values are converted to strings from unicode
+#and serialized to an a array located in a new dict
+#the dict is formatted to json syntax and given the appropriate headers and returned
 @app.route('/givejsondb')
 def givejsondb():
     pins = UserPin.query.all()
@@ -80,27 +71,18 @@ def givejsondb():
     jpd=currentPins['pinobj']
     return Response(json.dumps(jpd), mimetype='application/json')
 
-@app.route('/giveapproved')
-def giveapproved():
-    with open('data-approved.txt', 'r') as f:
-        resp = json.load(f)
-        print(resp)
-    return jsonify(results=resp)
+#to have the pins available as a local flask variables
+#these variables can be invoked in HTML templates by using {{these brackets}}
+@app.route('/givepins')
+def givepins():
+    pins = UserPin.query.all()
+    return render_template('index.html', pins=pins)
 
-#approve and deny pins
 
-@app.route('/approvePin/<n>')
-def approve(n):
-    approvePin(int(n))
-    return redirect(url_for('index'))
-
-@app.route('/denyPin/<n>')
-def deny(n):
-    denyPin(int(n))
-    return redirect(url_for('index'))
 
 
 if __name__ == '__main__':
+    db.init_app(app)
     app.secret_key = SECRET_KEY
     app.debug = True
     app.run()
