@@ -13,7 +13,7 @@ export default class Story extends Component {
     <div className="overlay">
       {/* <div className="container" id="questionaire"> */}
 
-           <form name= "Story Form" action= 'http://localhost:5000/result' method='POST'>
+           <form name= "Story Form" action= 'http://localhost:5000/Share' method='POST'>
              <div className="formContent">
                <div className= 'alignFormText'>
                <p>Do you or a loved one live with a diagnosed mental disorder?
@@ -49,11 +49,9 @@ export default class Story extends Component {
             <div id="story">
               <FormGroup controlId="Story">
                 <ControlLabel>Share Your Story</ControlLabel>
-                <FormControl componentClass="textarea" placeholder="Share" />
+                <FormControl name= "Story" type= "text" componentClass="textarea" placeholder="Share" />
               </FormGroup>
-              {/* <div className= "alignFormButton"> */}
                 <Button type="submit" bsSize="large" bsStyle="danger">Submit</Button>
-            {/* </div> */}
             </div>
             </div>
       </form>

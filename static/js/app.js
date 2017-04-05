@@ -13,9 +13,9 @@ export default class App extends Component {
     };
 
   }
-  getDefaultProps(){
-    alert(this.props.location.pathname);
-    if(this.props.location.pathname == '/Home'){
+  componentWillReceiveProps(nextProps){
+    alert(nextProps.location.pathname);
+    if(nextProps.location.pathname == '/Home'){
       this.setState({blur: ''});
     }
     else {

@@ -47,7 +47,7 @@ def giveapproved():
         print(resp)
     return jsonify(results=resp)
 
-@app.route('/result', methods = ['POST', 'GET'])
+@app.route('/Share', methods = ['POST', 'GET'])
 def result():
     if request.method == 'POST':
         result = request.form
