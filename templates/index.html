@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
+
     <meta charset="UTF-8">
     <title>ChatterBox</title>
+    <script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+    <script>
+    $(document).ready(function(){
+        $("button").click(function(){
+            $.get("http://127.0.0.1:5000/givejsondb", function(data){
+                console.log(data);
+            });
+        });
+    });
+    </script>
+
     <link rel= "stylesheet" type="text/css" href= "{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 <div class="root"></div>
 <script type="text/javascript" src="{{ url_for('static', filename='dist/bundle.js') }}"></script>
+
+<button>GetSomeJson</button>
+
 </body>
 </html>

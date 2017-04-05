@@ -1,7 +1,7 @@
 <script>
 $(document).ready(function(){
     $("button").click(function(){
-        $.get("http://127.0.0.1:5000/givejson", function(data){
+        $.get("http://127.0.0.1:5000/givejsondb", function(data){
             console.log(data);
         });
     });
@@ -9,3 +9,16 @@ $(document).ready(function(){
 </script>
 
 <button>GetSomeJson</button>
+
+to do
+-make sure HTTPS:// at all times so posts don't reroute to a screen
+that can't do GET calls, look into flask-ssl and other things that might help
+-db stores pins
+-db queries to return json objects
+-determine final Model
+-get Heroku upgraded, maybe AWS too
+-maybe login for moderator screen
+-figure out what we can do on backend to ease D3 workload
+
+for x in jl:
+  pin = {}

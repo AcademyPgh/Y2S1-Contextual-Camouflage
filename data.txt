@@ -1,1 +1,1 @@
-{"pinobj": [{"lat": "545757", "lng": "5454545", "story": "jkkl", "diagnosis": "aksdas"}]}
+null
