@@ -12,6 +12,7 @@ import random
 from orion import orion
 
 
+
 #create a flask instance, wrap in boostrap
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://academypgh:breakfastatshellys@warringtons.crqrglgmlxa2.us-east-1.rds.amazonaws.com/warringtons'
@@ -43,6 +44,8 @@ class UserPin(db.Model):
     #this method gets the pin of the user
 #request.form.to.dict() consolidates all form inputs into a dict with the name of each input used as the key in the key input pair
 #adds and commits new object to db
+
+from stories import *
 
 @app.route('/getpin', methods=['POST'])
 def getpin():
@@ -105,7 +108,8 @@ def about():
 
 @app.route('/Love')
 def love():
-    return render_template('love.html')
+    depressions = getDepressions()
+    return render_template('love.html', depressions = depressions)
 
 @app.route('/Help')
 def contact():
