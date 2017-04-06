@@ -1,17 +1,21 @@
 from flask import Flask, render_template, request, redirect, flash, url_for, Response, jsonify
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS, cross_origin
 import urllib2
 import json
 import datetime
 import hashlib
+import urllib2
 import os, smtplib, email
 import requests
 
+idCount = 1
 
 #create a flask instance, wrap in boostrap
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://academypgh:breakfastatshellys@warringtons.crqrglgmlxa2.us-east-1.rds.amazonaws.com/warringtons'
 db = SQLAlchemy(app)
+CORS(app)
 
 #set a secret key
 app.secret_key = ')oA\x12IYX\xab\xa9\xb2\xc1\xc0vj\xc1a\x8e\xd5>i\xf0\xa9 \x1f'
@@ -36,6 +40,26 @@ class UserPin(db.Model):
         self.story = story
         self.diagnosis = diagnosis
         self.datetime = (str(datetime.datetime.now())).split('.', 1)[0] #truncates to make mysql datatype valid
+    #this method gets the pin of the user
+#request.form.to.dict() consolidates all form inputs into a dict with the name of each input used as the key in the key input pair
+#adds and commits new object to db
+
+@app.route('/getpin', methods=['POST'])
+def getpin():
+        f = urllib2.urlopen('http://freegeoip.net/json/')
+        json_string = f.read()
+        f.close()
+        location = json.loads(json_string)
+        if request.method == 'POST':
+            pin = request.form.to_dict()
+            up = UserPin(idCount, location['latitude'], location['longitude'], location['zipcode'], pin['story'], pin['diagnosis'])
+            idCount += 1
+            db.session.add(up)
+            db.session.commit()
+            addPin(pin)
+        return redirect(url_for('index'))
+
+
 
     ##db.session.add(--python Userpin instance--)
     ##db.session.commit() --these two in a row to add entry to database
@@ -46,18 +70,6 @@ class UserPin(db.Model):
 def index():
     return render_template('index.html')
 
-#this method gets the pin of the user
-#request.form.to.dict() consolidates all form inputs into a dict with the name of each input used as the key in the key input pair
-#adds and commits new object to db
-@app.route('/getpin', methods=['POST'])
-def getpin():
-    if request.method == 'POST':
-        pin = request.form.to_dict()
-        up = UserPin(pin['id'], pin['lat'], pin['lng'], pin['zipcode'], pin['story'], pin['diagnosis'])
-        db.session.add(up)
-        db.session.commit()
-        addPin(pin)
-    return redirect(url_for('index'))
 
 
 #query.all creates a SQL alchemy object
@@ -115,6 +127,7 @@ def admin():
 
 #run flask app
 if __name__ == '__main__':
+    app.use(allowCrossDomain)
     app.debug = True
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
