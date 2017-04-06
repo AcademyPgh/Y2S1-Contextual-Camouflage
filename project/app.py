@@ -91,7 +91,7 @@ def givejsondb():
 @app.route('/givepins')
 def givepins():
     pins = UserPin.query.all()
-    return render_template('indexs.html', pins=pins)
+    return render_template('index.html', pins=pins)
 
 
 @app.route('/Home')
@@ -114,11 +114,10 @@ def love():
 def contact():
     return render_template("help.html")
 
-
-
 @app.route('/Admin')
 def admin():
-    return render_template('admin.html')
+    pins = UserPin.query.all()
+    return render_template('admin.html', pins=pins)
 
 
 
