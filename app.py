@@ -87,7 +87,7 @@ def result():
         result = request.form['Mental Illness']
         text =  request.form['text']
         print(result+ ' '+ text)
-        return render_template("pagetwo.html", result = result)
+        return render_template("index.html", result = result)
 
 #approve and deny pins
 

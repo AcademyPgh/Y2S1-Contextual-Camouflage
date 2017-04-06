@@ -55,7 +55,7 @@ html{
     color: rgba(255,255,255,.5);
     /*padding: 14px 16px;*/
     text-decoration: none;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 /* Change the color of links on hover */
@@ -69,6 +69,7 @@ html{
     color: rgba(255,255,255,0.9);
     background-color: #000000;
 }
+
 
 body {
   background-color: #000000;
@@ -110,10 +111,10 @@ body {
      text-decoration: none;
 }
 
-#lovebutt {
+/*#lovebutt {
   text-align: center;
   padding-top: 55px;
-}
+}*/
 
 .btn-danger {
   background-color: #793b39 !important;
@@ -219,8 +220,8 @@ a:focus {
 }
 
 #loveinfo {
-  text-align: center;
-  padding-top: 250px;
+  /*text-align: center;*/
+  padding-top: 7  0px;
 }
 
 .camomap {
@@ -307,7 +308,17 @@ a:focus {
     display:flex;
     align-items:center;
 }
-.carousel{
+
+.Depression h3{
+  color: #03264c;
+}
+.Anxiety h3{
+  color: #ffff00;
+}
+.Bipolar h3{
+  color: #64f566
+}
+/*.carousel{
   margin-bottom: 300px;
   margin-top: -100px;
-}
+}*/
