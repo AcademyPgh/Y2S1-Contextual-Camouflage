@@ -46,15 +46,11 @@ class UserPin(db.Model):
 
 @app.route('/getpin', methods=['POST'])
 def getpin():
-
-        index = len(orion)-1
-
         if request.method == 'POST':
             pin = request.form.to_dict()
-            up = UserPin(random.choice(orion)[0], random.choice(orion)[1], '15213', pin['story'], pin['diagnosis'])
+            up = UserPin(random.choice(orion)[1], random.choice(orion)[0], '15213', pin['story'], pin['diagnosis'])
             db.session.add(up)
             db.session.commit()
-            orion.pop()
         return redirect(url_for('index'))
 
 
