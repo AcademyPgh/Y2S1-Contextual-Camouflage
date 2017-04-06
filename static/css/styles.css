@@ -14,7 +14,6 @@ html{
 
 .nav {
     background-color: #000000;
-    /*overflow: hidden;*/
     font-size: 10px;
     style: normal;
     line-height: 1.6em;
@@ -23,37 +22,27 @@ html{
     font-weight: 300;
     text-decoration: none;
     text-align: center;
-
-    /*padding-top: 25px;*/
 }
 .container-fluid>.navbar-header{
-  /*margin-right: 150px;*/
 }
 .navbar>.container-fluid .navbar-brand{
   margin-left: 20px;
-  /*margin-right: 50px;*/
+
 }
 .navbar-nav {
   display: inline-block;
-  /*float: right;*/
-  /*margin-right: -30px;*/
-  /*vertical-align: top;*/
+
 }
 
 .navbar .navbar-collapse {
   text-align: center;
 }
 
-/*#BarNav {
-  text-align: center;
-}*/
 
 /* Style the links inside the navigation bar */
 .nav a {
-    /*display: inline-block;*/
-    /*float: none;*/
+
     color: rgba(255,255,255,.5);
-    /*padding: 14px 16px;*/
     text-decoration: none;
     font-size: 13px;
 }
@@ -110,11 +99,6 @@ body {
      font-style: normal;
      text-decoration: none;
 }
-
-/*#lovebutt {
-  text-align: center;
-  padding-top: 55px;
-}*/
 
 .btn-danger {
   background-color: #793b39 !important;
@@ -219,10 +203,6 @@ a:focus {
   text-decoration: none;
 }
 
-#loveinfo {
-  /*text-align: center;*/
-  padding-top: 7  0px;
-}
 
 .camomap {
   background-image: url('../img/C_Camo_Map.png');;
@@ -253,11 +233,9 @@ a:focus {
 
 #loveinfo {
    font-size: 18px;
-   font-family: "futura-pt", "Nunito", sans-serif;
    line-height: 1.8em;
    text-transform: none;
    letter-spacing: .075em;
-   font-weight: 300;
    font-style: normal;
    text-decoration: none;
    color: rgba(207, 207, 210, 0.99);
@@ -272,17 +250,6 @@ a:focus {
  .bottom_ul li:after { content:"/"; color:#FFF; margin-right:8px; margin-left:8px;}
  .bottom_ul li a { color:#FFF;  font-size:12px;}
 
- #loveinfo {
-   font-size: 18px;
-   font-family: "futura-pt", "Nunito", sans-serif;
-   line-height: 1.8em;
-   text-transform: none;
-   letter-spacing: .075em;
-   font-weight: 300;
-   font-style: normal;
-   text-decoration: none;
-   color: rgba(207, 207, 210, 0.99);
-}
 
 .icon-bar {
   background-color: white;
@@ -294,8 +261,7 @@ a:focus {
 
 .bothlogos {
   padding-right: 35px;
-  /*margin: auto;
-  display: block;*/
+
 }
 .copyright{
   margin-top: 200px;
@@ -304,7 +270,7 @@ a:focus {
   color: white;
 }
 .carousel-content {
-    /*color:black;*/
+    color: white;
     display:flex;
     align-items:center;
 }

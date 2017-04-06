@@ -1,0 +1,124 @@
+html{
+  font-family: "Futura-Pt", "Nunito", sans-serif;
+}
+@font-face {
+  font-family: "Avenir Light";
+  src: url(/Avenir.ttc);
+}
+
+*font-family {
+  font-family: "Avenir Light";
+}
+
+/* Add a black background color to the top navigation */
+
+.nav {
+    background-color: #000000;
+    font-size: 10px;
+    style: normal;
+    line-height: 1.6em;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    font-weight: 300;
+    text-decoration: none;
+    text-align: center;
+}
+.container-fluid>.navbar-header{
+}
+.navbar>.container-fluid .navbar-brand{
+  margin-left: 20px;
+}
+.navbar-nav {
+  display: inline-block;
+
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+
+
+/* Style the links inside the navigation bar */
+.nav a {
+    /*display: inline-block;*/
+    /*float: none;*/
+    color: rgba(255,255,255,.5);
+    /*padding: 14px 16px;*/
+    text-decoration: none;
+    font-size: 13px;
+}
+
+/* Change the color of links on hover */
+.nav a:hover {
+    color: #f2f0ee;
+    background-color: #000000; !important;
+}
+
+/* Add a color to the active/current link */
+.nav>li>a:focus, .nav>li>a:hover {
+    color: rgba(255,255,255,0.9);
+    background-color: #000000;
+}
+
+
+body {
+  background-color: #000000;
+}
+
+#map {
+  padding-top: 55px;
+  max-width: 50%;
+}
+
+.newclass {
+  position: relative;
+}
+.camomap {
+  background-image: url('../img/C_Camo_Map.png');;
+  background-repeat: no-repeat;
+  background-size: 30%;
+  background-position: center;
+  background-position: top;
+  height: 800px;
+  }
+  .blur {
+    filter: blur(5px);
+    }
+    .icon-bar {
+      background-color: white;
+    }
+    /*For footer */
+    .bottom_ul { list-style-type:none; float:right; margin-bottom:0px;}
+     .bottom_ul li { float:left; line-height:40px;}
+     .bottom_ul li:after { content:"/"; color:#FFF; margin-right:8px; margin-left:8px;}
+     .bottom_ul li a { color:#FFF;  font-size:12px;}
+
+
+    .icon-bar {
+      background-color: white;
+    }
+    .carousel-content {
+        /*color:black;*/
+        display:flex;
+        align-items:center;
+    }
+
+    .Depression h3{
+      color: #03264c;
+    }
+    .Anxiety h3{
+      color: #ffff00;
+    }
+    .Bipolar h3{
+      color: #64f566
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      background-color: rgba(0,0,0,0.5); /*dim the background*/
+      color: white;
+    }

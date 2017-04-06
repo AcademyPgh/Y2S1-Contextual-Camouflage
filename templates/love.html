@@ -12,21 +12,23 @@
     <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='css/styles.css') }}">
     <title>Contextual Camouflage</title>
     <script>
+
+    function Load()
+   {
+
+     $.get(
+          "https://stark-fjord-40453.herokuapp.com/givejsondb",
+          function(data){ console.log(data.pinobj[0].story);
+           console.log('hello');
+          // Patching payload into page element ID = "dog"
+          });
+
+   }
     $(document).ready(function()
     {
      $('body').hide().fadeIn(2000);
 
-     function LoadFinance()
-    {
-       $(function() {
-           $.getJSON(
-           "https://stark-fjord-40453.herokuapp.com/givejsondb",
-           function(data){ console.log(data);
-           // Patching payload into page element ID = "dog"
-           });
-       });
-    }
-      setInterval( LoadFinance, 3000 );
+      setInterval( Load, 3000 );
     });
     // setCarouselHeight('#carousel-example');
 
@@ -76,13 +78,10 @@
     <div class="newclass">
     <div class="camomap blur"></div>
     <div class="overlay">
-    <div class="loveBlock">
-    <div class="container" id="loveinfo">
+    <div class="container">
 
 <div id="carousel-example" class="carousel slide" data-ride="carousel" data-interval="6000">
-<!-- Wrapper for slides -->
 <div class="row">
-  <!-- <div class="col-xs-offset-3 col-xs-6"> -->
   <div class="col-md-4">
       <div class="carousel-inner">
           <div class="item active">
@@ -249,15 +248,8 @@
       </div>
   </div>
 </div>
- <!-- <a class="left carousel-control" href="#carousel-example" data-slide="prev">
-<span class="glyphicon glyphicon-chevron-left"></span>
-</a>
-<a class="right carousel-control" href="#carousel-example" data-slide="next">
-<span class="glyphicon glyphicon-chevron-right"></span>
-</a> -->
 </div>
 
-    </div>
     </div>
   </div>
   </div>
