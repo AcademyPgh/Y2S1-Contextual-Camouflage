@@ -10,33 +10,28 @@
     integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
     crossorigin="anonymous"></script>
     <link  rel="stylesheet"href="https://fonts.googleapis.com/css?family=Nunito:300,400">
-    <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='css/story_page.css') }}">
     <title>Contextual Camouflage</title>
     <script>
     $(document).ready(function()
     {
      $('body').hide().fadeIn(2000);
+
+     var text_max = 250;
+     $('#count_message').html(text_max + ' remaining');
+     $('#cats').keyup(function() {
+       var text_length = $('#cats').val().length;
+       if (text_length > text_max)
+       {
+         $('#cats').val($('#cats').val().slice(0, text_max));
+         text_length = text_max;
+       }
+       var text_remaining = text_max - text_length;
+       $('#count_message').html(text_remaining + ' remaining');
+     });
     });
 
-    function getLocation()
-    {
-       if (navigator.geolocation)
-    {
-      navigator.geolocation.getCurrentPosition(showPosition);
-    }
-      else{
-        // x.innerHTML="Geolocation is not supported by this browser.";
-        console.log('Not working..... yet')
 
-      }
-    }
-      function showPosition(position)
-    {
-      console.log(position.coords.latitude +" "+ position.coords.longitude);
-    // x.innerHTML="Latitude: " + position.coords.latitude +
-    // "<br>Longitude: " + position.coords.longitude;
-    }
-    getLocation()
     </script>
   </head>
   <body>
@@ -102,9 +97,21 @@
         <div class="container" id="story">
             <div class="form-group">
               <label for="share your story">Share your story</label>
-              <textarea name="text" class="form-control" rows="5" id="comment"></textarea>
+              <textarea name="text" class="form-control" rows="5" id="cats"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary btn-lg btn-primary">submit</button>
+            <h6 class="pull-right" id="count_message"></h6>
+            <button class="sharebutton" type= "submit" >
+            <div class="container" id="sharebox">
+              <a href= "/Share">
+            <figure>
+              <div>
+                <div class="submitstory">share</div>
+                <div class="submitstory">thank you</div>
+              </div>
+            </figure>
+          </a>
+          </div>
+        </button>
           </form>
         </div>
         </div>

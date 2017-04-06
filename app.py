@@ -16,7 +16,7 @@ f = urllib2.urlopen('http://freegeoip.net/json/')
 json_string = f.read()
 f.close()
 location = json.loads(json_string)
-print(location['city']+ " "+location['region_code']+" "+ location['zip_code'])
+print(location)
 
 #default route to test screen
 
@@ -87,7 +87,7 @@ def result():
         result = request.form['Mental Illness']
         text =  request.form['text']
         print(result+ ' '+ text)
-        return render_template("index.html", result = result)
+        return render_template("Share.html", result = result)
 
 #approve and deny pins
 
