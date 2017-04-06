@@ -296,7 +296,9 @@ a:focus {
   /*margin: auto;
   display: block;*/
 }
-
+.copyright{
+  margin-top: 100px;
+}
 #count_message {
   color: white;
 }
