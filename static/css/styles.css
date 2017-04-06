@@ -265,7 +265,7 @@ a:focus {
 .icon-bar {
   background-color: white;
 }
-
+/*For footer */
 .bottom_ul { list-style-type:none; float:right; margin-bottom:0px;}
  .bottom_ul li { float:left; line-height:40px;}
  .bottom_ul li:after { content:"/"; color:#FFF; margin-right:8px; margin-left:8px;}
@@ -301,4 +301,13 @@ a:focus {
 }
 #count_message {
   color: white;
+}
+.carousel-content {
+    /*color:black;*/
+    display:flex;
+    align-items:center;
+}
+.carousel{
+  margin-bottom: 300px;
+  margin-top: -100px;
 }

@@ -16,6 +16,25 @@
     {
      $('body').hide().fadeIn(2000);
     });
+    setCarouselHeight('#carousel-example');
+
+    function setCarouselHeight(id)
+    {
+        var slideHeight = [];
+        $(id+' .item').each(function()
+        {
+            // add all slide heights to an array
+            slideHeight.push($(this).height());
+        });
+        // find the tallest item
+        max = Math.max.apply(null, slideHeight);
+
+        // set the slide's height
+        $(id+' .carousel-content').each(function()
+        {
+            $(this).css('height',max+'px');
+        });
+    }
     </script>
   </head>
   <body>
@@ -48,10 +67,139 @@
     <div class="overlay">
     <div class="loveBlock">
     <div class="container" id="loveinfo">
-      <!-- <p>Do you know someone who is suffering and could use some love?</p> -->
-      <div class="container" id="lovebutt">
-         <button type="submit" class="btn btn-primary btn-lg btn-danger">sendlove</button>
+
+<div id="carousel-example" class="carousel slide" data-ride="carousel" data-interval="9000">
+<!-- Wrapper for slides -->
+<div class="row">
+  <div class="col-xs-offset-3 col-xs-6">
+      <div class="carousel-inner">
+          <div class="item active">
+              <div class="carousel-content">
+                  <div>
+                      <h3>Depression</h3>
+                      <p>This is a twitter bootstrap carousel that only uses text. There are no images in the carousel slides.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div>
+                      <h3>Anxiety</h3>
+                      <p> iusto officiis recusandae corporis culpa quaerat?</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div>
+                      <h3>Bipolar Disorder</h3>
+                      <p>This is the third item.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div>
+                      <h3>Dementia</h3>
+                      <p>This is the third item.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div>
+                      <h3>Schizophrenia</h3>
+                      <p>This is the third item.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div>
+                      <h3>Attention Deficit/Hyperactive Disorder</h3>
+                      <p>This is the third item.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div>
+                      <h3>Obsessive Compulsive Disorder</h3>
+                      <p>This is the third item.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div>
+                      <h3>Autism</h3>
+                      <p>This is the third item.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div>
+                      <h3>Post Traumatic Stress Disorder</h3>
+                      <p>This is the third item.</p>
+                  </div>
+              </div>
+          </div>
+
       </div>
+  </div>
+</div>
+          <!-- <h3>Story </h3> -->
+<!-- Controls --> <a class="left carousel-control" href="#carousel-example" data-slide="prev">
+<span class="glyphicon glyphicon-chevron-left"></span>
+</a>
+<a class="right carousel-control" href="#carousel-example" data-slide="next">
+<span class="glyphicon glyphicon-chevron-right"></span>
+</a>
+</div>
+<div id="carousel-example" class="carousel slide" data-ride="carousel" data-interval="9000">
+<!-- Wrapper for slides -->
+<div class="row">
+  <div class="col-xs-offset-3 col-xs-6">
+      <div class="carousel-inner">
+          <div class="item active">
+              <div class="carousel-content">
+                  <div>
+                      <h3>#1</h3>
+                      <p>This is a twitter bootstrap carousel that only uses text. There are no images in the carousel slides.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div>
+                      <h3>#2</h3>
+                      <p> iusto officiis recusandae corporis culpa quaerat?</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div>
+                      <h3>#3</h3>
+                      <p>This is the third item.</p>
+                  </div>
+              </div>
+          </div>
+
+      </div>
+  </div>
+</div>
+<!-- Controls --> <a class="left carousel-control" href="#carousel-example" data-slide="prev">
+<span class="glyphicon glyphicon-chevron-left"></span>
+</a>
+<a class="right carousel-control" href="#carousel-example" data-slide="next">
+<span class="glyphicon glyphicon-chevron-right"></span>
+</a>
+</div>
+      <!-- <div class="container" id="lovebutt">
+         <button type="submit" class="btn btn-primary btn-lg btn-danger">sendlove</button>
+      </div> -->
     </div>
     </div>
   </div>
