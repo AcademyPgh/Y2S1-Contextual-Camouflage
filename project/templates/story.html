@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <html lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+    <link  rel="stylesheet"href="https://fonts.googleapis.com/css?family=Nunito:300,400">
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='css/styles.css') }}">
+    <title>Contextual Camouflage</title>
+    <script>
+    $(document).ready(function()
+    {
+     $('body').hide().fadeIn(2000);
+    });
+    </script>
+  </head>
+  <body>
+    <div>
+      <nav class="navbar">
+        <div class="container-fluid">
+          <div class="navbar-header">
+          <a href="/Home" class="navbar-brand">CONTEXTUAL CAMOFLAUGE</a>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+       </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <!-- <li><a href="/">Home</a></li> -->
+            <li><a href="/About">About</a></li>
+            <li><a href="/Love">The Stigma</a></li>
+            <li><a href="/Story">Your Story</a></li>
+            <li><a href="/Help">Help Resources</a></li>
+          </ul>
+        </div>
+      </div>
+      </nav>
+  </div>
+  <div class = "newclass">
+  <div class = "camomap blur"></div>
+  <div class="overlay">
+      <div class="container" id="questionaire">
+        <p>Do you or a loved one live with a diagnosed mental disorder?
+          Please check all that apply</p>
+          <form name= "Story Form" action= 'http://localhost:5000/Share' method='POST'>
+          <div class="formContent">
+          <div class="checkbox">
+            <label><input type="checkbox" name="Mental Illness" value="Depression">Depression</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" name="Mental Illness" value="Anxiety">Anxiety</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" name= "Mental Illness" value="Bipolar Disorder">Bipolar Disorder</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" name= "Mental Illness" value="Dementia">Dementia</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" name= "Mental Illness" value="Attention Deficit/Hyperactive Disorder">Attention Deficit/Hyperactive Disorder</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" name= "Mental Illness" value= "Schizophrenia">Schizophrenia</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" name="Mental Illness" value="Obsessive Compulsive Disorder">Obsessive Compulsive Disorder</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" name="Mental Illness" value="Autism">Autism</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" name="Mental Illness" value="Post Traumatic Stress Disorder">Post Traumatic Stress Disorder</label>
+          </div>
+        </div>
+        <div class="container" id="story">
+            <div class="form-group">
+              <label for="share your story">Share your story</label>
+              <textarea name="text" class="form-control" rows="5" id="comment"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-primary">submit</button>
+          </form>
+        </div>
+        </div>
+    </div>
+  </div>
+</div>
+<div class="copyright">
+  <div class="container">
+    <div class="col-md-6">
+      <p>© 2017 - All Rights with Academy PGH</p>
+    </div>
+    <div class="col-md-6">
+      <ul class="bottom_ul">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="/Admin">Admin</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+  </body>
+</html>
