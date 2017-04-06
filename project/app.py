@@ -9,7 +9,7 @@ import urllib2
 import os, smtplib, email
 import requests
 
-idCount = 1
+
 
 #create a flask instance, wrap in boostrap
 app = Flask(__name__)
@@ -32,8 +32,7 @@ class UserPin(db.Model):
     diagnosis = db.Column('diagnosis', db.VARCHAR(45))
     datetime = db.Column('datetime', db.VARCHAR(45))
 
-    def __init__(self, id, lat, lng, zipcode, story, diagnosis):
-        self.id = id
+    def __init__(self, lat, lng, zipcode, story, diagnosis):
         self.lat = lat
         self.lng = lng
         self.zipcode = zipcode
@@ -52,11 +51,9 @@ def getpin():
         location = json.loads(json_string)
         if request.method == 'POST':
             pin = request.form.to_dict()
-            up = UserPin(idCount, location['latitude'], location['longitude'], location['zipcode'], pin['story'], pin['diagnosis'])
-            idCount += 1
+            up = UserPin(location['latitude'], location['longitude'], location['zip_code'], pin['story'], pin['diagnosis'])
             db.session.add(up)
             db.session.commit()
-            addPin(pin)
         return redirect(url_for('index'))
 
 
