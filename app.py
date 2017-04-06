@@ -6,10 +6,17 @@ import json
 from userpins import addPin, approvePin, denyPin
 #import secret keys and such
 from config import *
+import urllib2
 
 #create a flask app
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE-URL'] =''
+
+f = urllib2.urlopen('http://freegeoip.net/json/')
+json_string = f.read()
+f.close()
+location = json.loads(json_string)
+print(location['city']+ " "+location['region_code']+" "+ location['zip_code'])
 
 #default route to test screen
 
@@ -21,21 +28,27 @@ def index():
 def home():
     return render_template('index.html')
 
-@app.route('/Love')
-def love():
-    return render_template('index.html')
-
 @app.route('/Story')
 def story():
     return render_template('story.html')
 
+@app.route('/About')
+def about():
+    return render_template('about.html')
+
+@app.route('/Love')
+def love():
+    return render_template('love.html')
+
 @app.route('/Help')
 def contact():
-    return render_template("index.html")
+    return render_template("help.html")
 
-@app.route('/Learn')
-def learn():
-    return render_template('pagetwo.html')
+
+
+@app.route('/Admin')
+def admin():
+    return render_template('admin.html')
 
 # @app.route('/', defaults={'path': ''})
 # @app.route('/<path:path>')
@@ -71,8 +84,9 @@ def giveapproved():
 @app.route('/Share', methods = ['POST', 'GET'])
 def result():
     if request.method == 'POST':
-        result = request.form
-        print(result)
+        result = request.form['Mental Illness']
+        text =  request.form['text']
+        print(result+ ' '+ text)
         return render_template("pagetwo.html", result = result)
 
 #approve and deny pins
