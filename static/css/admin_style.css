@@ -1,23 +1,18 @@
-html{
-  margin: 0;
-  padding: 10000;
-  box-sizing: border-box;
-}
-
+/*Style Guide Admin Table*/
 body {
   font-family: Avenir;
-  color: #3b3b3b; <!-- text color inside tables -->
+  color: #3b3b3b;
 }
 
 table {
   text-align: center;
-  line-height: 40px; <!-- height of the columns -->
+  line-height: 40px;
   border-collapse: separate;
   border-spacing: 0;
   border: 2px solid #6FC5DC;
   width: 90%;
-  margin: 50px auto; <!-- margin from the top, auto centers -->
-  border-radius: .25rem; <!-- draws line around main table -->
+  margin: 50px auto;
+  border-radius: .25rem;
 }
 
 /*formats first line of table*/
