@@ -15,6 +15,18 @@
     $(document).ready(function()
     {
      $('body').hide().fadeIn(2000);
+
+     function LoadFinance()
+    {
+       $(function() {
+           $.getJSON(
+           "https://stark-fjord-40453.herokuapp.com/givejsondb",
+           function(data){ console.log(data);
+           // Patching payload into page element ID = "dog"
+           });
+       });
+    }
+      setInterval( LoadFinance, 3000 );
     });
     // setCarouselHeight('#carousel-example');
 
