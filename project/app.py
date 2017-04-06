@@ -8,7 +8,8 @@ import hashlib
 import urllib2
 import os, smtplib, email
 import requests
-
+import random
+from orion import orion
 
 
 #create a flask instance, wrap in boostrap
@@ -45,15 +46,15 @@ class UserPin(db.Model):
 
 @app.route('/getpin', methods=['POST'])
 def getpin():
-        f = urllib2.urlopen('http://freegeoip.net/json/')
-        json_string = f.read()
-        f.close()
-        location = json.loads(json_string)
+
+        index = len(orion)-1
+
         if request.method == 'POST':
             pin = request.form.to_dict()
-            up = UserPin(location['latitude'], location['longitude'], location['zip_code'], pin['story'], pin['diagnosis'])
+            up = UserPin(random.choice(orion)[0], random.choice(orion)[1], '15213', pin['story'], pin['diagnosis'])
             db.session.add(up)
             db.session.commit()
+            orion.pop()
         return redirect(url_for('index'))
 
 
