@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <html lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='css/styles.css') }}">
+    <title>Contextual Camouflage</title>
+    <script>
+    $(document).ready(function()
+    {
+     $('body').hide().fadeIn(2000);
+    });
+    </script>
+    </head>
+    <body>
+      <div>
+        <nav class="navbar">
+          <div class="container-fluid">
+            <div class="navbar-header">
+            <a href="/Home" class="navbar-brand">CONTEXTUAL CAMOFLAUGE</a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+         </div>
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <!-- <li><a href="/">Home</a></li> -->
+              <li><a href="/About">About</a></li>
+              <li><a href="/Love">The Stigma</a></li>
+              <li><a href="/Story">Your Story</a></li>
+              <li><a href="/Help">Help Resources</a></li>
+            </ul>
+          </div>
+        </div>
+        </nav>
+    </div>
+    <div class = "newclass">
+    <div class = "camomap blur"></div>
+    <div class="overlay">
+      <div class="container" id="contextualinfo">
+        <header>Contextual Camouflage</header>
+        <br>
+        <p>
+          A [web] app that uses mapping technology to gather mental
+          health data anonymously based on user input and present it in real time via a heat map. <br>
+
+          The [web] app will also provide resources and present current research.
+
+          Users can opt-in to have their (non-)personal data used in research.
+
+          There will also be a public installation of the heat map projected at target location(s).
+          <br>
+          <br>
+          <br>
+          <hr>
+          <br>
+        </p>
+      </div>
+        <div class="container" id="McCoyinfo">
+          <p>
+            McKoy Creative uses art, design, and multimedia to help increase outreach, engage communities,
+            and deliver unique products and services. We work non-profit, for-purpose, and community based
+            organizations develop and implement marketing strategies with social impact.
+          </p>
+      </div>
+      <div class="bothlogos">
+        <div class="row text-center">
+            <img id="logo" class="img-responsive center-block" src="{{ url_for('static', filename='img/McKoyLogo.png') }}" alt="logo">
+        </div>
+        <div class="row text-center">
+            <img id="Academylogo" class="img-responsive center-block" src="{{ url_for('static', filename='img/Academy-Work-Hard-Pittsburgh-Logo-250.png') }}" alt="academylogo">
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <div class="container">
+        <div class="col-md-6">
+          <p>© 2017 - All Rights with Academy PGH</p>
+        </div>
+        <div class="col-md-6">
+          <ul class="bottom_ul">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="/Admin">Admin</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    </body>
+</html>
