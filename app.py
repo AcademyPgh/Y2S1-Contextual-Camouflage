@@ -22,11 +22,11 @@ print(location)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('stigma.html')
 
 @app.route('/Home')
 def home():
-    return render_template('index.html')
+    return render_template('stigma.html')
 
 @app.route('/Story')
 def story():
@@ -38,7 +38,7 @@ def about():
 
 @app.route('/Love')
 def love():
-    return render_template('love.html')
+    return render_template('stigma.html')
 
 @app.route('/Help')
 def contact():

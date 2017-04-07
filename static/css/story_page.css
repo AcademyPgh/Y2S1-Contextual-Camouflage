@@ -214,14 +214,8 @@ a:focus {
 }
 
 .camomap {
-  background-image: url('../img/C_Camo_Map.png');
-  background-repeat: no-repeat;
-  background-size: 30%;
-  background-position: center;
-  background-position: top;
-  height: 800px;
-  }
-
+  text-align: center;
+}
 .overlay {
   position: absolute;
   top: 0;
@@ -250,8 +244,7 @@ a:focus {
 
 .bothlogos {
   padding-right: 35px;
-  /*margin: auto;
-  display: block;*/
+
 }
 
 #count_message {

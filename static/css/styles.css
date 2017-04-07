@@ -252,7 +252,7 @@ a:focus {
   background-color: white;
 }
 /*For footer */
-.bottom_ul { list-style-type:none; float:right; margin-bottom:0px;}
+  .bottom_ul { list-style-type:none; float:right; margin-bottom:0px;}
  .bottom_ul li { float:left; line-height:40px;}
  .bottom_ul li:after { content:"/"; color:#FFF; margin-right:8px; margin-left:8px;}
  .bottom_ul li a { color:#FFF;  font-size:12px;}
@@ -289,7 +289,33 @@ a:focus {
   color: #ffff00;
 }
 .Bipolar h3{
-  color: #64f566
+  color: #64f566;
+}
+.OCD h3{
+  color: #94261c;
+}
+
+.Dementia h3{
+  color: #7f47dd;
+}
+
+.ADD h3{
+  color: #ff9900;
+}
+
+.Autism h3{
+  color: #128ab2;
+}
+
+.Bipolar h3{
+  color: #64f566;
+}
+.Schizophrenia h3{
+  color: #db3a7a;
+}
+
+.PTSD h3{
+  color: #159993;
 }
 
 .sendlove {
