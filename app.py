@@ -12,11 +12,11 @@ import urllib2
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE-URL'] =''
 
-f = urllib2.urlopen('http://freegeoip.net/json/')
-json_string = f.read()
-f.close()
-location = json.loads(json_string)
-print(location)
+# f = urllib2.urlopen('http://freegeoip.net/json/')
+# json_string = f.read()
+# f.close()
+# location = json.loads(json_string)
+# print(location)
 
 #default route to test screen
 

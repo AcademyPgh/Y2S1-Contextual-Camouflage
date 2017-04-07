@@ -112,13 +112,13 @@
     svg.selectAll("." + disorders[current])
   //below is animation
   .transition()
-  .duration(1000)
+  .duration(5000)
   .ease(Math.sqrt)
   .attr("r", "45px");
   //.style("fill-opacity", 1e-6)
   //.style("stroke-opacity", 1e-6);
   //.each("end", animate2());
-  setTimeout(animate2, 4000);
+  setTimeout(animate2, 5000);
   current += 1;
   if (current > disorders.length - 1)
   {
@@ -129,13 +129,13 @@
   {
     svg.selectAll("circle")
   .transition()
-  .duration(1000)
+  .duration(5000)
   .ease(Math.sqrt)
   .attr("r", "15px");
   //.style("fill-opacity", 1e-6)
   //.style("stroke-opacity", 1e-6);
   //.each("end", animate1());
-  setTimeout(animate1, 1000);
+  setTimeout(animate1, 5000);
   }
 
       //Width and height of SVG
@@ -210,18 +210,11 @@
               }).attr("class", function(d) {
                   return d[2];
               })
-              .attr("r", "15px")
-              .style("filter", "url(#drop-shadow)");
+              .attr("r", "10px")
+              .style("filter");
 
 
               animate1();
-
-            // }
-              //.remove()
-              //Not currently working transition stuff below
-          // .transition().delay(function(d,i){
-          //   return (i * 100);
-          // }).duration(500);
 
       });
   </script>

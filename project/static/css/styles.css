@@ -204,18 +204,11 @@ a:focus {
 }
 
 
-/*.camomap {
-  background-image: url('../img/C_Camo_Map.png');;
-  background-repeat: no-repeat;
-  background-size: 30%;
-  background-position: center;
-  background-position: top;
-  height: 800px;
-  }
-*/
-
 .camomap {
   text-align: center;
+  max-width: 100%;
+  display:block;
+  height: auto;
 }
 
 .overlay {
@@ -282,39 +275,39 @@ a:focus {
     align-items:center;
 }
 
-.Depression h3{
+.depression h3{
   color: #03264c;
 }
-.Anxiety h3{
+.anxiety h3{
   color: #ffff00;
 }
-.Bipolar h3{
+.bipolar h3{
   color: #64f566;
 }
-.OCD h3{
+.ocd h3{
   color: #94261c;
 }
 
-.Dementia h3{
+.dementia h3{
   color: #7f47dd;
 }
 
-.ADD h3{
+.adhd h3{
   color: #ff9900;
 }
 
-.Autism h3{
+.autism h3{
   color: #128ab2;
 }
 
-.Bipolar h3{
+.bipolar h3{
   color: #64f566;
 }
-.Schizophrenia h3{
+.schizophrenia h3{
   color: #db3a7a;
 }
 
-.PTSD h3{
+.ptsd h3{
   color: #159993;
 }
 
@@ -399,55 +392,84 @@ figure:hover div {
   -webkit-transform: rotateX(90deg) translate3d(0, 0, 30px);
 }
 
-.blah {
+blah {
             stroke: red;
             stroke-width: 10px;
         }
 
         circle {
             opacity: .5;
+
         }
 
         .depression {
             fill: #03264c;
+            stroke: #03264c;
+
         }
 
         .anxiety {
             fill: #ffff00;
+            stroke: #ffff00;
+
         }
 
         .ocd {
             fill: #94261c;
+            stroke: #94261c;
+
         }
 
         .dementia {
             fill: #7f47dd;
+            stroke: #7f47dd;
+
         }
 
         .adhd {
             fill: #ff9900;
+            stroke: #ff9900;
         }
 
         .autism {
             fill: #128ab2;
+            stroke: #128ab2;
         }
 
         .bipolar {
             fill: #64f566;
+            stroke: #64f566;
         }
 
         .schizophrenia {
             fill: #db3a7a;
+            stroke: #db3a7a;
         }
 
         .ptsd {
             fill: #159993;
+            stroke: #159993;
         }
 
         svg {
-            background-color: #000000;
+            background-color: #000000sx;
         }
 
         path {
             fill: #504c3d;
         }
+
+  .oakland {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  color: rgba(255, 255, 255, .3);
+}
+
+.oakland h1 {
+  font-size: 48px;
+}
+
+.oakland h2 {
+  font-size: 32px;
+}
