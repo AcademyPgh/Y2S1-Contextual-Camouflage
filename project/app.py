@@ -55,8 +55,6 @@ def getpin():
             db.session.commit()
         return redirect(url_for('index'))
 
-
-
     ##db.session.add(--python Userpin instance--)
     ##db.session.commit() --these two in a row to add entry to database
 
