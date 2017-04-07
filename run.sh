@@ -1,3 +1,3 @@
 #!/bin/bash
 
-python app.py
+python project/app.py

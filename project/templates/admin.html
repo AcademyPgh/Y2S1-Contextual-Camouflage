@@ -1,0 +1,59 @@
+<!-- HTML admin table -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <html lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css"  href= "{{ url_for('static', filename='css/admin_style.css') }}">
+  </head>
+	<style>
+	div.story {
+     text-align: left;
+	}
+	</style>
+  <body>
+  <table> <!-- table: defines table-->
+    <thead> <!-- thead: groups header content in table-->
+      <tr> <!-- tr: starts row 1 -->
+        <th colspan="8">Administrator Table for Contextual Camouflage</th> <!-- th: header; colspan # columns for spacing -->
+      </tr>
+      <tr> <!-- tr: starts row 2 -->
+        <th>ID</th> <!-- th: the columns -->
+        <th>Lat</th>
+        <th>Long</th>
+        <th>Zip</th>
+        <th>Diagnosis</th>
+        <th>Story</th>
+        <th>Approve</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+{% for pin in pins %}
+<tr> <!-- tr: starts row 3; how will rows auto populate w/each response?? -->
+  <td>{{pin['id']}}</td>
+  <td>{{pin['lat']}}</td>
+  <td>{{pin['lng']}}</td>
+  <td>{{pin['zip']}}</td>
+  <td>{{pin['diagnosis']}}</td>
+  <td>
+    <div class="story">{{pin['story']}}</div>
+  <td>
+    <i class="button approve">Approve</i>
+<td>
+    <i class="button delete">Delete</i>
+  </td>
+</tr>
+
+{% endfor %}
+    </tbody>
+  </table>
+
+  </body>
+</html>

@@ -1,0 +1,134 @@
+/* Styles */
+
+body {
+  font: 16px ,'Nunito', sans-serif;
+  line-height: 1.4em;
+  /*min-width: 230px;
+  max-width: 550px;
+  margin: 0 auto;
+  font-weight: 300;*/
+  background-color: #1a1a1a;
+  color: white;
+}
+
+.navbar .navbar-nav {
+  font-size: 18px;
+  font-family: 'Nunito';
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+.navbar .navbar-collapse {
+  text-align: center;
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:focus {
+       color: black;
+       background-color: #fcd900;
+   }
+
+.nav-pills > li.active > a:hover {
+        background-color: #efcb00;
+         color: black;
+  }
+
+.btn {
+  padding: 3px 3px;
+}
+
+ul{
+margin-top: 30px;
+}
+.nav > li > a:hover {
+    color: black;
+    background-color: transparent;
+}
+.camomap {
+  background-image: url('../img/C_Camo_Map.png');
+  background-repeat: no-repeat;
+  background-size: 30%;
+  background-position: center;
+  background-position: top;
+  height: 800px;
+  }
+  .col-md-12, .col-xs-18{
+    position: inherit;
+  }
+  .checkbox+.checkbox, .radio+.radio{
+    margin-top: 15px;
+  }
+  /*.row:after, .container-fluid:after{
+    clear: inherit;
+  }*/
+  .blur {
+    filter: blur(5px);
+    }
+
+.overlay{
+  text-align: center; /*Have parent div align text center and force the text left in child div */
+  align-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  /*height: 100%;*/
+  background-color: rgba(0,0,0,0.5); /*dim the background*/
+  padding-top: 30px;
+}
+
+.form-group textarea {
+  height: 200px;
+  width: 400px;
+}
+
+.form-group, .checkbox, #questionaire {
+  color: #f2f0ee;
+  font-size: 15px;
+  font-family: Futura PT;
+  font-weight: 200;
+}
+
+.formContent {
+  text-align: left;   /* A combination of text-align left and display inline-block helps to put ul*/
+  display: inline-block; /* in the center of the page but keep them nicely aligned to the left*/
+  /*width: auto;*/
+  margin: 10px;
+}
+.navbar .container-fluid{
+  margin-bottom: -10px
+}
+
+.alignFormText{
+  margin-left: 60px;
+}
+
+#story {
+   /*max-width: 600px;*/
+   padding-top: 15px;
+   margin-bottom:  80px;
+   text-align: center;
+}
+a {
+  color: white;
+  /*font-size: 15px;*/
+  }
+
+h2,h4{
+
+  color: white;
+}
+#map{
+  clear: both;
+  margin: auto;
+  width: 450px;
+  height: 550px;
+}
+textarea {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img{
+display: block;
+}
