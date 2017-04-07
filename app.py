@@ -22,11 +22,11 @@ app.config['SQLALCHEMY_DATABASE-URL'] =''
 
 @app.route('/')
 def index():
-    return render_template('about.html')
+    return render_template('stigma.html')
 
 @app.route('/Home')
 def home():
-    return render_template('about.html')
+    return render_template('stigma.html')
 
 @app.route('/Story')
 def story():

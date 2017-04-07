@@ -282,39 +282,39 @@ a:focus {
     align-items:center;
 }
 
-.Depression h3{
+.depression h3{
   color: #03264c;
 }
-.Anxiety h3{
+.anxiety h3{
   color: #ffff00;
 }
-.Bipolar h3{
+.bipolar h3{
   color: #64f566;
 }
-.OCD h3{
+.ocd h3{
   color: #94261c;
 }
 
-.Dementia h3{
+.dementia h3{
   color: #7f47dd;
 }
 
-.ADD h3{
+.adhd h3{
   color: #ff9900;
 }
 
-.Autism h3{
+.autism h3{
   color: #128ab2;
 }
 
-.Bipolar h3{
+.bipolar h3{
   color: #64f566;
 }
-.Schizophrenia h3{
+.schizophrenia h3{
   color: #db3a7a;
 }
 
-.PTSD h3{
+.ptsd h3{
   color: #159993;
 }
 
@@ -399,59 +399,96 @@ figure:hover div {
   -webkit-transform: rotateX(90deg) translate3d(0, 0, 30px);
 }
 
-.blah {
+blah {
             stroke: red;
             stroke-width: 10px;
         }
 
         circle {
             opacity: .5;
+
         }
 
         .depression {
             fill: #03264c;
+            /*fill-opacity: 1;*/
+            stroke: #03264c;
+            /*stroke-width: 10px;*/
+            /*stroke-opacity: .6;*/
         }
 
         .anxiety {
             fill: #ffff00;
+            /*fill-opacity: 1;*/
+            stroke: #ffff00;
+            /*stroke-width: 10px;*/
+            /*stroke-opacity: .6;*/
         }
 
         .ocd {
             fill: #94261c;
+            /*fill-opacity: 1;*/
+            stroke: #94261c;
+            /*stroke-width: 10px;*/
+            /*stroke-opacity: .6;*/
         }
 
         .dementia {
             fill: #7f47dd;
+            /*fill-opacity: 1;*/
+            stroke: #7f47dd;
+            /*stroke-width: 10px;*/
+            /*stroke-opacity: .6;*/
         }
 
         .adhd {
             fill: #ff9900;
+            /*fill-opacity: 1;*/
+            stroke: #ff9900;
+            /*stroke-width: 10px;*/
+            /*stroke-opacity: .6;*/
         }
 
         .autism {
             fill: #128ab2;
+            /*fill-opacity: 1;*/
+            stroke: #128ab2;
+            /*stroke-width: 10px;*/
+            /*stroke-opacity: .6;*/
         }
 
         .bipolar {
             fill: #64f566;
+            /*fill-opacity: 1;*/
+            stroke: #64f566;
+            /*stroke-width: 10px;*/
+            /*stroke-opacity: .6;*/
         }
 
         .schizophrenia {
             fill: #db3a7a;
+            /*fill-opacity: 1;*/
+            stroke: #db3a7a;
+            /*stroke-width: 10px;*/
+            /*stroke-opacity: .6;*/
         }
 
         .ptsd {
             fill: #159993;
+            /*fill-opacity: 1;*/
+            stroke: #159993;
+            /*stroke-width: 10px;*/
+            /*stroke-opacity: .6;*/
         }
 
         svg {
-            background-color: #000000;
+            background-color: #000000sx;
         }
 
         path {
             fill: #504c3d;
         }
-        
+
   .oakland {
   position: absolute;
   top: 50%;

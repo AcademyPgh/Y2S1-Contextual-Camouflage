@@ -9,7 +9,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
     integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
     crossorigin="anonymous"></script>
-
     <link  rel="stylesheet"href="https://fonts.googleapis.com/css?family=Nunito:300,400">
     <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='css/styles.css') }}">
     <script src="https://d3js.org/d3.v4.min.js"></script>
@@ -148,13 +147,13 @@ function animate1()
 svg.selectAll("." + disorders[current])
 //below is animation
 .transition()
-.duration(1000)
+.duration(5000)
 .ease(Math.sqrt)
 .attr("r", "45px");
 //.style("fill-opacity", 1e-6)
 //.style("stroke-opacity", 1e-6);
 //.each("end", animate2());
-setTimeout(animate2, 4000);
+setTimeout(animate2, 5000);
 current += 1;
 if (current > disorders.length - 1)
 {
@@ -165,13 +164,13 @@ function animate2()
 {
 svg.selectAll("circle")
 .transition()
-.duration(1000)
+.duration(5000)
 .ease(Math.sqrt)
 .attr("r", "15px");
 //.style("fill-opacity", 1e-6)
 //.style("stroke-opacity", 1e-6);
 //.each("end", animate1());
-setTimeout(animate1, 1000);
+setTimeout(animate1, 5000);
 }
 
   //Width and height of SVG
@@ -246,13 +245,11 @@ setTimeout(animate1, 1000);
           }).attr("class", function(d) {
               return d[2];
           })
-          .attr("r", "15px")
-          .style("filter", "url(#drop-shadow)");
+          .attr("r", "10px")
+          .style("filter");
 
 
           animate1();
-
-
 
   });
 </script>
