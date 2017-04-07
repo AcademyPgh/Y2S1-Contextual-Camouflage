@@ -1,0 +1,74 @@
+<div id="carousel-facts" class="carousel slide" data-ride="carousel" data-interval="10000">
+<div class="row">
+  <div class="col-md-4">
+      <div class="carousel-inner">
+          <div class="item active">
+              <div class="carousel-content">
+                  <div class= "adhd">
+                      <h3>Attention Deficit Disorder</h3>
+                      <p>Attention-deficit/hyperactivity disorder (ADHD) is a brain disorder
+                        marked by an ongoing pattern of inattention and/or hyperactivity-impulsivity
+                        that interferes with functioning or development.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "adhd">
+                      <h3>Attention Deficit Disorder</h3>
+                      <p>Inattention and hyperactivity/impulsivity are the key behaviors of ADHD.
+                        Some people with ADHD only have problems with one of the behaviors, while others
+                        have both inattention and hyperactivity-impulsivity. Most children have the combined
+                        type of ADHD.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "adhd">
+                      <h3>Attention Deficit Disorder</h3>
+                      <p>In preschool, the most common ADHD symptom is hyperactivity.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+ </div>
+</div>
+<div id="carousel-stories" class="carousel slide" data-ride="carousel" data-interval="15000">
+<div class="row">
+  <div class="col-md-4">
+      <div class="carousel-inner">
+          <div class="item active">
+              <div class="carousel-content">
+                  <div class= "adhd">
+                      <h3>Attention Deficit Disorder</h3>
+                      <p>My meds sometimes get off and it is hard to focus. I try really hard to pay
+                        attention in class but I suddenly find myself talking while the teacher is talking
+                        and I can not control it. Right now I am thinking about something else already. Thank
+                        you for such a cool site. </p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "adhd">
+                      <h3>Attention Deficit Disorder</h3>
+                      <p>I can not believe what I’m seeing in your map. It is so fluid and full of textural
+                        subtlety. Great work. I would hire you.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "adhd">
+                      <h3>Attention Deficit Disorder</h3>
+                      <p>For a long time, the doctors told me that it was all in my head but I knew it was real.
+                        I finally found a good doctor and got help. Things have been better since but it is still hard.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+ </div>
+</div>

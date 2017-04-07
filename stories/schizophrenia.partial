@@ -1,0 +1,72 @@
+<div id="carousel-facts" class="carousel slide" data-ride="carousel" data-interval="10000">
+<div class="row">
+  <div class="col-md-4">
+      <div class="carousel-inner">
+          <div class="item active">
+              <div class="carousel-content">
+                  <div class= "schizophrenia">
+                      <h3>Schizophrenia</h3>
+                      <p>Schizophrenia is a chronic and severe mental disorder that
+                        affects how a person thinks, feels, and behaves.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "schizophrenia">
+                      <h3>Schizophrenia</h3>
+                      <p>People with schizophrenia may seem like they have lost touch
+                        with reality.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "schizophrenia">
+                      <h3>Schizophrenia</h3>
+                      <p>Although schizophrenia is not as common as other mental disorders,
+                        the symptoms can be very disabling.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+ </div>
+</div>
+<div id="carousel-stories" class="carousel slide" data-ride="carousel" data-interval="15000">
+<div class="row">
+  <div class="col-md-4">
+      <div class="carousel-inner">
+          <div class="item active">
+              <div class="carousel-content">
+                  <div class= "schizophrenia">
+                      <h3>Schizophrenia</h3>
+                      <p>I have been hospitalized so many times that I have lost count. As a kid,
+                        I used to tell people that I was at camp when I would have an episode. Things
+                        are hard but I am doing better right now.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "schizophrenia">
+                      <h3>Schizophrenia</h3>
+                      <p>My doc is trying to dial in my meds but things are all over the place and I am
+                        having a lot of trouble. Just focusing is difficult but I am hanging on and trusting
+                        that things will even out.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "schizophrenia">
+                      <h3>Schizophrenia</h3>
+                      <p>I am in awe of the button on this page. There is a facebook page devoted to it and I
+                        check it every hour just to see if there are any updates.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+ </div>
+</div>

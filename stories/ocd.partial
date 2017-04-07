@@ -1,0 +1,74 @@
+<div id="carousel-facts" class="carousel slide" data-ride="carousel" data-interval="10000">
+<div class="row">
+  <div class="col-md-4">
+      <div class="carousel-inner">
+          <div class="item active">
+              <div class="carousel-content">
+                  <div class= "ocd">
+                      <h3>Obsessive-Compulsive Disorder</h3>
+                      <p>Obsessive-Compulsive Disorder (OCD) is a common, chronic
+                        and long-lasting disorder in which a person has uncontrollable,
+                        reoccurring thoughts (obsessions) and behaviors (compulsions) that
+                        he or she feels the urge to repeat over and over.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "ocd">
+                      <h3>Obsessive-Compulsive Disorder</h3>
+                      <p>Obsessions are repeated thoughts, urges, or mental images that cause
+                        anxiety.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "ocd">
+                      <h3>Obsessive-Compulsive Disorder</h3>
+                      <p>Compulsions are repetitive behaviors that a person with OCD feels the
+                        urge to do in response to an obsessive thought.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+ </div>
+</div>
+<div id="carousel-stories" class="carousel slide" data-ride="carousel" data-interval="15000">
+<div class="row">
+  <div class="col-md-4">
+      <div class="carousel-inner">
+          <div class="item active">
+              <div class="carousel-content">
+                  <div class= "ocd">
+                      <h3>Obsessive-Compulsive Disorder</h3>
+                      <p>Is this d3? This looks like d3 but I have never seen it look this cool.
+                        Whoever built the backend should win the award. Period.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "ocd">
+                      <h3>Obsessive-Compulsive Disorder</h3>
+                      <p>This is such a great site. It could really use a site where people can express
+                        their love for other people suffering though. And maybe a button for that kind of
+                        thing.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "ocd">
+                      <h3>Obsessive-Compulsive Disorder</h3>
+                      <p>Thank you for giving us a place to express how I feel. It really helps to write things
+                        down and share them. That button is the most beautiful thing I have ever seen and whoever
+                        set up the D3 is a genius. </p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+ </div>
+</div>

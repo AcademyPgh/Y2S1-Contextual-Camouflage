@@ -1,0 +1,69 @@
+<div id="carousel-facts" class="carousel slide" data-ride="carousel" data-interval="10000">
+<div class="row">
+  <div class="col-md-4">
+      <div class="carousel-inner">
+          <div class="item active">
+              <div class="carousel-content">
+                  <div class= "dementia">
+                      <h3>Dementia</h3>
+                      <p>Dementia is a general term for a decline in mental ability
+                        severe enough to interfere with daily life. </p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "dementia">
+                      <h3>Dementia</h3>
+                      <p>Memory loss is an example.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "dementia">
+                      <h3>Dementia</h3>
+                      <p>Alzheimer's is the most common type of dementia.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+ </div>
+</div>
+<div id="carousel-stories" class="carousel slide" data-ride="carousel" data-interval="15000">
+<div class="row">
+  <div class="col-md-4">
+      <div class="carousel-inner">
+          <div class="item active">
+              <div class="carousel-content">
+                  <div class= "dementia">
+                      <h3>Dementia</h3>
+                      <p> can not remember the name of my children sometimes. There are
+                        times when I am not even sure what year it is and I can feel my grip on
+                        reality slipping. </p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "dementia">
+                      <h3>Dementia</h3>
+                      <p>Thank you for making this site. I am using it when I feel like I am
+                        having a good day and it really helps.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "dementia">
+                      <h3>Dementia</h3>
+                      <p>My family worries about me all the time. Some days are harder
+                        than others but I pray every night. </p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+ </div>
+</div>

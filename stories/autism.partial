@@ -1,0 +1,74 @@
+<div id="carousel-facts" class="carousel slide" data-ride="carousel" data-interval="10000">
+<div class="row">
+  <div class="col-md-4">
+      <div class="carousel-inner">
+          <div class="item active">
+              <div class="carousel-content">
+                  <div class= "autism">
+                      <h3>Autism</h3>
+                      <p>Autism spectrum disorder (ASD) is the name for a group of developmental
+                        disorders. ASD includes a wide range, “a spectrum,” of symptoms, skills,
+                        and levels of disability.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "autism">
+                      <h3>Autism</h3>
+                      <p>Some people are mildly impaired by their symptoms, while others are severely
+                        disabled. Treatments and services can improve a person’s symptoms and ability
+                        to function.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "autism">
+                      <h3>Autism</h3>
+                      <p>Parents or doctors may first identify ASD behaviors in infants and toddlers.
+                        School staff may recognize these behaviors in older children. Not all people with
+                        ASD will show all of these behaviors, but most will show several. There are two main
+                        types of behaviors: “restricted / repetitive behaviors” and
+                        “social communication / interaction behaviors.”</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+ </div>
+</div>
+<div id="carousel-stories" class="carousel slide" data-ride="carousel" data-interval="15000">
+<div class="row">
+  <div class="col-md-4">
+      <div class="carousel-inner">
+          <div class="item active">
+              <div class="carousel-content">
+                  <div class= "autism">
+                      <h3>Autism</h3>
+                      <p>My parents worry about me all the time. It is easier for me to type than it is to talk
+                        to anyone so this is incredibly cathartic. </p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "autism">
+                      <h3>Autism</h3>
+                      <p>I can not deal with people. There is so much I want to say but it is impossible for me to
+                        get it out. I hope things will get better. </p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "autism">
+                      <h3>Autism</h3>
+                      <p>It is difficult for me to talk in public but I can type here and get it all out. Thank you.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+ </div>
+</div>

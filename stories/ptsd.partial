@@ -1,0 +1,70 @@
+<div id="carousel-facts" class="carousel slide" data-ride="carousel" data-interval="10000">
+<div class="row">
+  <div class="col-md-4">
+      <div class="carousel-inner">
+          <div class="item active">
+              <div class="carousel-content">
+                  <div class= "ptsd">
+                      <h3>PTSD</h3>
+                      <p>PTSD is a disorder that develops in some people who have experienced
+                        a shocking, scary, or dangerous event.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "ptsd">
+                      <h3>Post Traumatic Stress Disorder</h3>
+                      <p>People who have PTSD may feel stressed or frightened even when they are
+                        not in danger.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "ptsd">
+                      <h3>Post Traumatic Stress Disorder</h3>
+                      <p>Nearly everyone will experience a range of reactions after trauma, yet most
+                        people recover from initial symptoms naturally. Those who continue to experience
+                        problems may be diagnosed with PTSD.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+ </div>
+</div>
+<div id="carousel-stories" class="carousel slide" data-ride="carousel" data-interval="15000">
+<div class="row">
+  <div class="col-md-4">
+      <div class="carousel-inner">
+          <div class="item active">
+              <div class="carousel-content">
+                  <div class= "ptsd">
+                      <h3>Post Traumatic Stress Disorder</h3>
+                      <p>Is there a MacArthur genius award for site design? Mic drop.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "ptsd">
+                      <h3>Post Traumatic Stress Disorder</h3>
+                      <p>Since coming home from the last tour it has been brutal. My moods are all over the
+                        place and I have nightmares every night. Things have to get better.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "ptsd">
+                      <h3>Post Traumatic Stress Disorder</h3>
+                      <p>Thanks for making this site. I will tell my friends about it and hopefully it will help
+                        them as much as it is helping me.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+ </div>
+</div>

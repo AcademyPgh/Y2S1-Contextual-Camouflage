@@ -1,0 +1,73 @@
+<div id="carousel-facts" class="carousel slide" data-ride="carousel" data-interval="10000">
+<div class="row">
+  <div class="col-md-4">
+      <div class="carousel-inner">
+          <div class="item active">
+              <div class="carousel-content">
+                  <div class= "bipolar">
+                      <h3>Bipolar Disorder</h3>
+                      <p>Bipolar disorder, also known as manic-depressive illness, is a brain
+                        disorder that causes unusual shifts in mood, energy, activity levels, and
+                        the ability to carry out day-to-day tasks.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "bipolar">
+                      <h3>Bipolar Disorder</h3>
+                      <p>There are four basic types of bipolar disorder; all of them involve clear 
+                        changes in mood, energy, and activity levels. These moods range from periods
+                        of extremely “up,” elated, and energized behavior (known as manic episodes)
+                        to very sad, “down,” or hopeless periods (known as depressive episodes).</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "bipolar">
+                      <h3>Bipolar Disorder</h3>
+                      <p>Less severe manic periods are known as hypomanic episodes.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+ </div>
+</div>
+<div id="carousel-stories" class="carousel slide" data-ride="carousel" data-interval="15000">
+<div class="row">
+  <div class="col-md-4">
+      <div class="carousel-inner">
+          <div class="item active">
+              <div class="carousel-content">
+                  <div class= "bipolar">
+                      <h3>Bipolar Disorder</h3>
+                      <p>It is a roller coaster. One minute I feel great and the next it is as
+                        if I have crashed to the ground and can barely recover. </p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "bipolar">
+                      <h3>Bipolar Disorder</h3>
+                      <p>The other day I told a friend that I did not want to speak with
+                        them and the next minute i was in tears. It is so hard to maintain any
+                        perspective on what matters.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "bipolar">
+                      <h3>Bipolar Disorder</h3>
+                      <p>Whoever designed this site is clearly a genius. The way the backend
+                        and frontend link is a genius. Bravo. Bra. Vo.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+ </div>
+</div>

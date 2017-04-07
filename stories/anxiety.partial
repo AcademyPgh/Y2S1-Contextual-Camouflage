@@ -1,0 +1,74 @@
+<div id="carousel-facts" class="carousel slide" data-ride="carousel" data-interval="10000">
+<div class="row">
+  <div class="col-md-4">
+      <div class="carousel-inner">
+          <div class="item active">
+              <div class="carousel-content">
+                  <div class= "anxiety">
+                      <h3>Anxiety</h3>
+                      <p>Occasional anxiety is a normal part of life. You might feel anxious
+                        when faced with a problem at work, before taking a test, or making an
+                        important decision. But anxiety disorders involve more than temporary
+                        worry or fear. For a person with an anxiety disorder, the anxiety does
+                        not go away and can get worse over time. </p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "anxiety">
+                      <h3>Anxiety</h3>
+                      <p>The feelings of anxiety can interfere with daily activities such as job
+                        performance, school work, and relationships. </p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "anxiety">
+                      <h3>Anxiety</h3>
+                      <p>People with generalized anxiety disorder display excessive anxiety or worry
+                        for months and face several anxiety-related symptoms.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+ </div>
+</div>
+<div id="carousel-stories" class="carousel slide" data-ride="carousel" data-interval="15000">
+<div class="row">
+  <div class="col-md-4">
+      <div class="carousel-inner">
+          <div class="item active">
+              <div class="carousel-content">
+                  <div class= "anxiety">
+                      <h3>Anxiety</h3>
+                      <p>Some days it is all that I can do to leave the house. Everything worries
+                        me and I have trouble keeping it together. </p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "anxiety">
+                      <h3>Anxiety</h3>
+                      <p>I can not put into words how cool this site is and how much it helps me
+                        to type these words. The map is a thing of beauty and I will stare at it
+                        for hours every day from now until the end of time. </p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "anxiety">
+                      <h3>Anxiety</h3>
+                      <p>I am just so nervous all the time but I know that it will pass. If anyone
+                        else feels this way my thoughts go out to them and I hope they are ok. </p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+ </div>
+</div>

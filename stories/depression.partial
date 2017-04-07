@@ -1,0 +1,78 @@
+<div id="carousel-facts" class="carousel slide" data-ride="carousel" data-interval="10000">
+<div class="row">
+  <div class="col-md-4">
+      <div class="carousel-inner">
+          <div class="item active">
+              <div class="carousel-content">
+                  <div class= "depression">
+                      <h3>Depression</h3>
+                      <p>Depression (major depressive disorder or clinical depression)
+                        is a common but serious mood disorder. It causes severe symptoms
+                        that affect how you feel, think, and handle daily activities, such
+                        as sleeping, eating, or working. </p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "depression">
+                      <h3>Depression</h3>
+                      <p>Persistent depressive disorder (also called dysthymia) is a depressed
+                        mood that lasts for at least two years. A person diagnosed with persistent
+                        depressive disorder may have episodes of major depression along with periods
+                        of less severe symptoms, but symptoms must last for two years to be considered
+                        persistent depressive disorder.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "depression">
+                      <h3>Depression</h3>
+                      <p>Perinatal depression is much more serious than the “baby blues” (relatively mild
+                        depressive and anxiety symptoms that typically clear within two weeks after delivery)
+                        that many women experience after giving birth. Women with perinatal depression experience
+                        full-blown major depression during pregnancy or after delivery (postpartum depression).
+                        </p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+ </div>
+</div>
+<div id="carousel-stories" class="carousel slide" data-ride="carousel" data-interval="15000">
+<div class="row">
+  <div class="col-md-4">
+      <div class="carousel-inner">
+          <div class="item active">
+              <div class="carousel-content">
+                  <div class= "depression">
+                      <h3>Depression</h3>
+                      <p>Thank you for giving us an outlet to tell our stories. It feels good to be able to share my
+                        experience with other people who are experiencing the same thing.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "depression">
+                      <h3>Depression</h3>
+                      <p>This is such a great idea for a site. There are days where the pain is difficult to endure and
+                        my meds barely put a dent in it. </p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "depression">
+                      <h3>Depression</h3>
+                      <p>This site is incredible. I do not know who wrote the javascript but they should win an award for it.
+                        Thank you to whoever had the brilliant idea to make such a thing. </p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+ </div>
+</div>

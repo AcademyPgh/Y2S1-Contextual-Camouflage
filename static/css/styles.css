@@ -451,3 +451,18 @@ figure:hover div {
         path {
             fill: #504c3d;
         }
+        
+  .oakland {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  color: rgba(255, 255, 255, .3);
+}
+
+.oakland h1 {
+  font-size: 48px;
+}
+
+.oakland h2 {
+  font-size: 32px;
+}
