@@ -45,7 +45,6 @@ class UserPin(db.Model):
 #request.form.to.dict() consolidates all form inputs into a dict with the name of each input used as the key in the key input pair
 #adds and commits new object to db
 
-from stories import *
 
 @app.route('/getpin', methods=['POST'])
 def getpin():
@@ -108,8 +107,7 @@ def about():
 
 @app.route('/Love')
 def love():
-    depressions = getDepressions()
-    return render_template('love.html', depressions = depressions)
+    return render_template('love.html')
 
 @app.route('/Help')
 def contact():
