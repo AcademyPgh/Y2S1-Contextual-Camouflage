@@ -204,18 +204,11 @@ a:focus {
 }
 
 
-/*.camomap {
-  background-image: url('../img/C_Camo_Map.png');;
-  background-repeat: no-repeat;
-  background-size: 30%;
-  background-position: center;
-  background-position: top;
-  height: 800px;
-  }
-*/
-
 .camomap {
   text-align: center;
+  max-width: 100%;
+  display:block;
+  height: auto;
 }
 
 .overlay {
@@ -411,74 +404,51 @@ blah {
 
         .depression {
             fill: #03264c;
-            /*fill-opacity: 1;*/
             stroke: #03264c;
-            /*stroke-width: 10px;*/
-            /*stroke-opacity: .6;*/
+
         }
 
         .anxiety {
             fill: #ffff00;
-            /*fill-opacity: 1;*/
             stroke: #ffff00;
-            /*stroke-width: 10px;*/
-            /*stroke-opacity: .6;*/
+
         }
 
         .ocd {
             fill: #94261c;
-            /*fill-opacity: 1;*/
             stroke: #94261c;
-            /*stroke-width: 10px;*/
-            /*stroke-opacity: .6;*/
+
         }
 
         .dementia {
             fill: #7f47dd;
-            /*fill-opacity: 1;*/
             stroke: #7f47dd;
-            /*stroke-width: 10px;*/
-            /*stroke-opacity: .6;*/
+
         }
 
         .adhd {
             fill: #ff9900;
-            /*fill-opacity: 1;*/
             stroke: #ff9900;
-            /*stroke-width: 10px;*/
-            /*stroke-opacity: .6;*/
         }
 
         .autism {
             fill: #128ab2;
-            /*fill-opacity: 1;*/
             stroke: #128ab2;
-            /*stroke-width: 10px;*/
-            /*stroke-opacity: .6;*/
         }
 
         .bipolar {
             fill: #64f566;
-            /*fill-opacity: 1;*/
             stroke: #64f566;
-            /*stroke-width: 10px;*/
-            /*stroke-opacity: .6;*/
         }
 
         .schizophrenia {
             fill: #db3a7a;
-            /*fill-opacity: 1;*/
             stroke: #db3a7a;
-            /*stroke-width: 10px;*/
-            /*stroke-opacity: .6;*/
         }
 
         .ptsd {
             fill: #159993;
-            /*fill-opacity: 1;*/
             stroke: #159993;
-            /*stroke-width: 10px;*/
-            /*stroke-opacity: .6;*/
         }
 
         svg {

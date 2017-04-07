@@ -62,7 +62,7 @@ def getpin():
 #default route to test screen
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('stigma.html')
 
 
 
@@ -93,7 +93,7 @@ def givepins():
 
 @app.route('/Home')
 def home():
-    return render_template('index.html')
+    return render_template('stigma.html')
 
 @app.route('/Story')
 def story():
@@ -115,6 +115,9 @@ def contact():
 def admin():
     pins = UserPin.query.all()
     return render_template('admin.html', pins=pins)
+@app.route('/Share')
+def share():
+    return render_template("Share.html")
 
 
 
