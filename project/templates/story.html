@@ -9,14 +9,37 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
     integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
     crossorigin="anonymous"></script>
+
     <link  rel="stylesheet"href="https://fonts.googleapis.com/css?family=Nunito:300,400">
     <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
     <title>Contextual Camouflage</title>
     <script>
     $(document).ready(function()
     {
      $('body').hide().fadeIn(2000);
+
+     $('#sharebox').on('click', function(){
+        console.log("working")
+        $('#storyform').submit();
+     })
+
+     var text_max = 250;
+     $('#count_message').html(text_max + ' remaining');
+     $('#cats').keyup(function() {
+       var text_length = $('#cats').val().length;
+       if (text_length > text_max)
+       {
+         $('#cats').val($('#cats').val().slice(0, text_max));
+         text_length = text_max;
+       }
+       var text_remaining = text_max - text_length;
+       $('#count_message').html(text_remaining + ' remaining');
+     });
     });
+
+
     </script>
   </head>
   <body>
@@ -49,42 +72,52 @@
       <div class="container" id="questionaire">
         <p>Do you or a loved one live with a diagnosed mental disorder?
           Please check all that apply</p>
-          <form name= "Story Form" action= '/getpin' method='POST'>
+          <form id= "storyform" name= "Story Form" action= 'http://localhost:5000/Share' method='POST'>
           <div class="formContent">
           <div class="checkbox">
-            <label><input type="checkbox" name="diagnosis" value="Depression">Depression</label>
+            <label><input type="checkbox" name="Mental Illness" value="Depression">Depression</label>
           </div>
           <div class="checkbox">
-            <label><input type="checkbox" name="diagnosis" value="Anxiety">Anxiety</label>
+            <label><input type="checkbox" name="Mental Illness" value="Anxiety">Anxiety</label>
           </div>
           <div class="checkbox">
-            <label><input type="checkbox" name= "diagnosis" value="Bipolar Disorder">Bipolar Disorder</label>
+            <label><input type="checkbox" name= "Mental Illness" value="Bipolar Disorder">Bipolar Disorder</label>
           </div>
           <div class="checkbox">
-            <label><input type="checkbox" name= "diagnosis" value="Dementia">Dementia</label>
+            <label><input type="checkbox" name= "Mental Illness" value="Dementia">Dementia</label>
           </div>
           <div class="checkbox">
-            <label><input type="checkbox" name= "diagnosis" value="Attention Deficit/Hyperactive Disorder">Attention Deficit/Hyperactive Disorder</label>
+            <label><input type="checkbox" name= "Mental Illness" value="Attention Deficit/Hyperactive Disorder">Attention Deficit/Hyperactive Disorder</label>
           </div>
           <div class="checkbox">
-            <label><input type="checkbox" name= "diagnosis" value= "Schizophrenia">Schizophrenia</label>
+            <label><input type="checkbox" name= "Mental Illness" value= "Schizophrenia">Schizophrenia</label>
           </div>
           <div class="checkbox">
-            <label><input type="checkbox" name="diagnosis" value="Obsessive Compulsive Disorder">Obsessive Compulsive Disorder</label>
+            <label><input type="checkbox" name="Mental Illness" value="Obsessive Compulsive Disorder">Obsessive Compulsive Disorder</label>
           </div>
           <div class="checkbox">
-            <label><input type="checkbox" name="diagnosis" value="Autism">Autism</label>
+            <label><input type="checkbox" name="Mental Illness" value="Autism">Autism</label>
           </div>
           <div class="checkbox">
-            <label><input type="checkbox" name="diagnosis" value="Post Traumatic Stress Disorder">Post Traumatic Stress Disorder</label>
+            <label><input type="checkbox" name="Mental Illness" value="Post Traumatic Stress Disorder">Post Traumatic Stress Disorder</label>
           </div>
         </div>
         <div class="container" id="story">
             <div class="form-group">
               <label for="share your story">Share your story</label>
-              <input name="story" class="form-control" rows="5" id="comment"></textarea>
+              <textarea name="text" class="form-control" rows="5" id="cats"></textarea>
             </div>
-            <input type="submit" class="btn btn-primary btn-lg btn-primary"></input>
+            <h6 class="pull-right" id="count_message"></h6>
+            <div class="container" id="sharebox">
+              <a href= "#">
+            <figure>
+              <div>
+                <div class="submitstory">share</div>
+                <div class="submitstory">thank you</div>
+              </div>
+            </figure>
+          </a>
+          </div>
           </form>
         </div>
         </div>
@@ -105,5 +138,123 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+
+disorders = ["depression", "anxiety", "ocd", "dementia", "adhd", "autism", "bipolar", "schizophrenia", "ptsd"]
+current = 0;
+
+function animate1()
+{
+svg.selectAll("." + disorders[current])
+//below is animation
+.transition()
+.duration(1000)
+.ease(Math.sqrt)
+.attr("r", "45px");
+//.style("fill-opacity", 1e-6)
+//.style("stroke-opacity", 1e-6);
+//.each("end", animate2());
+setTimeout(animate2, 4000);
+current += 1;
+if (current > disorders.length - 1)
+{
+current = 0;
+}
+}
+function animate2()
+{
+svg.selectAll("circle")
+.transition()
+.duration(1000)
+.ease(Math.sqrt)
+.attr("r", "15px");
+//.style("fill-opacity", 1e-6)
+//.style("stroke-opacity", 1e-6);
+//.each("end", animate1());
+setTimeout(animate1, 1000);
+}
+
+  //Width and height of SVG
+  var w = 960;
+  var h = 960;
+
+  //Get sample points
+  var samplePoints;
+  $.getJSON("{{ url_for('static', filename='json/samplePointsSquare.json') }}", function(result) {
+          console.log(result);
+          samplePoints = result;
+      })
+
+  //Define map projection
+  var projection = d3.geoMercator()
+      .center([-79.955426, 40.449129])
+      .scale(1500000)
+      .translate([w / 2, h / 2]);
+
+  //Create path constructor
+  var path = d3.geoPath().projection(projection);
+
+  //Create SVG constructor
+  var svg = d3.select(".camomap")
+      .append("svg")
+      .attr("width", w)
+      .attr("height", h);
+
+  //Blurring stuff
+  //grabbed from https://gist.github.com/cpbotha/5205319
+  //there's info there
+  var filter = svg.append("filter")
+      .attr("id", "drop-shadow")
+      .attr("height", "150%");
+  filter.append("feGaussianBlur")
+      .attr("in", "SourceAlpha")
+      .attr("stdDeviation", 3)
+      .attr("result", "blur");
+  var feOffset = filter.append("feOffset")
+      .attr("in", "blur")
+      .attr("dx", 5)
+      .attr("dy", 5)
+      .attr("result", "offsetBlur");
+  var feMerge = filter.append("feMerge");
+
+  feMerge.append("feMergeNode")
+      .attr("in", "blur")
+  feMerge.append("feMergeNode")
+      .attr("in", "SourceGraphic");
+
+  //Load in GeoJSON data
+  d3.json("{{ url_for('static', filename='json/NorthOakland.json') }}", function(error, json) {
+      //Append the path
+      svg.append("path")
+          .datum({
+              type: "FeatureCollection",
+              features: json.features
+          })
+          .attr("d", path)
+          .attr("stroke", "#333");
+
+      //CIRCLES
+
+      svg.selectAll("circle")
+          .data(samplePoints).enter()
+          .append("circle")
+          .attr("cx", function(d) {
+              return projection(d)[0];
+          })
+          .attr("cy", function(d) {
+              return projection(d)[1];
+          }).attr("class", function(d) {
+              return d[2];
+          })
+          .attr("r", "15px")
+          .style("filter", "url(#drop-shadow)");
+
+
+          animate1();
+
+
+
+  });
+</script>
   </body>
 </html>

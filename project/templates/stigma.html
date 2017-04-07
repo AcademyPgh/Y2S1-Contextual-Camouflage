@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <html lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='css/styles.css') }}">
+    <title>Contextual Camouflage</title>
+    <script>
+    var stories = {};
+    function Load()
+   {
+
+     $.get(
+          "https://stark-fjord-40453.herokuapp.com/givejsondb",
+          function(data){
+            data.pinobj.map(submission => {
+
+              console.log(submission.diagnosis);
+              stories[submission.diagnosis]= submission.story;
+            })
+
+
+          // Patching payload into page element ID = "dog"
+          });
+          console.log(stories.Depression);
+   }
+    $(document).ready(function()
+    {
+     $('body').hide().fadeIn(2000);
+
+      // setInterval( Load, 3000 );
+      Load();
+    });
+    // setCarouselHeight('#carousel-example');
+
+    function setCarouselHeight(id)
+    {
+        var slideHeight = [];
+        $(id+' .item').each(function()
+        {
+            // add all slide heights to an array
+            slideHeight.push($(this).height());
+        });
+        // find the tallest item
+        max = Math.max.apply(null, slideHeight);
+
+        // set the slide's height
+        $(id+' .carousel-content').each(function()
+        {
+            $(this).css('height',max+'px');
+        });
+    }
+    </script>
+  </head>
+  <body>
+    <div>
+      <nav class="navbar">
+        <div class="container-fluid">
+          <div class="navbar-header">
+          <a href="/Home" class="navbar-brand">CONTEXTUAL CAMOFLAUGE</a>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+       </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/About">About</a></li>
+            <li><a href="/Love">The Stigma</a></li>
+            <li><a href="/Story">Your Story</a></li>
+            <li><a href="/Help">Help Resources</a></li>
+          </ul>
+        </div>
+      </div>
+      </nav>
+  </div>
+
+    <div class="newclass">
+    <div class="camomap "></div>
+    <div class="overlay">
+    <div class="container">
+
+<div id="carousel-example" class="carousel slide" data-ride="carousel" data-interval="9000">
+<div class="row">
+  <div class="col-md-4">
+      <div class="carousel-inner">
+          <div class="item active">
+              <div class="carousel-content">
+                  <div class= "Depression">
+                      <h3>Depression</h3>
+                      <p>This is a twitter bootstrap carousel that only uses text. There are no images in the carousel slides.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "Anxiety">
+                      <h3>Anxiety</h3>
+                      <p> iusto officiis recusandae corporis culpa quaerat?</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class ="OCD">
+                      <h3>Obsessive Compulsive Disorder</h3>
+                      <p>This is the third item.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "Dementia">
+                      <h3>Dementia</h3>
+                      <p>This is the third item.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "ADD">
+                      <h3>Attention Deficit/Hyperactive Disorder</h3>
+                      <p>This is the third item.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "Autism">
+                      <h3>Autism</h3>
+                      <p>This is the third item.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "Bipolar">
+                      <h3>Bipolar Disorder</h3>
+                      <p>This is the third item.</p>
+                  </div>
+              </div>
+          </div>
+
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "Schizophrenia">
+                      <h3>Schizophrenia</h3>
+                      <p>This is the third item.</p>
+                  </div>
+              </div>
+          </div>
+
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "PTSD">
+                      <h3>Post Traumatic Stress Disorder</h3>
+                      <p>This is the third item.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+ </div>
+
+</div>
+
+<div id="carousel-example" class="carousel slide" data-ride="carousel" data-interval="3000">
+<!-- Wrapper for slides -->
+<div class="row">
+  <!-- <div class="col-xs-offset-3 col-xs-6"> -->
+  <div class="col-md-4">
+      <div class="carousel-inner">
+          <div class="item active">
+              <div class="carousel-content">
+                <div class= "Depression">
+                    <h3>Story  </h3>
+                       <p>Thank you for giving us an outlet to tell our stories. It feels good to be able to share my experience with other people who are experiencing the same thing.</p>
+                   </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                <div class= "Depression">
+                    <h3>Story  </h3>
+                    <p>This is such a great idea for a site. There are days where the pain is difficult to endure and my meds barely put a dent in it. </p>
+                </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                <div class= "Depression">
+                    <h3>Story   </h3>
+                    <p>This site is incredible. I do not know who wrote the javascript but they should win an award for it. Thank you to whoever had the brilliant idea to make such a thing. </p>
+                </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "Anxiety">
+                      <h3> Story #1</h3>
+                      <p>Anxiety</p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                <div class= "Anxiety">
+                    <h3>Story #2 </h3>
+                    <p>Some days it is all that I can do to leave the house. Everything worries me and I have trouble keeping it together. </p>
+                </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                <div class= "Anxiety">
+                    <h3>Story #3 </h3>
+                    <p>I can not put into words how cool this site is and how much it helps me to type these words. The map is a thing of beauty and I will stare at it for hours every day from now until the end of time. </p>
+                </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                <div class= "OCD">
+                      <h3>Story #1</h3>
+                      <p>Thank you for giving us a place to express how I feel. It really helps to write things down and share them. That button is the most beautiful thing I have ever seen and whoever set up the D3 is a genius.  </p>
+                  </div>
+              </div>
+          </div><div class="item">
+              <div class="carousel-content">
+                <div class= "OCD">
+                    <h3>Story #2</h3>
+                    <p>This is such a great site. It could really use a site where people can express their love for other people suffering though. And maybe a button for that kind of thing. </p>
+                </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                <div class= "OCD">
+                    <h3>Story #3</h3>
+                    <p>Is this d3? This looks like d3 but I have never seen it look this cool. Whoever built the backend should win the award. Period.  </p>
+                </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "Dementia">
+                      <h3>Story</h3>
+                      <p>Thank you for making this site. I am using it when I feel like I am having a good day and it really helps. </p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "Dementia">
+                      <h3>Story</h3>
+                      <p>My family worries about me all the time. Some days are harder than others but I pray every night. </p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "Dementia">
+                      <h3>Story</h3>
+                      <p>I can not remember the name of my children sometimes. There are times when I am not even sure what year it is and I can feel my grip on reality slipping. </p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+             <div class="carousel-content">
+                 <div class= "ADD">
+                     <h3>Story</h3>
+                     <p>My meds sometimes get off and it is hard to focus. I try really hard to pay attention in class but I suddenly find myself talking while the teacher is talking and I can not control it. Right now I am thinking about something else already. Thank you for such a cool site.  </p>
+                 </div>
+             </div>
+         </div>
+         <div class="item">
+              <div class="carousel-content">
+                  <div class= "ADD">
+                      <h3>Story</h3>
+                      <p>I can not believe what I’m seeing in your map. It is so fluid and full of textural subtlety. Great work. I would hire you.  </p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "ADD">
+                      <h3>Story</h3>
+                      <p>For a long time, the doctors told me that it was all in my head but I knew it was real. I finally found a good doctor and got help. Things have been better since but it is still hard.  </p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+             <div class="carousel-content">
+                 <div class= "Autism">
+                     <h3>Story</h3>
+                     <p>My parents worry about me all the time. It is easier for me to type than it is to talk to anyone so this is incredibly cathartic.  </p>
+                 </div>
+             </div>
+         </div>
+         <div class="item">
+             <div class="carousel-content">
+                 <div class= "Autism">
+                     <h3>Story</h3>
+                     <p>I can not deal with people. There is so much I want to say but it is impossible for me to get it out. I hope things will get better.  </p>
+                 </div>
+             </div>
+         </div>
+         <div class="item">
+              <div class="carousel-content">
+                  <div class= "Autism">
+                      <h3>Story</h3>
+                      <p>It is difficult for me to talk in public but I can type here and get it all out. Thank you.  </p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+             <div class="carousel-content">
+                 <div class= "Bipolar">
+                     <h3>Story</h3>
+                     <p>It is a roller coaster. One minute I feel great and the next it is as if I have crashed to the ground and can barely recover. </p>
+                 </div>
+             </div>
+           </div>
+             <div class="item">
+              <div class="carousel-content">
+                  <div class= "Bipolar">
+                      <h3>Story </h3>
+                      <p>The other day I told a friend that I did not want to speak with them and the next minute i was in tears. It is so hard to maintain any perspective on what matters.</p>
+                  </div>
+              </div>
+            </div>
+              <div class="item">
+              <div class="carousel-content">
+                  <div class= "Bipolar">
+                      <h3>Story</h3>
+                      <p>Whoever designed this site is clearly a genius.
+                        The way the backend and frontend link is a genius. Bravo. Bra. Vo. </p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+             <div class="carousel-content">
+                 <div class= "Schizophrenia">
+                     <h3>Story</h3>
+                     <p>I have been hospitalized so many times that I have lost count. As a kid, I used to tell people that I was at camp when I would have an episode. Things are hard but I am doing better right now.  </p>
+                 </div>
+             </div>
+         </div>
+         <div class="item">
+             <div class="carousel-content">
+                 <div class= "Schizophrenia">
+                     <h3>Story</h3>
+                     <p>My doc is trying to dial in my meds but things are all over the place and I am having a lot of trouble. Just focusing is difficult but I am hanging on and trusting that things will even out.  </p>
+                 </div>
+             </div>
+         </div>
+         <div class="item">
+              <div class="carousel-content">
+                  <div class= "Schizophrenia">
+                      <h3>Story</h3>
+                      <p>I am in awe of the button on this page. There is a facebook page devoted to it and I check it every hour just to see if there are any updates.  </p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "PTSD">
+                      <h3>Story</h3>
+                      <p>Since coming home from the last tour it has been brutal. My moods are all over the place and I have nightmares every night. Things have to get better.   </p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+              <div class="carousel-content">
+                  <div class= "PTSD">
+                      <h3>Story</h3>
+                      <p>Is there a MacArthur genius award for site design? Mic drop.  </p>
+                  </div>
+              </div>
+          </div>
+          <div class="item">
+             <div class="carousel-content">
+                 <div class= "PTSD">
+                     <h3>Story</h3>
+                     <p>Thanks for making this site. I will tell my friends about it and hopefully it will help them as much as it is helping me.  </p>
+                 </div>
+             </div>
+         </div>
+
+      </div>
+  </div>
+
+</div>
+</div>
+
+    </div>
+  </div>
+  </div>
+  <div class="copyright">
+    <div class="container">
+      <div class="col-md-6">
+        <p>© 2017 - All Rights with Academy PGH</p>
+      </div>
+      <div class="col-md-6">
+        <ul class="bottom_ul">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="/Admin">Admin</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <script type="text/javascript">
+
+disorders = ["depression", "anxiety", "ocd", "dementia", "adhd", "autism", "bipolar", "schizophrenia", "ptsd"]
+current = 0;
+
+function animate1()
+{
+  svg.selectAll("." + disorders[current])
+//below is animation
+.transition()
+.duration(1000)
+.ease(Math.sqrt)
+.attr("r", "45px");
+//.style("fill-opacity", 1e-6)
+//.style("stroke-opacity", 1e-6);
+//.each("end", animate2());
+setTimeout(animate2, 8000);
+current += 1;
+if (current > disorders.length - 1)
+{
+  current = 0;
+}
+}
+function animate2()
+{
+  svg.selectAll("circle")
+.transition()
+.duration(1000)
+.ease(Math.sqrt)
+.attr("r", "15px");
+//.style("fill-opacity", 1e-6)
+//.style("stroke-opacity", 1e-6);
+//.each("end", animate1());
+setTimeout(animate1, 1000);
+}
+
+    //Width and height of SVG
+    var w = 960;
+    var h = 960;
+
+    //Get sample points
+    var samplePoints;
+    $.getJSON("{{ url_for('static', filename='json/samplePointsSquare.json') }}", function(result) {
+            console.log(result);
+            samplePoints = result;
+        })
+
+    //Define map projection
+    var projection = d3.geoMercator()
+        .center([-79.955426, 40.449129])
+        .scale(1500000)
+        .translate([w / 2, h / 2]);
+
+    //Create path constructor
+    var path = d3.geoPath().projection(projection);
+
+    //Create SVG constructor
+    var svg = d3.select(".camomap")
+        .append("svg")
+        .attr("width", w)
+        .attr("height", h);
+
+    //Blurring stuff
+    //grabbed from https://gist.github.com/cpbotha/5205319
+    //there's info there
+    var filter = svg.append("filter")
+        .attr("id", "drop-shadow")
+        .attr("height", "150%");
+    filter.append("feGaussianBlur")
+        .attr("in", "SourceAlpha")
+        .attr("stdDeviation", 3)
+        .attr("result", "blur");
+    var feOffset = filter.append("feOffset")
+        .attr("in", "blur")
+        .attr("dx", 5)
+        .attr("dy", 5)
+        .attr("result", "offsetBlur");
+    var feMerge = filter.append("feMerge");
+
+    feMerge.append("feMergeNode")
+        .attr("in", "blur")
+    feMerge.append("feMergeNode")
+        .attr("in", "SourceGraphic");
+
+    //Load in GeoJSON data
+    d3.json("{{ url_for('static', filename='json/NorthOakland.json') }}", function(error, json) {
+        //Append the path
+        svg.append("path")
+            .datum({
+                type: "FeatureCollection",
+                features: json.features
+            })
+            .attr("d", path)
+            .attr("stroke", "#333");
+
+        //CIRCLES
+
+        svg.selectAll("circle")
+            .data(samplePoints).enter()
+            .append("circle")
+            .attr("cx", function(d) {
+                return projection(d)[0];
+            })
+            .attr("cy", function(d) {
+                return projection(d)[1];
+            }).attr("class", function(d) {
+                return d[2];
+            })
+            .attr("r", "15px")
+            .style("filter", "url(#drop-shadow)");
+
+
+            animate1();
+
+
+
+    });
+</script>
+  </body>
+</html>

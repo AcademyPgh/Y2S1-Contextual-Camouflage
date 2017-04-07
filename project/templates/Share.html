@@ -18,11 +18,6 @@
     {
      $('body').hide().fadeIn(2000);
 
- //     $.getJSON(https://replayfxcalendar.azurewebsites.net/public/gametypes, function (data) {
- //       alert('HEY!!');
- //        console.log(data);
- // });
-
     });
     </script>
     </head>
@@ -52,42 +47,9 @@
     <div class = "newclass">
     <div class = "camomap blur"></div>
     <div class="overlay">
-      <div class="container" id="contextualinfo">
-        <header>Contextual Camouflage</header>
-        <br>
-        <p>
-          A [web] app that uses mapping technology to gather mental
-          health data anonymously based on user input and present it in real time via a heat map. <br>
-
-          The [web] app will also provide resources and present current research.
-
-          Users can opt-in to have their (non-)personal data used in research.
-
-          There will also be a public installation of the heat map projected at target location(s).
-          <br>
-          <br>
-          <br>
-          <hr>
-          <br>
-        </p>
-      </div>
-        <div class="container" id="McCoyinfo">
-          <p>
-            McKoy Creative uses art, design, and multimedia to help increase outreach, engage communities,
-            and deliver unique products and services. We work non-profit, for-purpose, and community based
-            organizations develop and implement marketing strategies with social impact.
-          </p>
-      </div>
-      <div class="bothlogos">
-        <div class="row text-center">
-            <img id="logo" class="img-responsive center-block" src="{{ url_for('static', filename='img/McKoyLogo.png') }}" alt="logo">
-        </div>
-        <div class="row text-center">
-            <img id="Academylogo" class="img-responsive center-block" src="{{ url_for('static', filename='img/Academy-Work-Hard-Pittsburgh-Logo-250.png') }}" alt="academylogo">
-        </div>
-      </div>
-      </div>
-    </div>
+        <h3 class = "sentence">Thank you for sharing your story with Contextual Camoflague.</h3>
+  </div>
+</div>
     <div class="copyright">
       <div class="container">
         <div class="col-md-6">
@@ -216,14 +178,10 @@
 
               animate1();
 
-            // }
-              //.remove()
-              //Not currently working transition stuff below
-          // .transition().delay(function(d,i){
-          //   return (i * 100);
-          // }).duration(500);
+
 
       });
   </script>
     </body>
+
 </html>

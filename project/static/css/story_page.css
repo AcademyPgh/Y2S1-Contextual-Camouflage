@@ -104,12 +104,16 @@ body {
   background-color: #793b39 !important;
   border-color: #312120 !important;
   font-family: "futura-pt", "Nunito", sans-serif;
+  min-width: 85px;
+  max-height: 85px;
+  font-size: 15px;
 }
 
 .btn-danger:focus,.btn-danger:active, .btn-danger:hover {
    outline: none !important;
    background-color: #793b39;
    border-color: #312120;
+   font-size: 15px;
 }
 
 .btn-primary {
@@ -129,19 +133,7 @@ body {
    font-family: "futura-pt", "Nunito", sans-serif;
    line-height: 1.2em;
    text-transform: none;
-   letter-spacing: .075em;
-   font-weight: 300;
-   font-style: normal;
-   text-decoration: none;
-   color: rgba(207, 207, 210, 0.99);
-}
-
-.resources {
-   font-size: 16px;
-   font-family: "futura-pt", "Nunito", sans-serif;
-   line-height: .75em;
-   text-transform: none;
-   letter-spacing: .075em;
+   letter-spacing: .05em;
    font-weight: 300;
    font-style: normal;
    text-decoration: none;
@@ -150,7 +142,7 @@ body {
 
 #contextualinfo {
   text-align: center;
-  padding-top: 155px;
+  padding-top: 100px;
   max-width: 800px;
 }
 
@@ -159,23 +151,27 @@ body {
   max-width: 600px;
 }
 
-hr {
-  width: 50%;
-  color: #bbb;
-  border-style: none;
-  border-width: 0;
-  background-color: #f4f0ff;
-  height: 1px;
-  opacity: .2
-}
-
 #logo {
   padding-top: 25px;
 }
 
 .resources {
-  text-align: center;
-  padding-top: 100px;
+   font-size: 18px;
+   font-family: "futura-pt", "Nunito", sans-serif;
+   line-height: 1em;
+   text-transform: none;
+   letter-spacing: .075em;
+   font-weight: 300;
+   font-style: normal;
+   text-decoration: none;
+   text-align: center;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   color: rgba(207, 207, 210, 0.99);
+}
+
+#resourceBlock {
+  padding-top: 85px;
 }
 
 .resourcepageline {
@@ -186,6 +182,16 @@ hr {
   background-color: #f4f0ff;
   height: 1px;
   opacity: .2
+}
+
+hr {
+  width: 50%;
+  color: #bbb;
+  border-style: none;
+  border-width: 0;
+  background-color: #f4f0ff;
+  height: 1px;
+  opacity: .2;
 }
 
 a {
@@ -203,21 +209,13 @@ a:focus {
   text-decoration: none;
 }
 
-
-/*.camomap {
-  background-image: url('../img/C_Camo_Map.png');;
-  background-repeat: no-repeat;
-  background-size: 30%;
-  background-position: center;
-  background-position: top;
-  height: 800px;
-  }
-*/
+.loveBlock {
+  padding-top: 75px;
+}
 
 .camomap {
   text-align: center;
 }
-
 .overlay {
   position: absolute;
   top: 0;
@@ -226,8 +224,6 @@ a:focus {
   height: 100%;
   z-index: 10;
   background-color: rgba(0,0,0,0.5); /*dim the background*/
-  text-align: center;
-  color: white;
 }
 
 .blur {
@@ -237,26 +233,6 @@ a:focus {
 .newclass {
   position: relative;
 }
-
-#loveinfo {
-   font-size: 18px;
-   line-height: 1.8em;
-   text-transform: none;
-   letter-spacing: .075em;
-   font-style: normal;
-   text-decoration: none;
-   color: rgba(207, 207, 210, 0.99);
-}
-
-.icon-bar {
-  background-color: white;
-}
-/*For footer */
-  .bottom_ul { list-style-type:none; float:right; margin-bottom:0px;}
- .bottom_ul li { float:left; line-height:40px;}
- .bottom_ul li:after { content:"/"; color:#FFF; margin-right:8px; margin-left:8px;}
- .bottom_ul li a { color:#FFF;  font-size:12px;}
-
 
 .icon-bar {
   background-color: white;
@@ -270,52 +246,47 @@ a:focus {
   padding-right: 35px;
 
 }
-.copyright{
-  margin-top: 200px;
-}
+
 #count_message {
   color: white;
 }
-.carousel-content {
-    color: white;
-    display:flex;
-    align-items:center;
+
+
+#loveinfo {
+   font-size: 18px;
+   font-family: "futura-pt", "Nunito", sans-serif;
+   line-height: 1.8em;
+   text-transform: none;
+   letter-spacing: .075em;
+   font-weight: 300;
+   font-style: normal;
+   text-decoration: none;
+   color: rgba(207, 207, 210, 0.99);
 }
 
-.Depression h3{
-  color: #03264c;
-}
-.Anxiety h3{
-  color: #ffff00;
-}
-.Bipolar h3{
-  color: #64f566;
-}
-.OCD h3{
-  color: #94261c;
+#loveinfo {
+  text-align: center;
+  padding-top: 250px;
 }
 
-.Dementia h3{
-  color: #7f47dd;
+figure {
+  width: 200px;
+  height: 60px;
+  cursor: pointer;
+  perspective: 500px;
+  -webkit-perspective: 500px;
 }
 
-.ADD h3{
-  color: #ff9900;
+figure div {
+  height: 100%;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transition: 0.25s;
+  -webkit-transition: 0.25s;
 }
 
-.Autism h3{
-  color: #128ab2;
-}
-
-.Bipolar h3{
-  color: #64f566;
-}
-.Schizophrenia h3{
-  color: #db3a7a;
-}
-
-.PTSD h3{
-  color: #159993;
+figure:hover div {
+  transform: rotateX(-90deg);
 }
 
 .sendlove {
@@ -398,56 +369,3 @@ figure:hover div {
   transform: rotateX(90deg) translate3d(0, 0, 30px);
   -webkit-transform: rotateX(90deg) translate3d(0, 0, 30px);
 }
-
-.blah {
-            stroke: red;
-            stroke-width: 10px;
-        }
-
-        circle {
-            opacity: .5;
-        }
-
-        .depression {
-            fill: #03264c;
-        }
-
-        .anxiety {
-            fill: #ffff00;
-        }
-
-        .ocd {
-            fill: #94261c;
-        }
-
-        .dementia {
-            fill: #7f47dd;
-        }
-
-        .adhd {
-            fill: #ff9900;
-        }
-
-        .autism {
-            fill: #128ab2;
-        }
-
-        .bipolar {
-            fill: #64f566;
-        }
-
-        .schizophrenia {
-            fill: #db3a7a;
-        }
-
-        .ptsd {
-            fill: #159993;
-        }
-
-        svg {
-            background-color: #000000;
-        }
-
-        path {
-            fill: #504c3d;
-        }

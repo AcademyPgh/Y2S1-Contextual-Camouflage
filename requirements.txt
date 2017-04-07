@@ -1,10 +1,8 @@
-Flask==0.10.1
 flask-cors==3.0.2
-mailchimp3==2.0.9
-gunicorn==19.6.0
 appdirs==1.4.3
 click==6.7
 dominate==2.3.1
+
 Flask==0.10.1
 Flask-Bootstrap==3.3.7.1
 Flask-Mailgun==0.4

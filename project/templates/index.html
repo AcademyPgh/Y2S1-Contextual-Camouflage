@@ -27,54 +27,19 @@
     crossorigin="anonymous"></script>
     <link  rel="stylesheet"href="https://fonts.googleapis.com/css?family=Nunito:300,400">
     <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
     <title>Contextual Camouflage</title>
     <script>
     $(document).ready(function()
     {
      $('body').hide().fadeIn(2000);
     });
-    function getLocation()
-    {
-       if (navigator.geolocation)
-    {
-      navigator.geolocation.getCurrentPosition(showPosition);
-    }
-      else{
-        // x.innerHTML="Geolocation is not supported by this browser.";
-        console.log('Not working..... yet')
 
-      }
-    }
-      function showPosition(position)
-    {
-      console.log(position.coords.latitude +" "+ position.coords.longitude);
-    // x.innerHTML="Latitude: " + position.coords.latitude +
-    // "<br>Longitude: " + position.coords.longitude;
-    }
-    getLocation()
     </script>
   </head>
   <body>
-    <!-- <nav class="navbar navbar-inverse navbar-static-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a href="/Home" action="push" class="navbar-brand">CONTEXTUAL CAMOFLAUGE</a>
-          <button type="button" class="navbar-toggle collapsed">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span><span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button></div>
-          <div class="navbar-collapse collapse">
-            <ul class="nav nav-pills navbar-nav navbar-right">
-              <li role="presentation" class="">
-                <a action="push" href="/Story">Your Story</a>
-              </li><li role="presentation" class="">
-                <a action="push" href="/Love">Send Love</a>
-              </li><li role="presentation" class="">
-                <a action="push" href="/Learn">Learn</a>
-              </li><li role="presentation" class="">
-                <a action="push" href="/Contact">
-              <button type="button" class="btn btn-danger"> -->
+
     <div>
     <nav class="navbar">
       <div class="container-fluid">
@@ -88,7 +53,6 @@
      </div>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-          <!-- <li><a href="/">Home</a></li> -->
           <li><a href="/About">About</a></li>
           <li><a href="/Love">The Stigma</a></li>
           <li><a href="/Story">Your Story</a></li>
@@ -117,5 +81,129 @@
       </div>
     </div>
   </div>
+
+  <script type="text/javascript">
+
+disorders = ["depression", "anxiety", "ocd", "dementia", "adhd", "autism", "bipolar", "schizophrenia", "ptsd"]
+current = 0;
+
+function animate1()
+{
+  svg.selectAll("." + disorders[current])
+//below is animation
+.transition()
+.duration(1000)
+.ease(Math.sqrt)
+.attr("r", "45px");
+//.style("fill-opacity", 1e-6)
+//.style("stroke-opacity", 1e-6);
+//.each("end", animate2());
+setTimeout(animate2, 4000);
+current += 1;
+if (current > disorders.length - 1)
+{
+  current = 0;
+}
+}
+function animate2()
+{
+  svg.selectAll("circle")
+.transition()
+.duration(1000)
+.ease(Math.sqrt)
+.attr("r", "15px");
+//.style("fill-opacity", 1e-6)
+//.style("stroke-opacity", 1e-6);
+//.each("end", animate1());
+setTimeout(animate1, 1000);
+}
+
+    //Width and height of SVG
+    var w = 960;
+    var h = 960;
+
+    //Get sample points
+    var samplePoints;
+    $.getJSON("{{ url_for('static', filename='json/samplePointsSquare.json') }}", function(result) {
+            console.log(result);
+            samplePoints = result;
+        })
+
+    //Define map projection
+    var projection = d3.geoMercator()
+        .center([-79.955426, 40.449129])
+        .scale(1500000)
+        .translate([w / 2, h / 2]);
+
+    //Create path constructor
+    var path = d3.geoPath().projection(projection);
+
+    //Create SVG constructor
+    var svg = d3.select(".camomap")
+        .append("svg")
+        .attr("width", w)
+        .attr("height", h);
+
+    //Blurring stuff
+    //grabbed from https://gist.github.com/cpbotha/5205319
+    //there's info there
+    var filter = svg.append("filter")
+        .attr("id", "drop-shadow")
+        .attr("height", "150%");
+    filter.append("feGaussianBlur")
+        .attr("in", "SourceAlpha")
+        .attr("stdDeviation", 3)
+        .attr("result", "blur");
+    var feOffset = filter.append("feOffset")
+        .attr("in", "blur")
+        .attr("dx", 5)
+        .attr("dy", 5)
+        .attr("result", "offsetBlur");
+    var feMerge = filter.append("feMerge");
+
+    feMerge.append("feMergeNode")
+        .attr("in", "blur")
+    feMerge.append("feMergeNode")
+        .attr("in", "SourceGraphic");
+
+    //Load in GeoJSON data
+    d3.json("{{ url_for('static', filename='json/NorthOakland.json') }}", function(error, json) {
+        //Append the path
+        svg.append("path")
+            .datum({
+                type: "FeatureCollection",
+                features: json.features
+            })
+            .attr("d", path)
+            .attr("stroke", "#333");
+
+        //CIRCLES
+
+        svg.selectAll("circle")
+            .data(samplePoints).enter()
+            .append("circle")
+            .attr("cx", function(d) {
+                return projection(d)[0];
+            })
+            .attr("cy", function(d) {
+                return projection(d)[1];
+            }).attr("class", function(d) {
+                return d[2];
+            })
+            .attr("r", "15px")
+            .style("filter", "url(#drop-shadow)");
+
+
+            animate1();
+
+          // }
+            //.remove()
+            //Not currently working transition stuff below
+        // .transition().delay(function(d,i){
+        //   return (i * 100);
+        // }).duration(500);
+
+    });
+</script>
   </body>
 </html>

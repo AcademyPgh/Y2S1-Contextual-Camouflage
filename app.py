@@ -16,17 +16,17 @@ f = urllib2.urlopen('http://freegeoip.net/json/')
 json_string = f.read()
 f.close()
 location = json.loads(json_string)
-print(location['city']+ " "+location['region_code']+" "+ location['zip_code'])
+print(location)
 
 #default route to test screen
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('stigma.html')
 
 @app.route('/Home')
 def home():
-    return render_template('index.html')
+    return render_template('stigma.html')
 
 @app.route('/Story')
 def story():
@@ -38,7 +38,7 @@ def about():
 
 @app.route('/Love')
 def love():
-    return render_template('love.html')
+    return render_template('stigma.html')
 
 @app.route('/Help')
 def contact():
@@ -87,7 +87,7 @@ def result():
         result = request.form['Mental Illness']
         text =  request.form['text']
         print(result+ ' '+ text)
-        return render_template("index.html", result = result)
+        return render_template("Share.html", result = result)
 
 #approve and deny pins
 
